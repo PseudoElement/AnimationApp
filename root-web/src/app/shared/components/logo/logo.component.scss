@@ -1,0 +1,18 @@
+@use '../../../../styles.scss' as *;
+
+.logo {
+    @include flex-column-center {
+        justify-content: flex-start;
+    }
+    font-family: $ff-Lemon;
+    font-size: $fs-28;
+    p {
+        margin-top: -25px;
+    }
+    .dark {
+        color: $c-white;
+    }
+    .light {
+        color: $c-black;
+    }
+}

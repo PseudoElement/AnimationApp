@@ -1,0 +1,45 @@
+@use '../../../../styles.scss' as *;
+
+:root {
+    --start: 0px;
+    --end: 0px;
+}
+
+.slider {
+    border: 2px solid black;
+    height: 100%;
+    padding: 20px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+    display: flex;
+}
+
+img {
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.rtl {
+    animation: right-to-left 5s linear infinite;
+}
+.ltr {
+    animation: left-to-right 5s linear infinite;
+}
+@keyframes right-to-left {
+    0% {
+        transform: translateX(var(--start));
+    }
+    100% {
+        transform: translateX(var(--end));
+    }
+}
+@keyframes left-to-right {
+    0% {
+        transform: translateX(var(--start));
+    }
+    100% {
+        transform: translateX(var(--end));
+    }
+}

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@font-face {
+    font-family: 'Atyp';
+    src: local('Atyp Medium'), local('Atyp-Medium'),
+        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.woff2') format('woff2'),
+        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.woff') format('woff'),
+        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+//fonts
+$ff-Atyp: 'Atyp', normal;
+$ff-Lemon: 'Lemon', cursive;
+
+//font-weights
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+$fw-megabold: 900;
+
+//font-size
+$fs-64: 64px;
+$fs-32: 32px;
+$fs-28: 28px;
+$fs-24: 24px;
+$fs-12: 12px;
