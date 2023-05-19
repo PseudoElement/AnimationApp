@@ -12,21 +12,12 @@ header {
     background: none;
     font-family: $ff-Atyp;
     font-size: $fs-32;
-    .p1 {
-        font-weight: $fw-bold;
-    }
-    .p2 {
-        font-weight: $fw-light;
-    }
-    .p3 {
-        font-weight: $fw-light;
-    }
 }
 .hiddenHeader {
     top: -150px;
 }
 .activeHeader {
-    background: $black-o-02;
+    background: $primary-rgba;
 }
 .links {
     margin-left: 5%;
@@ -44,7 +35,4 @@ header {
 .activeLink {
     background: $c-green;
     color: $c-white !important;
-    &:hover {
-        color: $c-white;
-    }
 }

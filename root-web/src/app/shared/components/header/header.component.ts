@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 import { links } from 'src/app/core';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
     selector: 'app-header',
@@ -12,6 +13,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isDestroyed$: Subject<boolean> = new Subject();
     isScrolled = false;
     isVisibleHeader = true;
+
+    constructor(public themeService: ThemeService) {}
 
     ngOnInit(): void {
         let prevScrollpos = window.scrollY;
@@ -35,5 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.isDestroyed$.next(true);
         this.isDestroyed$.complete();
+    }
+
+    onChangeTheme() {
+        this.themeService.changeTheme();
     }
 }

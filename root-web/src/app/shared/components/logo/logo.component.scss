@@ -8,11 +8,6 @@
     font-size: $fs-28;
     p {
         margin-top: -25px;
-    }
-    .dark {
-        color: $c-white;
-    }
-    .light {
-        color: $c-black;
+        color: $primary-text-color;
     }
 }

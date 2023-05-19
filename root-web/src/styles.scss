@@ -8,12 +8,24 @@
 
     a {
         text-decoration: none;
-        color: $c-black;
+        color: $primary-text-color;
     }
 }
+
+.light-theme {
+}
+
+.dark-theme {
+}
+
 body {
     font-family: $ff-Atyp;
     font-weight: $fw-light;
     font-size: $fs-28;
     height: 3000px;
+    background-color: $primary-bg-color;
+    color: $primary-text-color;
+}
+.mat-typography {
+    line-height: normal;
 }

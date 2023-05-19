@@ -5,6 +5,19 @@ $c-green: #00bf68;
 $c-red: #e30016;
 $c-light-blue: #00aff0;
 
-//rgb
+//rgba
 
 $black-o-02: rgba(0, 0, 0, 0.2);
+$white-o-03: rgba(255, 255, 255, 0.3);
+
+:root {
+    --text-color: $c-white;
+    --bg-color: $c-black;
+    --primary-rgba: $white-o-6;
+    --secondary-rgba: $black-o-02;
+}
+
+$primary-text-color: var(--text-color);
+$primary-bg-color: var(--bg-color);
+$primary-rgba: var(--primary-rgba);
+$secondary-rgba: var(--secondary-rgba);

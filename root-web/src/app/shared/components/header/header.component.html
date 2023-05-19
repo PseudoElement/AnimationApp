@@ -12,4 +12,7 @@
             >{{ link.text }}</a
         >
     </div>
+    <app-button (click)="onChangeTheme()" [className]="'theme-button'">
+        <span class="material-symbols-outlined"> {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }} </span>
+    </app-button>
 </header>

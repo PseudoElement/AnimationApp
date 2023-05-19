@@ -1,0 +1,24 @@
+@use '../../../../styles.scss' as *;
+
+button {
+    @include flex-row-center;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $primary-text-color;
+}
+.theme-button {
+    position: absolute;
+    border-radius: 50%;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    &:hover {
+        background: $secondary-rgba;
+    }
+    &:active {
+        box-shadow: 0 0 7px 5px white;
+    }
+}
