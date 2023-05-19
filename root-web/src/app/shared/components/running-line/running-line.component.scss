@@ -6,26 +6,25 @@
 }
 
 .slider {
-    border: 2px solid black;
     height: 100%;
-    padding: 20px;
+    padding: 5px;
     margin: auto;
     overflow: hidden;
     position: relative;
-    width: 90%;
+    width: 100%;
     display: flex;
 }
 
 img {
     object-fit: cover;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 .rtl {
-    animation: right-to-left 5s linear infinite;
+    animation: right-to-left 10s linear infinite;
 }
 .ltr {
-    animation: left-to-right 5s linear infinite;
+    animation: left-to-right 10s linear infinite;
 }
 @keyframes right-to-left {
     0% {
@@ -37,9 +36,9 @@ img {
 }
 @keyframes left-to-right {
     0% {
-        transform: translateX(var(--start));
+        transform: translateX(var(--end));
     }
     100% {
-        transform: translateX(var(--end));
+        transform: translateX(var(--start));
     }
 }

@@ -1,0 +1,50 @@
+@use '../../../../styles.scss' as *;
+
+header {
+    position: fixed;
+    z-index: 100;
+    padding: 0 10%;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: all 0.2s;
+    @include flex-row-start;
+    background: none;
+    font-family: $ff-Atyp;
+    font-size: $fs-32;
+    .p1 {
+        font-weight: $fw-bold;
+    }
+    .p2 {
+        font-weight: $fw-light;
+    }
+    .p3 {
+        font-weight: $fw-light;
+    }
+}
+.hiddenHeader {
+    top: -150px;
+}
+.activeHeader {
+    background: $black-o-02;
+}
+.links {
+    margin-left: 5%;
+    @include flex-row-center;
+}
+.link {
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 15px;
+    transition: all 0.2s;
+    &:hover {
+        color: $c-green;
+    }
+}
+.activeLink {
+    background: $c-green;
+    color: $c-white !important;
+    &:hover {
+        color: $c-white;
+    }
+}

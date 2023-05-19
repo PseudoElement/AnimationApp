@@ -5,11 +5,15 @@
 * {
     padding: 0;
     margin: 0;
+
     a {
         text-decoration: none;
         color: $c-black;
     }
 }
 body {
-    // background-color: $c-black;
+    font-family: $ff-Atyp;
+    font-weight: $fw-light;
+    font-size: $fs-28;
+    height: 3000px;
 }

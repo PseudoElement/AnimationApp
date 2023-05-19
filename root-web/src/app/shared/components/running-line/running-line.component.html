@@ -31,4 +31,12 @@
         [height]="imgHeight"
         alt="Image"
     />
+    <img
+        [ngClass]="{ rtl: dir === 'rtl', ltr: dir === 'ltr' }"
+        *ngFor="let image of images"
+        [src]="image"
+        [width]="imgWidth"
+        [height]="imgHeight"
+        alt="Image"
+    />
 </div>
