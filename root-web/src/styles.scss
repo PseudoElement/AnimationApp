@@ -12,12 +12,6 @@
     }
 }
 
-.light-theme {
-}
-
-.dark-theme {
-}
-
 body {
     font-family: $ff-Atyp;
     font-weight: $fw-light;
@@ -25,7 +19,5 @@ body {
     height: 3000px;
     background-color: $primary-bg-color;
     color: $primary-text-color;
-}
-.mat-typography {
-    line-height: normal;
+    overflow-x: hidden;
 }

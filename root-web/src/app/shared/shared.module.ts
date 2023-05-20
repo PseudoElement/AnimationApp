@@ -8,10 +8,27 @@ import { RunningLineComponent } from './components/running-line/running-line.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { ParallaxDirective } from './directives/parallax.directive';
 
 @NgModule({
-    declarations: [NavComponent, InputComponent, ButtonComponent, LogoComponent, RunningLineComponent, HeaderComponent],
+    declarations: [
+        NavComponent,
+        InputComponent,
+        ButtonComponent,
+        LogoComponent,
+        RunningLineComponent,
+        HeaderComponent,
+        ParallaxDirective,
+    ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule],
-    exports: [NavComponent, InputComponent, ButtonComponent, LogoComponent, RunningLineComponent, HeaderComponent],
+    exports: [
+        NavComponent,
+        InputComponent,
+        ButtonComponent,
+        LogoComponent,
+        RunningLineComponent,
+        HeaderComponent,
+        ParallaxDirective,
+    ],
 })
 export class SharedModule {}

@@ -4,3 +4,21 @@ p {
     font-size: 50px;
     font-weight: bold;
 }
+img {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+}
+.img1 {
+    z-index: 100;
+    position: absolute;
+    top: 800px;
+    right: 10%;
+    transform: rotate(-45deg);
+}
+.img2 {
+    position: absolute;
+    top: 1500px;
+    left: 10%;
+    z-index: -1;
+}

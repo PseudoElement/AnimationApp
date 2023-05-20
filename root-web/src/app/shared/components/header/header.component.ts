@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.isDestroyed$))
             .subscribe(() => {
                 let currentScrollPos = window.scrollY;
-                if (window.scrollY > 400 && prevScrollpos < currentScrollPos) {
+                if (window.scrollY > 600 && prevScrollpos < currentScrollPos) {
                     this.isScrolled = true;
                     this.isVisibleHeader = false;
                 } else if (window.scrollY > 50) {
