@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { ParallaxDirective } from './directives/parallax.directive';
+import { ElementMoveDirective } from './directives/element-move.directive';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { ParallaxDirective } from './directives/parallax.directive';
         RunningLineComponent,
         HeaderComponent,
         ParallaxDirective,
+        ElementMoveDirective,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule],
     exports: [
@@ -29,6 +31,7 @@ import { ParallaxDirective } from './directives/parallax.directive';
         RunningLineComponent,
         HeaderComponent,
         ParallaxDirective,
+        ElementMoveDirective,
     ],
 })
 export class SharedModule {}

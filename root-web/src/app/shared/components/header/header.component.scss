@@ -2,7 +2,7 @@
 
 header {
     position: fixed;
-    z-index: 100;
+    z-index: 500;
     padding: 0 10%;
     left: 0;
     right: 0;
@@ -12,6 +12,7 @@ header {
     background: none;
     font-family: $ff-Atyp;
     font-size: $fs-32;
+    color: red !important;
 }
 .hiddenHeader {
     top: -150px;

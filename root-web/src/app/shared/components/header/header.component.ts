@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
-import { links } from 'src/app/core';
+import { links, scrollPoints } from 'src/app/core';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.isDestroyed$))
             .subscribe(() => {
                 let currentScrollPos = window.scrollY;
-                if (window.scrollY > 600 && prevScrollpos < currentScrollPos) {
+                if (window.scrollY > scrollPoints.showHide && prevScrollpos < currentScrollPos) {
                     this.isScrolled = true;
                     this.isVisibleHeader = false;
-                } else if (window.scrollY > 50) {
+                } else if (window.scrollY > scrollPoints.useOpacityHeader) {
                     this.isScrolled = true;
                     this.isVisibleHeader = true;
                 } else {

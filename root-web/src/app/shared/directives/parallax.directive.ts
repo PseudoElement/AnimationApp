@@ -1,12 +1,12 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { Directions } from 'src/app/core';
+import { DirectionsY } from 'src/app/core';
 
 @Directive({
     selector: '[appParallax]',
 })
 export class ParallaxDirective {
     @Input() ratio: number = 1;
-    @Input() dir: Directions = 'vertical';
+    @Input() dir: DirectionsY = 'vertical';
     initialTop: number = 0;
     initialLeft: number = 0;
 

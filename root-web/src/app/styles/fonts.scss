@@ -1,19 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 @font-face {
     font-family: 'Atyp';
+    src: local('Atyp Light'), local('Atyp-Light'), url('../../assets/fonts/font/AtypDisplay-Bold.woff2') format('woff2'),
+        url('../../assets/fonts/font/AtypDisplay-Light.woff') format('woff'),
+        url('../../assets/fonts/font/AtypDisplay-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Atyp';
+    src: local('Atyp Regular'), local('Atyp-Regular'),
+        url('../../assets/fonts/font/AtypDisplay-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/font/AtypDisplay-Regular.woff') format('woff'),
+        url('../../assets/fonts/font/AtypDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Atyp';
     src: local('Atyp Medium'), local('Atyp-Medium'),
-        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.woff2') format('woff2'),
-        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.woff') format('woff'),
-        url('../../assets/fonts/AtypDisplay-Medium/AtypDisplay-Medium.ttf') format('truetype');
+        url('../../assets/fonts/font/AtypDisplay-Medium.woff2') format('woff2'),
+        url('../../assets/fonts/font/AtypDisplay-Medium.woff') format('woff'),
+        url('../../assets/fonts/font/AtypDisplay-Medium.ttf') format('truetype');
     font-weight: 500;
-    font-style: normal;
+}
+@font-face {
+    font-family: 'Atyp';
+    src: local('Atyp SemiBold'), local('Atyp-MedSemiBoldium'),
+        url('../../assets/fonts/font/AtypDisplay-Semibold.woff2') format('woff2'),
+        url('../../assets/fonts/font/AtypDisplay-Semibold.woff') format('woff'),
+        url('../../assets/fonts/font/AtypDisplay-Semibold.ttf') format('truetype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Atyp';
+    src: local('Atyp Bold'), local('Atyp-Bold'), url('../../assets/fonts/font/AtypDisplay-Bold.woff2') format('woff2'),
+        url('../../assets/fonts/font/AtypDisplay-Bold.woff') format('woff'),
+        url('../../assets/fonts/font/AtypDisplay-Bold.ttf') format('truetype');
+    font-weight: 700;
 }
 //fonts
-$ff-Atyp: 'Atyp', normal;
-$ff-Lemon: 'Lemon', cursive;
+$ff-Atyp: 'Atyp';
+$ff-Lemon: 'Lemon';
 
 //font-weights
 $fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
 $fw-bold: 700;
 
 //font-size
@@ -22,3 +55,5 @@ $fs-32: 32px;
 $fs-28: 28px;
 $fs-24: 24px;
 $fs-12: 12px;
+$fs-85: 85px;
+$fs-250: 250px;

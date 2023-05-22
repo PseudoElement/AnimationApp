@@ -1,26 +1,48 @@
-<app-running-line [images]="images" [dir]="'rtl'"></app-running-line>
-<app-running-line [images]="images"></app-running-line>
+<div class="wrapper">
+    <app-running-line [images]="images" [dir]="'rtl'"></app-running-line>
+    <app-running-line [images]="images"></app-running-line>
+    <app-running-line [images]="images" [dir]="'rtl'"></app-running-line>
 
-<img appParallax [ratio]="1.6" class="img1" src="../../../assets/img/svg/rocket.svg" alt="Rocket" />
-<img appParallax [ratio]="0.8" class="img2" src="../../../assets/img/svg/bomb.svg" alt="Bomb" />
-
-<p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, ea saepe! Cumque, placeat a. Deserunt incidunt
-    blanditiis dolores odit error unde harum. Ipsum, doloremque. Assumenda delectus nostrum necessitatibus doloribus
-    repellat.
-</p>
-<p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, ea saepe! Cumque, placeat a. Deserunt incidunt
-    blanditiis dolores odit error unde harum. Ipsum, doloremque. Assumenda delectus nostrum necessitatibus doloribus
-    repellat.
-</p>
-<p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, ea saepe! Cumque, placeat a. Deserunt incidunt
-    blanditiis dolores odit error unde harum. Ipsum, doloremque. Assumenda delectus nostrum necessitatibus doloribus
-    repellat.
-</p>
-<p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, ea saepe! Cumque, placeat a. Deserunt incidunt
-    blanditiis dolores odit error unde harum. Ipsum, doloremque. Assumenda delectus nostrum necessitatibus doloribus
-    repellat.
-</p>
+    <div class="main">
+        <img appParallax [ratio]="1.3" class="rocketImg" src="../../../assets/img/svg/rocket.svg" alt="Rocket" />
+        <img appParallax [ratio]="0.8" class="bombImg" src="../../../assets/img/svg/bomb.svg" alt="Bomb" />
+        <h1>We</h1>
+        <h1>are</h1>
+        <div class="colorfullWords">
+            <p
+                #p1
+                appElementMove
+                [elBelowTarget]="underDynamicWords"
+                [newCoordXTarget]="underDynamicWords.offsetLeft"
+                [startCoordYElBelow]="getStartCoordYForElBelowTarget(p1)"
+                [newCoordYElBelow]="getNewCoordYForElBelowTarget(p1)"
+                [direction]="'ltr'"
+            >
+                Successfull
+            </p>
+            <p
+                #p2
+                appElementMove
+                [elBelowTarget]="underDynamicWords"
+                [newCoordXTarget]="underDynamicWords.offsetLeft"
+                [startCoordYElBelow]="getStartCoordYForElBelowTarget(p2)"
+                [newCoordYElBelow]="getNewCoordYForElBelowTarget(p2)"
+                [direction]="'ltr'"
+            >
+                Powerfull
+            </p>
+            <p
+                #p3
+                appElementMove
+                [elBelowTarget]="underDynamicWords"
+                [newCoordXTarget]="underDynamicWords.offsetLeft"
+                [startCoordYElBelow]="getStartCoordYForElBelowTarget(p3)"
+                [newCoordYElBelow]="getNewCoordYForElBelowTarget(p3)"
+                [direction]="'ltr'"
+            >
+                Strong
+            </p>
+        </div>
+        <h1 class="dynamicH1" #underDynamicWords>Boobook</h1>
+    </div>
+</div>

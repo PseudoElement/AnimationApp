@@ -8,8 +8,8 @@ import { Component, ElementRef, Input, OnInit } from '@angular/core';
 export class RunningLineComponent implements OnInit {
     @Input() images: string[] = [];
     @Input() text?: string;
-    @Input() imgWidth: number = 125;
-    @Input() imgHeight: number = 125;
+    @Input() imgWidth: number = 170;
+    @Input() imgHeight: number = 170;
     @Input() dir: 'rtl' | 'ltr' = 'ltr';
 
     ngOnInit(): void {

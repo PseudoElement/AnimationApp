@@ -1,4 +1,4 @@
-import { HeaderLink } from '../model';
+import { HeaderLink, ScrollPoints } from '../model';
 
 export const links: HeaderLink[] = [
     {
@@ -15,3 +15,8 @@ export const links: HeaderLink[] = [
         text: 'About',
     },
 ];
+
+export const scrollPoints: ScrollPoints = {
+    useOpacityHeader: 50,
+    showHide: 600,
+};

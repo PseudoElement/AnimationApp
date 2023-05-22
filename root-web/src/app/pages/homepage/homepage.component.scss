@@ -1,22 +1,71 @@
 @use '../../../styles.scss' as *;
-p {
+
+.wrapper {
+}
+.main {
+    position: relative;
+    z-index: 5;
+    margin-top: -175px;
+    padding: 0 10%;
+    background: $secondary-rgba;
+
+    .colorfullWords {
+        p {
+            position: absolute;
+            max-height: 110px;
+            @include flex-row-center;
+            width: fit-content;
+            border-radius: 20px;
+            font-size: $fs-85;
+            font-weight: $fw-bold;
+            letter-spacing: -4px;
+            padding: 10px;
+            transition: all 0.1s;
+        }
+        :nth-child(1) {
+            left: -600px;
+            background-color: $c-yellow;
+            top: 390px;
+            color: $c-black;
+        }
+        :nth-child(2) {
+            background-color: $c-green;
+            left: -600px;
+            top: calc(390px + 115px);
+        }
+        :nth-child(3) {
+            left: -600px;
+            background-color: $c-light-blue;
+            top: calc(390px + 230px);
+        }
+    }
+}
+h1 {
     font-family: $ff-Atyp;
-    font-size: 50px;
-    font-weight: bold;
+    letter-spacing: -10px;
+    font-size: $fs-250;
+    font-weight: 900;
+    line-height: 170px;
+    transition: all 0.1s;
+}
+.dynamicH1 {
+    position: absolute;
+    top: 380px;
+    z-index: -1;
 }
 img {
     width: 100%;
     max-width: 700px;
     height: 100%;
 }
-.img1 {
+.rocketImg {
     z-index: 100;
     position: absolute;
     top: 800px;
     right: 10%;
     transform: rotate(-45deg);
 }
-.img2 {
+.bombImg {
     position: absolute;
     top: 1500px;
     left: 10%;
