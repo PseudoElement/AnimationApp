@@ -22,12 +22,14 @@ export class ThemeService {
     private setProperties(theme: Themes | null) {
         const root = document.documentElement;
         if (theme === 'dark') {
-            root.style.setProperty('--text-color', colors.white);
+            root.style.setProperty('--primary-text-color', colors.white);
+            root.style.setProperty('--secondary-text-color', colors.black);
             root.style.setProperty('--bg-color', colors.black);
             root.style.setProperty('--primary-rgba', colors.rgbaWhite03);
             root.style.setProperty('--secondary-rgba', colors.rgbaBlack04);
         } else {
-            root.style.setProperty('--text-color', colors.black);
+            root.style.setProperty('--primary-text-color', colors.black);
+            root.style.setProperty('--secondary-text-color', colors.white);
             root.style.setProperty('--bg-color', colors.white);
             root.style.setProperty('--primary-rgba', colors.rgbaBlack04);
             root.style.setProperty('--secondary-rgba', colors.rgbaWhite03);

@@ -1,20 +1,25 @@
 @use '../../../../styles.scss' as *;
 
 button {
-    @include flex-row-center;
-    transition: all 0.2s;
-    background: none;
     border: none;
     cursor: pointer;
     color: $primary-text-color;
+    @include flex-row-center;
+    font-size: $fs-32;
+    font-weight: $fw-regular;
+    background: $c-green;
+    border-radius: 10px;
+    transition: all 0.2s;
+    padding: 5px;
+    color: $primary-text-color;
+    &:hover {
+        background: $c-yellow;
+        color: $secondary-text-color;
+    }
 }
 .theme-button {
-    position: absolute;
-    border-radius: 50%;
-    right: 20%;
-    top: 50%;
-    transform: translateY(-50%);
     padding: 10px;
+    border-radius: 50%;
     &:hover {
         background: $secondary-rgba;
     }

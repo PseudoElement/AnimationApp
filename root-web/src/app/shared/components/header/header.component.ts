@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 import { links, scrollPoints } from 'src/app/core';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isScrolled = false;
     isVisibleHeader = true;
 
-    constructor(public themeService: ThemeService) {}
+    constructor(public modalService: ModalService, public themeService: ThemeService) {}
 
     ngOnInit(): void {
         let prevScrollpos = window.scrollY;
@@ -35,12 +36,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 prevScrollpos = currentScrollPos;
             });
     }
+
     ngOnDestroy(): void {
         this.isDestroyed$.next(true);
         this.isDestroyed$.complete();
     }
 
-    onChangeTheme() {
+    public onChangeTheme() {
         this.themeService.changeTheme();
+    }
+
+    public openModal() {
+        this.modalService.toggleVisibility('auth');
     }
 }

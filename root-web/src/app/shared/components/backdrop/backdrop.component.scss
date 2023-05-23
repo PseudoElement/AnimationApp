@@ -1,0 +1,16 @@
+@use '../../../../styles.scss' as *;
+.backdrop {
+    position: fixed;
+    z-index: 501;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include flex-row-center;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.1s;
+    transform: scale(0);
+}
+.open {
+    transform: scale(1);
+}

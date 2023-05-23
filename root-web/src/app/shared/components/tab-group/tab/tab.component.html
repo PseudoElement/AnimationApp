@@ -1,0 +1,10 @@
+<div (click)="setOpenTab.emit(id)" class="tab-wrapper">
+    <div class="title">
+        <app-button>
+            {{ title }}
+        </app-button>
+    </div>
+    <div *ngIf="isOpen" class="body">
+        <ng-content></ng-content>
+    </div>
+</div>

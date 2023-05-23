@@ -1,0 +1,15 @@
+@use '../../../../../styles.scss' as *;
+
+.tab-wrapper {
+    width: 100%;
+}
+.title {
+    cursor: pointer;
+}
+.body {
+    @include flex-column-center;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+}

@@ -11,13 +11,15 @@ $black-o-04: rgba(0, 0, 0, 0.4);
 $white-o-03: rgba(255, 255, 255, 0.3);
 
 :root {
-    --text-color: $c-white;
+    --primary-text-color: $c-white;
+    --secondary-text-color: $c-black;
     --bg-color: $c-black;
     --primary-rgba: $white-o-03;
     --secondary-rgba: $black-o-04;
 }
 
-$primary-text-color: var(--text-color);
+$primary-text-color: var(--primary-text-color);
+$secondary-text-color: var(--secondary-text-color);
 $primary-bg-color: var(--bg-color);
 $primary-rgba: var(--primary-rgba);
 $secondary-rgba: var(--secondary-rgba);

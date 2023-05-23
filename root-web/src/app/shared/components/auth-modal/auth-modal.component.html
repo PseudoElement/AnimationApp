@@ -1,0 +1,22 @@
+<app-backdrop [isOpen]="modalService.isVisible('auth')" (click)="modalService.toggleVisibility('auth')">
+    <app-modal skipEventBehaviour (closeModal)="modalService.toggleVisibility('auth')">
+        <app-tab-group>
+            <app-tab
+                (setOpenTab)="setOpenTab($event)"
+                [title]="'Sign in'"
+                [id]="'signIn'"
+                [isOpen]="openTab === 'signIn'"
+            >
+                Some TEXT
+            </app-tab>
+            <app-tab
+                (setOpenTab)="setOpenTab($event)"
+                [title]="'Sign up'"
+                [id]="'signUp'"
+                [isOpen]="openTab === 'signUp'"
+            >
+                ALSO SOME TEXT 2
+            </app-tab>
+        </app-tab-group>
+    </app-modal>
+</app-backdrop>
