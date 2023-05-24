@@ -5,3 +5,5 @@ export * from './common';
 export * from './modalService';
 export * from './directives';
 export * from './authModal';
+export * from './authService';
+export * from './api';

@@ -18,10 +18,12 @@ button {
     }
 }
 .theme-button {
+    background: none;
     padding: 10px;
     border-radius: 50%;
     &:hover {
         background: $secondary-rgba;
+        color: $primary-text-color;
     }
     &:active {
         box-shadow: 0 0 7px 5px white;

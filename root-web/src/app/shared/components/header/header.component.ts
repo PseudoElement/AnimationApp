@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     constructor(public modalService: ModalService, public themeService: ThemeService) {}
 
-    ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
         let prevScrollpos = window.scrollY;
         fromEvent(document, 'scroll')
             .pipe(takeUntil(this.isDestroyed$))

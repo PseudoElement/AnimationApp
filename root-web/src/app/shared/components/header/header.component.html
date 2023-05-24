@@ -13,11 +13,11 @@
         >
     </div>
     <div class="theme-button-wrapper">
-        <app-button (click)="onChangeTheme()">
+        <app-button (click)="onChangeTheme()" [className]="'theme-button'">
             <span class="material-symbols-outlined"> {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }} </span>
         </app-button>
     </div>
     <div class="auth-button-wrapper">
-        <app-button (click)="openModal()" [className]="'auth-button'"> Login / Register </app-button>
+        <app-button (click)="openModal()"> Login / Register </app-button>
     </div>
 </header>
