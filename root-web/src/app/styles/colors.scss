@@ -9,6 +9,13 @@ $c-light-blue: #00aff0;
 
 $black-o-04: rgba(0, 0, 0, 0.4);
 $white-o-03: rgba(255, 255, 255, 0.3);
+$rgb-pink: rgb(255, 58, 229);
+$rgb-indigo: rgb(104, 39, 255);
+
+//gradient
+
+$grad-pink: linear-gradient(180deg, rgba(227, 0, 251, 1) 24%, rgba(255, 118, 155, 1) 74%);
+$grad-indigo: linear-gradient(180deg, rgba(178, 0, 251, 1) 21%, rgba(118, 139, 255, 1) 65%);
 
 :root {
     --primary-text-color: $c-white;

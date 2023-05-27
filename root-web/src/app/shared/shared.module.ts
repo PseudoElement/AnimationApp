@@ -18,6 +18,8 @@ import { BackdropComponent } from './components/backdrop/backdrop.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
 import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.directive';
+import { OpacityDirective } from './directives/opacity.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -37,8 +39,9 @@ import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.d
         ModalComponent,
         AuthModalComponent,
         SkipEventBehaviourDirective,
+        OpacityDirective,
     ],
-    imports: [CommonModule, BrowserAnimationsModule, RouterModule],
+    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
     exports: [
         NavComponent,
         InputComponent,
@@ -56,6 +59,7 @@ import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.d
         ModalComponent,
         AuthModalComponent,
         SkipEventBehaviourDirective,
+        OpacityDirective,
     ],
 })
 export class SharedModule {}

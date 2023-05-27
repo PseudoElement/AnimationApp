@@ -21,4 +21,9 @@ body {
     background-color: $primary-bg-color;
     color: $primary-text-color;
     overflow-x: hidden;
+    button {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
 }

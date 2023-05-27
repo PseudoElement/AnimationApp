@@ -1,0 +1,6 @@
+@use '../../../../styles.scss' as *;
+
+.loginForm {
+    width: 100%;
+    @include flex-column-center;
+}

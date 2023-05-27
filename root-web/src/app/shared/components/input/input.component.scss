@@ -1,0 +1,15 @@
+@use '../../../../styles.scss' as *;
+.input-wrapper {
+    @include flex-column-start;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.field {
+    font-size: $fs-32;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+.error {
+    color: $c-red;
+    font-size: $fs-16;
+}

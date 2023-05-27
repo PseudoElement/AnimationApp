@@ -72,7 +72,40 @@ img {
 }
 .bombImg {
     position: absolute;
-    top: 1500px;
+    top: 1900px;
     left: 10%;
     z-index: -1;
+}
+
+.slogan {
+    position: absolute;
+    top: 1300px;
+    @include flex-row-center;
+    gap: 5%;
+    .leftPart,
+    .rightPart {
+        @include flex-column-center;
+        .mainLine {
+            font-size: $fs-250;
+        }
+        .secondLine {
+            font-size: $fs-85;
+        }
+    }
+    .leftPart .secondLine {
+        color: $rgb-indigo;
+    }
+    .rightPart .secondLine {
+        color: $rgb-pink;
+    }
+    .leftPart .mainLine {
+        background-image: $grad-indigo;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .rightPart .mainLine {
+        background-image: $grad-pink;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }

@@ -1,12 +1,12 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { DirectionsY } from 'src/app/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directions } from 'src/app/core';
 
 @Directive({
     selector: '[appParallax]',
 })
-export class ParallaxDirective {
+export class ParallaxDirective implements AfterViewInit {
     @Input() ratio: number = 1;
-    @Input() dir: DirectionsY = 'vertical';
+    @Input() dir: Directions = 'vertical';
     initialTop: number = 0;
     initialLeft: number = 0;
 

@@ -1,1 +1,11 @@
-<p>login-form works!</p>
+<form class="loginForm" skipEventBehaviour [formGroup]="loginForm">
+    <app-input [control]="loginForm.controls.email" id="email" label="Email" [placeholder]="'Enter email'"></app-input>
+    <app-input
+        [control]="loginForm.controls.password"
+        [type]="'password'"
+        id="password"
+        label="Password"
+        [placeholder]="'Enter password'"
+    ></app-input>
+    <app-button (click)="onSubmit()">Submit</app-button>
+</form>

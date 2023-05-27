@@ -16,7 +16,7 @@ export class ModalService {
         return modal ? modal.isVisible : false;
     }
     public register(id: ModalTypes) {
-        this.modals.push({ isVisible: false, id: id });
+        this.modals.push({ isVisible: true, id: id });
     }
     public unregister(id: ModalTypes) {
         this.modals = this.modals.filter((modal) => modal.id !== id);

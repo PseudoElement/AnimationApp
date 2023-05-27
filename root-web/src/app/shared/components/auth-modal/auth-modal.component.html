@@ -7,7 +7,7 @@
                 [id]="'signIn'"
                 [isOpen]="openTab === 'signIn'"
             >
-                Some TEXT
+                <app-login-form></app-login-form>
             </app-tab>
             <app-tab
                 (setOpenTab)="setOpenTab($event)"
@@ -15,7 +15,7 @@
                 [id]="'signUp'"
                 [isOpen]="openTab === 'signUp'"
             >
-                ALSO SOME TEXT 2
+                <app-register-form></app-register-form>
             </app-tab>
         </app-tab-group>
     </app-modal>
