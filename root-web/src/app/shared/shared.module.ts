@@ -20,6 +20,7 @@ import { AuthModalComponent } from './components/auth-modal/auth-modal.component
 import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.directive';
 import { OpacityDirective } from './directives/opacity.directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         AuthModalComponent,
         SkipEventBehaviourDirective,
         OpacityDirective,
+        AlertComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
     exports: [
@@ -60,6 +62,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         AuthModalComponent,
         SkipEventBehaviourDirective,
         OpacityDirective,
+        AlertComponent,
     ],
 })
 export class SharedModule {}

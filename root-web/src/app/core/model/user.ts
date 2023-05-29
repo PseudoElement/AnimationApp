@@ -1,9 +1,14 @@
 export interface UserOnServer {
+    email: string;
+    name: string;
+    password: string;
+    id: string;
+    token: string;
+}
+
+export interface UserOnClient {
     email: string | null;
     name: string | null;
-    password: string | null;
     id: string | null;
     token: string | null;
 }
-
-export type UserOnClient = Omit<UserOnServer, 'password'>;

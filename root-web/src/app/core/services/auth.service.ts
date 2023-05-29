@@ -1,15 +1,16 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_KEY, endpoints } from '../api/endpoints';
+import { endpoints } from '../api/endpoints';
 import { UserOnServer } from '../model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    // user = null;
-    // error: string | null = null;
+    isLoading: boolean = false;
+    message: string = '';
+
     constructor(private http: HttpClient) {}
 
     public getAllUsers(): Observable<UserOnServer[]> {

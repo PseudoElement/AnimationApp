@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './core/store/auth';
+import { userReducer } from './core/store/user';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,7 +18,7 @@ import { authReducer } from './core/store/auth';
         PagesModule,
         RouterModule,
         HttpClientModule,
-        StoreModule.forRoot({ authReducer }),
+        StoreModule.forRoot({ user: userReducer }),
     ],
     providers: [],
     bootstrap: [AppComponent],

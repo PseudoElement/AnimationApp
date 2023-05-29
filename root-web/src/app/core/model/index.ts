@@ -7,4 +7,5 @@ export * from './directives';
 export * from './authModal';
 export * from './api';
 export * from './inputs';
-export * from './auth';
+export * from './user';
+export * from './cookies';

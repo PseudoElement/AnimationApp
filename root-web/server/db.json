@@ -1,3 +1,32 @@
 {
-    "users": [{ "id": 1, "email": "user@mail.ru", "password": "user", "token": "TOKEN_____" }]
+  "users": [
+    {
+      "email": "sobaka@sob.com",
+      "password": "sobaka",
+      "id": "09ff547b-e00d-4fb9-a092-9facb68ad063",
+      "token": "Access token",
+      "name": "sobaka"
+    },
+    {
+      "email": "user@mail.ru",
+      "password": "ssssssssss",
+      "id": "c5dcd72f-40e7-4f5d-bc0b-a42d530efeda",
+      "token": "Access token",
+      "name": "user"
+    },
+    {
+      "email": "as@das",
+      "password": "sadddd",
+      "id": "5cc6bd22-be5d-4b7f-adfd-63dfd5378cde",
+      "token": "Access token",
+      "name": "as"
+    },
+    {
+      "email": "Sintol@sintol.com",
+      "password": "sintol",
+      "id": "b6314887-ede6-416f-a9a9-156d257cf306",
+      "token": "Access token",
+      "name": "Sintol"
+    }
+  ]
 }

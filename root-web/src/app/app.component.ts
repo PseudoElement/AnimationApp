@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
 import { ModalService } from './core/services/modal.service';
-import { AuthService } from './core/services/auth.service';
+import { Store } from '@ngrx/store';
+import { AppState } from './core/store/store';
+import { Cookies } from './core';
+import { setUser } from './core/store/user';
 
 @Component({
     selector: 'app-root',
@@ -12,10 +15,12 @@ export class AppComponent implements OnInit {
     constructor(
         private themeService: ThemeService,
         public modalService: ModalService,
-        @Inject(AuthService) public authService: AuthService
+        private store: Store<AppState>
     ) {}
 
     ngOnInit(): void {
+        const user = Cookies.getCookie('user');
+        if (user) this.store.dispatch(setUser(JSON.parse(user)));
         this.themeService.initTheme();
     }
 }
