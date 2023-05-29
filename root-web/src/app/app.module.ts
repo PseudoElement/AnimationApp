@@ -6,10 +6,20 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './core/store/auth';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, SharedModule, PagesModule, RouterModule, HttpClientModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SharedModule,
+        PagesModule,
+        RouterModule,
+        HttpClientModule,
+        StoreModule.forRoot({ authReducer }),
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })

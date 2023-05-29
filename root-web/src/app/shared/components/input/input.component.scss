@@ -5,10 +5,17 @@
     width: 100%;
 }
 .field {
+    border: 3px solid $c-black;
+    background: transparent;
     font-size: $fs-32;
     border-radius: 15px;
     padding: 5px 10px;
+    transition: all 0.2s;
 }
+.errorField {
+    border: 3px solid $c-red;
+}
+
 .error {
     color: $c-red;
     font-size: $fs-16;

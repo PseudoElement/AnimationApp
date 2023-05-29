@@ -9,14 +9,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginFormComponent {
     constructor(public formBuilder: FormBuilder) {}
     loginForm = this.formBuilder.nonNullable.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: [
-            '',
-            [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('^[a-zA-Z]+$')],
-        ],
+        email: [''],
+        password: [''],
     });
 
     public onSubmit() {
-        console.log(this.loginForm);
+        if (this.loginForm.valid) {
+            console.log(this.loginForm);
+        }
     }
 }

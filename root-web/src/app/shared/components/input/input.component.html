@@ -1,5 +1,12 @@
 <div class="input-wrapper">
     <label [for]="id">{{ label }}</label>
-    <input [placeholder]="placeholder" class="field" [id]="id" type="text" [formControl]="control" />
-    <p *ngIf="error" class="error">{{ error }}</p>
+    <input
+        [placeholder]="placeholder"
+        [ngClass]="{ errorField: control.dirty && control.touched && error }"
+        class="field"
+        [id]="id"
+        type="text"
+        [formControl]="control"
+    />
+    <p *ngIf="control.dirty && control.touched && error" class="error">{{ error }}</p>
 </div>

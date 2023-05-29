@@ -1,2 +1,2 @@
-const endpointsKeys = ['login'] as const;
-export type Endpoints = Record<(typeof endpointsKeys)[number], string>;
+const endpointsKeys = ['getAllUsers', 'getUser', 'registerUser'] as const;
+export type Endpoints = Record<(typeof endpointsKeys)[number], string | ((id: string) => string)>;

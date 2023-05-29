@@ -1,0 +1,5 @@
+@use '../../../../styles.scss' as *;
+.registerForm {
+    width: 100%;
+    @include flex-column-center;
+}

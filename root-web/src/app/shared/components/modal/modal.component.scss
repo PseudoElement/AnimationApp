@@ -10,12 +10,12 @@
 .modal::before {
     position: absolute;
     transform: rotate(-90deg);
-    top: -100px;
+    top: 0;
     right: 0;
-    left: 0;
+    left: -100px;
     bottom: 0;
     content: url(../../../../assets/img/svg/ModalLetter.svg);
-    height: 800px;
+    height: 100%;
     width: 700px;
 }
 

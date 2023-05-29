@@ -109,3 +109,10 @@ img {
         -webkit-text-fill-color: transparent;
     }
 }
+.footer {
+    position: absolute;
+    top: 2000px;
+    width: 100vw;
+    height: 1000px;
+    background: $c-green;
+}

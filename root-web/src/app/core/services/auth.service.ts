@@ -1,35 +1,26 @@
-import { Observable, tap, map, catchError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { IUser, IUserResponse } from '../model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { API_KEY, endpoints } from '../api/endpoints';
+import { UserOnServer } from '../model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    user: IUserResponse | null = null;
-    error: string | null = null;
+    // user = null;
+    // error: string | null = null;
     constructor(private http: HttpClient) {}
 
-    public login(user: IUser): Observable<IUserResponse | unknown> {
-        return this.http
-            .post<any>(endpoints.login, user, {
-                params: {
-                    email: user.email,
-                    password: user.password,
-                    rememberMe: true,
-                },
-                headers: {
-                    'Content-Type': 'application/json',
-                    'API-KEY': API_KEY,
-                },
-            })
-            .pipe(
-                map((res) => res.data),
-                map((res) => ({ ...res, email: user.email })),
-                tap((user) => console.log('TAP', user)),
-                catchError((err: HttpErrorResponse) => (this.error = err.message))
-            );
+    public getAllUsers(): Observable<UserOnServer[]> {
+        return this.http.get<UserOnServer[]>(endpoints.getAllUsers as string);
+    }
+
+    public registerUser(user: UserOnServer): Observable<UserOnServer> {
+        return this.http.post<UserOnServer>(endpoints.registerUser as string, user);
+    }
+
+    public getUser(id: string): Observable<UserOnServer> {
+        return this.http.get<UserOnServer>((endpoints.getUser as (id: string) => string)(id));
     }
 }

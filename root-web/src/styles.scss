@@ -11,6 +11,9 @@
         text-decoration: none;
         color: $primary-text-color;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 body {
