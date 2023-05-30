@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 }
                 prevScrollpos = currentScrollPos;
             });
+        this.alertService.message$.subscribe((val) => console.log('message', val));
     }
 
     ngOnDestroy(): void {
@@ -59,6 +60,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     public onLogout() {
+        this.alertService.isOpen$.next(true);
         this.alertService.message$.next('You got off system!');
         this.store.dispatch(unsetUser());
         Cookies.deleteCookie('user');

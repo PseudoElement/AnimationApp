@@ -4,22 +4,24 @@
     position: fixed;
     @include flex-row-center;
     color: $primary-text-color;
-    z-index: 20000;
+    z-index: 600;
     top: -150px;
     left: 50%;
     transform: translateX(-50%);
-    background: green;
+    background: url(../../../../assets/img/png/WoodenBoard.png) no-repeat;
+    background-size: 400px 150px;
     width: 400px;
-    height: 100px;
+    height: 150px;
     border-radius: 15px;
     transition: all 0.5s;
 }
+
 .active {
     top: 20px;
 }
 .close-btn {
     position: absolute;
     z-index: 10;
-    top: 5px;
-    right: 5px;
+    top: 0px;
+    right: 15px;
 }
