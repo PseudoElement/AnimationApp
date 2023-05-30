@@ -58,7 +58,7 @@ export class RegisterFormComponent {
                 token: 'Access token',
                 name: getNameByEmail(email),
             };
-            const userWithoutPass = omitObjectProp('password', newUser) as UserOnClient;
+            const userWithoutPass = omitObjectProp('password', newUser);
             this.authService.registerUser(newUser).subscribe();
             Cookies.setCookie('user', JSON.stringify(userWithoutPass));
             this.store.dispatch(setUser(userWithoutPass));
