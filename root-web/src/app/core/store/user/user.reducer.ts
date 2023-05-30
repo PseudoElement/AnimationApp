@@ -22,8 +22,8 @@ export const userReducer = createReducer(
     on(UserActions.unsetUser, (state) => {
         return { ...state, user: null };
     }),
-    on(UserActions.setUserName, (state, action) => ({
-        ...state,
-        user: { ...state.user, name: action.name } as UserOnClient,
-    }))
+    on(UserActions.setUserName, (state, action) => {
+        const newName = action.name;
+        return { ...state, user: { ...state.user, name: newName } as UserOnClient };
+    })
 );

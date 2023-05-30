@@ -29,3 +29,18 @@ button {
         box-shadow: 0 0 7px 5px white;
     }
 }
+.close-btn {
+    @include flex-row-center;
+    color: $c-black;
+    background: none;
+    span {
+        width: 100%;
+        height: 100%;
+        font-size: $fs-32;
+    }
+    &:hover {
+        color: red;
+        transition: all 0.1s;
+        background: none;
+    }
+}

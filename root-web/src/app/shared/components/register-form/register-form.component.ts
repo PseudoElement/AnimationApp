@@ -6,6 +6,8 @@ import { Observable, firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/store/store';
 import { selectUser, setUser } from 'src/app/core/store/user';
+import { AlertService } from 'src/app/core/services/alert.service';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
     selector: 'app-register-form',
@@ -14,7 +16,13 @@ import { selectUser, setUser } from 'src/app/core/store/user';
 })
 export class RegisterFormComponent {
     user$: Observable<UserOnClient | null>;
-    constructor(public formBuilder: FormBuilder, private authService: AuthService, private store: Store<AppState>) {
+    constructor(
+        public formBuilder: FormBuilder,
+        private authService: AuthService,
+        private store: Store<AppState>,
+        private alertService: AlertService,
+        private modalService: ModalService
+    ) {
         this.user$ = this.store.select(selectUser);
         this.user$.subscribe((val) => console.log('USER Object', val));
     }
@@ -37,6 +45,7 @@ export class RegisterFormComponent {
 
     public async onSubmit() {
         if (this.registerForm.invalid) return;
+        if (this.alertService.isOpen$.value) return;
         const email = this.registerForm.value.email as string;
         const password = this.registerForm.value.password as string;
         const users = await firstValueFrom(this.authService.getAllUsers());
@@ -54,9 +63,12 @@ export class RegisterFormComponent {
             Cookies.setCookie('user', JSON.stringify(userWithoutPass));
             this.store.dispatch(setUser(userWithoutPass));
             this.registerForm.reset();
-            this.authService.message = "User's successfully created!";
+            this.modalService.toggleVisibility('auth');
+            this.alertService.isOpen$.next(true);
+            this.alertService.message$.next("User's successfully created!");
         } else {
-            this.authService.message = 'User already exists!';
+            this.alertService.isOpen$.next(true);
+            this.alertService.message$.next('User already exists!');
         }
     }
 }

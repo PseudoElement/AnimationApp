@@ -9,7 +9,6 @@ import { UserOnServer } from '../model';
 })
 export class AuthService {
     isLoading: boolean = false;
-    message: string = '';
 
     constructor(private http: HttpClient) {}
 

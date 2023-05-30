@@ -2,10 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, Observable, fromEvent } from 'rxjs';
 import { Cookies, UserOnClient, links, scrollPoints } from 'src/app/core';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { AppState } from 'src/app/core/store/store';
-import { selectUser, unsetUser } from 'src/app/core/store/user';
+import { selectUser, setUserName, unsetUser } from 'src/app/core/store/user';
 
 @Component({
     selector: 'app-header',
@@ -19,7 +20,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isVisibleHeader = true;
     user$: Observable<UserOnClient | null>;
 
-    constructor(public modalService: ModalService, public themeService: ThemeService, private store: Store<AppState>) {
+    constructor(
+        public modalService: ModalService,
+        public themeService: ThemeService,
+        private store: Store<AppState>,
+        private alertService: AlertService
+    ) {
         this.user$ = this.store.select(selectUser);
     }
 
@@ -53,6 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     public onLogout() {
+        this.alertService.message$.next('You got off system!');
         this.store.dispatch(unsetUser());
         Cookies.deleteCookie('user');
     }
