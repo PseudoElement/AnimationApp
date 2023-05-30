@@ -1,12 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserOnClient } from '../../model';
 import * as UserActions from './user.actions';
+import { omitObjectProp } from '../../utils';
 
-const initialState: UserOnClient = {
-    email: null,
-    name: null,
-    token: null,
-    id: null,
+export interface UserState {
+    user: UserOnClient | null;
+}
+
+const initialState: UserState = {
+    user: null,
 };
 
 export const userReducer = createReducer(
@@ -14,15 +16,14 @@ export const userReducer = createReducer(
     on(UserActions.setUser, (state, action) => {
         return {
             ...state,
-            email: action.email,
-            id: action.id,
-            name: action.name,
-            token: action.token,
-            type: action.type,
+            user: omitObjectProp('type', action),
         };
     }),
-    on(UserActions.unsetUser, (state, action) => {
-        return { email: null, id: null, name: null, token: null };
+    on(UserActions.unsetUser, (state) => {
+        return { ...state, user: null };
     }),
-    on(UserActions.setUserName, (state, action) => ({ ...state, name: action.name }))
+    on(UserActions.setUserName, (state, action) => ({
+        ...state,
+        user: { ...state.user, name: action.name } as UserOnClient,
+    }))
 );

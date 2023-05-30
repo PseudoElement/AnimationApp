@@ -13,7 +13,7 @@ import { selectUser, setUser } from 'src/app/core/store/user';
     styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent {
-    user$: Observable<UserOnClient>;
+    user$: Observable<UserOnClient | null>;
     constructor(public formBuilder: FormBuilder, private authService: AuthService, private store: Store<AppState>) {
         this.user$ = this.store.select(selectUser);
         this.user$.subscribe((val) => console.log('USER Object', val));

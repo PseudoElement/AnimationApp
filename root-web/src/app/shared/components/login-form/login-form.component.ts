@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
-import { Cookies, UserOnServer, omitObjectProp } from 'src/app/core';
+import { Cookies, omitObjectProp } from 'src/app/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { AppState } from 'src/app/core/store/store';
 import { setUser } from 'src/app/core/store/user';
 
@@ -13,7 +14,12 @@ import { setUser } from 'src/app/core/store/user';
     styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-    constructor(public formBuilder: FormBuilder, private authService: AuthService, private store: Store<AppState>) {}
+    constructor(
+        public formBuilder: FormBuilder,
+        private authService: AuthService,
+        private store: Store<AppState>,
+        private modalService: ModalService
+    ) {}
     loginForm = this.formBuilder.nonNullable.group({
         email: [''],
         password: [''],
@@ -30,8 +36,10 @@ export class LoginFormComponent {
         else {
             const userWithoutPass = omitObjectProp('password', foundUser);
             this.store.dispatch(setUser(userWithoutPass));
-            Cookies.setCookie('user', userWithoutPass);
+            Cookies.setCookie('user', JSON.stringify(userWithoutPass));
             this.authService.message = 'Successfull authorization :)';
+            this.modalService.toggleVisibility('auth');
+            this.loginForm.reset();
         }
     }
 }

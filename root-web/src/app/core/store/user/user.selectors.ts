@@ -1,10 +1,11 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../store';
-import { UserOnClient } from '../../model';
+import { UserState } from './user.reducer';
 
-export const selectUser = (state: AppState) => state.user;
+export const selectUserFeature = (state: AppState) => state.user;
 
-export const selectUserName = createSelector(selectUser, (state: UserOnClient) => state.name);
-export const selectUserEmail = createSelector(selectUser, (state: UserOnClient) => state.email);
-export const selectUserToken = createSelector(selectUser, (state: UserOnClient) => state.token);
-export const selectUserID = createSelector(selectUser, (state: UserOnClient) => state.token);
+export const selectUser = createSelector(selectUserFeature, (state: UserState) => state.user);
+export const selectUserName = createSelector(selectUserFeature, (state: UserState) => state.user?.name);
+export const selectUserEmail = createSelector(selectUserFeature, (state: UserState) => state.user?.email);
+export const selectUserToken = createSelector(selectUserFeature, (state: UserState) => state.user?.token);
+export const selectUserID = createSelector(selectUserFeature, (state: UserState) => state.user?.id);

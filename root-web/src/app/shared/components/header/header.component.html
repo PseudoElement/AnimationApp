@@ -17,7 +17,12 @@
             <span class="material-symbols-outlined"> {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }} </span>
         </app-button>
     </div>
-    <div class="auth-button-wrapper">
+    <div *ngIf="!(user$ | async); else logout" class="auth-button-wrapper">
         <app-button (click)="openModal()"> Login / Register </app-button>
     </div>
+    <ng-template #logout>
+        <div class="auth-button-wrapper">
+            <app-button (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-button>
+        </div>
+    </ng-template>
 </header>

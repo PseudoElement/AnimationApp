@@ -1,5 +1,5 @@
-import { UserOnClient } from '../model';
+import { UserState } from './user';
 
 export interface AppState {
-    user: UserOnClient;
+    user: UserState;
 }

@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, fromEvent, takeUntil } from 'rxjs';
-import { links, scrollPoints } from 'src/app/core';
+import { Store } from '@ngrx/store';
+import { Subject, takeUntil, Observable, fromEvent } from 'rxjs';
+import { Cookies, UserOnClient, links, scrollPoints } from 'src/app/core';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
+import { AppState } from 'src/app/core/store/store';
+import { selectUser, unsetUser } from 'src/app/core/store/user';
 
 @Component({
     selector: 'app-header',
@@ -14,8 +17,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isDestroyed$: Subject<boolean> = new Subject();
     isScrolled = false;
     isVisibleHeader = true;
+    user$: Observable<UserOnClient | null>;
 
-    constructor(public modalService: ModalService, public themeService: ThemeService) {}
+    constructor(public modalService: ModalService, public themeService: ThemeService, private store: Store<AppState>) {
+        this.user$ = this.store.select(selectUser);
+    }
 
     async ngOnInit(): Promise<void> {
         let prevScrollpos = window.scrollY;
@@ -44,6 +50,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     public onChangeTheme() {
         this.themeService.changeTheme();
+    }
+
+    public onLogout() {
+        this.store.dispatch(unsetUser());
+        Cookies.deleteCookie('user');
     }
 
     public openModal() {
