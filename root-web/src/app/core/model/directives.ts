@@ -3,4 +3,4 @@ export interface ISkipEventSettings {
     preventDefault: boolean;
 }
 
-export type OpacityTypes = 'instant' | 'by0.025';
+export type OpacityTypes = 'instant' | 'by0.2';

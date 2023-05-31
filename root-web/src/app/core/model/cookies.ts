@@ -1,1 +1,1 @@
-export type CookiesKeys = 'user';
+export type CookiesKeys = 'token' | 'id';

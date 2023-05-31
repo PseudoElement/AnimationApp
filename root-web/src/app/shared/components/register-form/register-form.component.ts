@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/store/store';
-import { selectUser, setUser } from 'src/app/core/store/user';
+import { selectUser, UserActions } from 'src/app/core/store/user';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 
@@ -60,8 +60,9 @@ export class RegisterFormComponent {
             };
             const userWithoutPass = omitObjectProp('password', newUser);
             this.authService.registerUser(newUser).subscribe();
-            Cookies.setCookie('user', JSON.stringify(userWithoutPass));
-            this.store.dispatch(setUser(userWithoutPass));
+            Cookies.setCookie('token', JSON.stringify(userWithoutPass.token));
+            Cookies.setCookie('id', JSON.stringify(userWithoutPass.id));
+            this.store.dispatch(UserActions.setUser(userWithoutPass));
             this.registerForm.reset();
             this.modalService.toggleVisibility('auth');
             this.alertService.isOpen$.next(true);

@@ -13,7 +13,7 @@ import { OpacityTypes } from 'src/app/core';
     selector: '[appOpacity]',
 })
 export class OpacityDirective implements AfterViewInit {
-    @Input() type: OpacityTypes = 'by0.025';
+    @Input() type: OpacityTypes = 'by0.2';
     prevScrollPos: number = 0;
     element: HTMLElement;
     topYCoord!: number;
@@ -24,22 +24,22 @@ export class OpacityDirective implements AfterViewInit {
 
     @HostBinding('style.opacity') opacity: number = 0;
     @HostBinding('style.transition') transition?: string;
-    @HostListener('window:scroll') onWindowScroll() {
+    @HostListener('window:wheel') onWindowScroll() {
         let currentScrollPos = window.scrollY;
         switch (this.type) {
-            case 'by0.025':
+            case 'by0.2':
                 if (
                     this.prevScrollPos < currentScrollPos &&
                     this.shouldChangeOpacity(currentScrollPos) &&
                     this.opacity < 1
                 )
-                    this.opacity += 0.025;
+                    this.opacity += 0.2;
                 if (
                     this.prevScrollPos > currentScrollPos &&
                     this.shouldChangeOpacity(currentScrollPos) &&
                     this.opacity > 0
                 )
-                    this.opacity -= 0.025;
+                    this.opacity -= 0.2;
                 break;
             case 'instant':
                 if (this.shouldChangeOpacity(currentScrollPos)) {
@@ -54,12 +54,12 @@ export class OpacityDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         this.topYCoord = window.scrollY + this.element.getBoundingClientRect().top;
-        this.transition = this.type === 'by0.025' ? 'none' : 'all 0.3s';
+        this.transition = this.type === 'by0.2' ? 'none' : 'all 0.3s';
         this.cd.detectChanges();
     }
 
     private topAnimationPoint(): number {
-        return this.type === 'by0.025' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 2;
+        return this.type === 'by0.2' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 2;
     }
     private bottomAnimationPoint(): number {
         return window.scrollY + this.element.getBoundingClientRect().bottom;

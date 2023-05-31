@@ -7,7 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './core/store/user';
+import { UserEffects, userReducer } from './core/store/user';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { userReducer } from './core/store/user';
         RouterModule,
         HttpClientModule,
         StoreModule.forRoot({ user: userReducer }),
+        EffectsModule.forRoot([UserEffects]),
     ],
     providers: [],
     bootstrap: [AppComponent],

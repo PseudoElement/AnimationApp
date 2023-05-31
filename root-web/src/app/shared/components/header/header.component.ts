@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { AppState } from 'src/app/core/store/store';
-import { selectUser, setUserName, unsetUser } from 'src/app/core/store/user';
+import { selectUser, UserActions } from 'src/app/core/store/user';
 
 @Component({
     selector: 'app-header',
@@ -62,8 +62,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public onLogout() {
         this.alertService.isOpen$.next(true);
         this.alertService.message$.next('You got off system!');
-        this.store.dispatch(unsetUser());
-        Cookies.deleteCookie('user');
+        this.store.dispatch(UserActions.unsetUser());
+        Cookies.deleteCookie('id');
+        Cookies.deleteCookie('token');
     }
 
     public openModal() {
