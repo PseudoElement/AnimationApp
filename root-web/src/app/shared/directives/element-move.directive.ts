@@ -38,7 +38,6 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.transition = this.transitionValue ?? 'all 0.1s';
-        console.log(this.newCoordXTarget);
         this.cd.detectChanges();
         setTimeout(() => (this.absoluteOffsetTopTarget = this.target.getBoundingClientRect().top + window.scrollY), 0);
         setTimeout(
