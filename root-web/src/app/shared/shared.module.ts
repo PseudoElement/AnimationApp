@@ -21,6 +21,7 @@ import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.d
 import { OpacityDirective } from './directives/opacity.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
+import { InfoCardComponent } from './components/info-card/info-card.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { AlertComponent } from './components/alert/alert.component';
         SkipEventBehaviourDirective,
         OpacityDirective,
         AlertComponent,
+        InfoCardComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
     exports: [
@@ -63,6 +65,7 @@ import { AlertComponent } from './components/alert/alert.component';
         SkipEventBehaviourDirective,
         OpacityDirective,
         AlertComponent,
+        InfoCardComponent,
     ],
 })
 export class SharedModule {}

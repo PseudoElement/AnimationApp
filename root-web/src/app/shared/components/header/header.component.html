@@ -2,18 +2,9 @@
     <a [routerLink]="'/'">
         <app-logo></app-logo>
     </a>
-    <div class="links">
-        <a
-            class="link"
-            *ngFor="let link of links"
-            [routerLink]="link.path"
-            [routerLinkActive]="'activeLink'"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >{{ link.text }}</a
-        >
-    </div>
+    <app-nav [links]="links"></app-nav>
     <div class="theme-button-wrapper">
-        <app-button (click)="onChangeTheme()" [className]="'theme-button'">
+        <app-button (click)="onChangeTheme()" [className]="'theme-btn'">
             <span class="material-symbols-outlined"> {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }} </span>
         </app-button>
     </div>

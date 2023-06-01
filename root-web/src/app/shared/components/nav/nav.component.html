@@ -1,1 +1,10 @@
-<p>nav works!</p>
+<nav class="links">
+    <a
+        class="link"
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        [routerLinkActive]="'activeLink'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ link.text }}</a
+    >
+</nav>

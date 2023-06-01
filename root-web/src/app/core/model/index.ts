@@ -9,3 +9,5 @@ export * from './api';
 export * from './inputs';
 export * from './user';
 export * from './cookies';
+export * from './about';
+export * from './developer';

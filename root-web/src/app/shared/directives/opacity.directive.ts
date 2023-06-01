@@ -34,12 +34,14 @@ export class OpacityDirective implements AfterViewInit {
                     this.opacity < 1
                 )
                     this.opacity += 0.2;
+
                 if (
                     this.prevScrollPos > currentScrollPos &&
                     this.shouldChangeOpacity(currentScrollPos) &&
                     this.opacity > 0
                 )
                     this.opacity -= 0.2;
+
                 break;
             case 'instant':
                 if (this.shouldChangeOpacity(currentScrollPos)) {
@@ -53,7 +55,7 @@ export class OpacityDirective implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.topYCoord = window.scrollY + this.element.getBoundingClientRect().top;
+        setTimeout(() => (this.topYCoord = window.scrollY + this.element.getBoundingClientRect().top), 0);
         this.transition = this.type === 'by0.2' ? 'none' : 'all 0.3s';
         this.cd.detectChanges();
     }

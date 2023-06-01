@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
+import { Directive, Input, OnDestroy, ElementRef, AfterViewInit, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { Subject, fromEvent, takeUntil, BehaviorSubject } from 'rxjs';
 import { DirectionsX } from 'src/app/core';
 
@@ -10,8 +10,10 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
     @Input() newCoordYElBelow?: number;
     @Input() startCoordYElBelow?: number;
     @Input() direction!: DirectionsX; //obligate property
-    @Input() startCoordXTarget: number = -600;
+    @Input() startCoordXTarget?: number = -800;
     @Input() newCoordXTarget: number | null = null;
+    @Input() once?: boolean;
+    @Input() transitionValue?: string;
     absoluteOffsetTopTarget: number | null = null;
     isDestroyed$: Subject<boolean> = new Subject();
     windowHeight: number;
@@ -19,7 +21,9 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
     shouldShow$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     target: HTMLElement;
 
-    constructor(private el: ElementRef) {
+    @HostBinding('style.transition') transition = 'all 0.1s';
+
+    constructor(private el: ElementRef, private cd: ChangeDetectorRef) {
         this.windowHeight = window.innerHeight;
         this.target = this.el.nativeElement;
         fromEvent(window, 'resize')
@@ -33,13 +37,20 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
-        this.absoluteOffsetTopTarget = this.target.getBoundingClientRect().top + window.scrollY;
-        this.startAnimationPoint = (this.absoluteOffsetTopTarget as number) - this.windowHeight / 2;
+        this.transition = this.transitionValue ?? 'all 0.1s';
+        console.log(this.newCoordXTarget);
+        this.cd.detectChanges();
+        setTimeout(() => (this.absoluteOffsetTopTarget = this.target.getBoundingClientRect().top + window.scrollY), 0);
+        setTimeout(
+            () => (this.startAnimationPoint = (this.absoluteOffsetTopTarget as number) - this.windowHeight / 1.33),
+            0
+        );
         fromEvent(document, 'scroll')
             .pipe(takeUntil(this.isDestroyed$))
             .subscribe(() => {
                 if (window.scrollY >= this.startAnimationPoint && !this.shouldShow$.value) this.shouldShow$.next(true);
-                if (window.scrollY <= this.startAnimationPoint && this.shouldShow$.value) this.shouldShow$.next(false);
+                if (window.scrollY <= this.startAnimationPoint && this.shouldShow$.value && !this.once)
+                    this.shouldShow$.next(false);
             });
     }
 

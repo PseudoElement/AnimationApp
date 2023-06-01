@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ButtonClassNames } from 'src/app/core';
 
 @Component({
     selector: 'app-button',
@@ -6,5 +7,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-    @Input() className: string = '';
+    @Input() className: ButtonClassNames = '';
+    @Input() withArrow: boolean = false;
 }

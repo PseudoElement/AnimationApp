@@ -4,6 +4,7 @@ header {
     position: fixed;
     z-index: 500;
     padding: 0 10%;
+    width: 100vw;
     left: 0;
     right: 0;
     top: 0;
@@ -19,23 +20,6 @@ header {
 }
 .activeHeader {
     background: $primary-rgba;
-}
-.links {
-    margin-left: 5%;
-    @include flex-row-center;
-}
-.link {
-    border-radius: 20px;
-    padding: 5px;
-    margin-right: 15px;
-    transition: all 0.2s;
-    &:hover {
-        color: $c-green;
-    }
-}
-.activeLink {
-    background: $c-green;
-    color: $c-white !important;
 }
 .theme-button-wrapper {
     position: absolute;

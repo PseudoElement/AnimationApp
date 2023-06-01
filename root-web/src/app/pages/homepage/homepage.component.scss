@@ -2,6 +2,8 @@
 
 .wrapper {
 }
+.running-lines-wrapper {
+}
 .main {
     position: relative;
     z-index: 5;
@@ -20,21 +22,20 @@
             font-weight: $fw-bold;
             letter-spacing: -4px;
             padding: 10px;
-            transition: all 0.1s;
         }
         :nth-child(1) {
-            left: -600px;
+            left: -800px;
             background-color: $c-yellow;
             top: 390px;
             color: $secondary-text-color;
         }
         :nth-child(2) {
             background-color: $c-green;
-            left: -600px;
+            left: -800px;
             top: calc(390px + 115px);
         }
         :nth-child(3) {
-            left: -600px;
+            left: -800px;
             background-color: $c-light-blue;
             top: calc(390px + 230px);
         }
@@ -81,7 +82,7 @@ img {
     position: absolute;
     top: 1300px;
     @include flex-row-center;
-    gap: 5%;
+    font-weight: $fw-semibold;
     .leftPart,
     .rightPart {
         @include flex-column-center;
@@ -110,9 +111,9 @@ img {
     }
 }
 .footer {
-    position: absolute;
-    top: 2000px;
-    width: 100vw;
+    position: relative;
+    z-index: -1;
+    top: 1400px;
     height: 1000px;
     background: $c-green;
 }

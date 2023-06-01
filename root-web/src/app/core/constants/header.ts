@@ -6,13 +6,12 @@ export const links: HeaderLink[] = [
         text: 'Home',
     },
     {
-        path: '/products',
-        text: 'Products',
-    },
-
-    {
         path: '/about',
         text: 'About',
+    },
+    {
+        path: '/products',
+        text: 'Products',
     },
 ];
 

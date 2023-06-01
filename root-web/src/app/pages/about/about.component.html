@@ -1,1 +1,39 @@
-<p>about works!</p>
+<div class="about-wrapper">
+    <h1 class="title">Our team</h1>
+    <img #picture (click)="click($event)" class="team-photo" [src]="teamPhoto" alt="TeamPhoto" />
+    <div *ngIf="cards.length" class="cards">
+        <div
+            #card1
+            class="card-1"
+            appElementMove
+            [newCoordXTarget]="0"
+            [direction]="'ltr'"
+            [once]="true"
+            [transitionValue]="'left 0.5s'"
+        >
+            <app-info-card [data]="cards[0]"></app-info-card>
+        </div>
+        <div
+            #card2
+            class="card-2"
+            appElementMove
+            [newCoordXTarget]="0"
+            [direction]="'rtl'"
+            [once]="true"
+            [transitionValue]="'right 0.5s'"
+        >
+            <app-info-card [data]="cards[1]"></app-info-card>
+        </div>
+        <div
+            #card3
+            class="card-3"
+            appElementMove
+            [newCoordXTarget]="0"
+            [direction]="'ltr'"
+            [once]="true"
+            [transitionValue]="'left 0.5s'"
+        >
+            <app-info-card [data]="cards[2]"></app-info-card>
+        </div>
+    </div>
+</div>

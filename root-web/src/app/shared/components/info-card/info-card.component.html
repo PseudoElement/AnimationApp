@@ -1,0 +1,15 @@
+<div class="info-card-wrapper">
+    <div class="left">
+        <img [src]="data.img" alt="photo" />
+    </div>
+    <div class="right">
+        <h1 class="name">{{ data.name }}</h1>
+        <p class="post">{{ data.post }}</p>
+        <p class="info">{{ data.info }}</p>
+        <a [routerLink]="data.path" class="btn-wrapper">
+            <app-button [withArrow]="true" [className]="'withArrow-btn'">
+                <p class="btn-text">More info</p>
+            </app-button>
+        </a>
+    </div>
+</div>
