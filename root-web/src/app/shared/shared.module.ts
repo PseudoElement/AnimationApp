@@ -22,6 +22,8 @@ import { OpacityDirective } from './directives/opacity.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
+import { AnimatedCardComponent } from './components/animated-card/animated-card.component';
+import { RotateXYDirective } from './directives/rotate-xy.directive';
 
 @NgModule({
     declarations: [
@@ -44,6 +46,8 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
         OpacityDirective,
         AlertComponent,
         InfoCardComponent,
+        AnimatedCardComponent,
+        RotateXYDirective,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
     exports: [
@@ -66,6 +70,8 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
         OpacityDirective,
         AlertComponent,
         InfoCardComponent,
+        AnimatedCardComponent,
+        RotateXYDirective,
     ],
 })
 export class SharedModule {}

@@ -11,3 +11,4 @@ export * from './user';
 export * from './cookies';
 export * from './about';
 export * from './developer';
+export * from './animations';

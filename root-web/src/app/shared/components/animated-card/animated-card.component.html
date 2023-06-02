@@ -1,0 +1,25 @@
+<div
+    #elRef
+    [@fadeInRight]="shouldShow && showAnimationType === AnimationTypes.fadeRight"
+    [@fadeInLeft]="shouldShow && showAnimationType === AnimationTypes.fadeLeft"
+    [@fadeInUp]="shouldShow && showAnimationType === AnimationTypes.fadeUp"
+    [@fadeInDown]="shouldShow && showAnimationType === AnimationTypes.fadeDown"
+    [@bounceInRight]="shouldShow && showAnimationType === AnimationTypes.bounceRight"
+    [@bounceInLeft]="shouldShow && showAnimationType === AnimationTypes.bounceLeft"
+    [@fadeOutRight]="shouldHide && hideAnimationType === AnimationTypes.fadeRight"
+    [@fadeOutLeft]="shouldHide && hideAnimationType === AnimationTypes.fadeLeft"
+    [@fadeOutUp]="shouldHide && hideAnimationType === AnimationTypes.fadeUp"
+    [@fadeOutDown]="shouldHide && hideAnimationType === AnimationTypes.fadeDown"
+    [@bounceOutRight]="shouldHide && hideAnimationType === AnimationTypes.bounceRight"
+    [@bounceOutLeft]="shouldHide && hideAnimationType === AnimationTypes.bounceLeft"
+    [@shake]="shouldShow && showAnimationType === AnimationTypes.shake"
+    [@pulse]="shouldShow && showAnimationType === AnimationTypes.pulse"
+    [@flip]="shouldShow && showAnimationType === AnimationTypes.flip"
+    [@flipInX]="shouldShow && showAnimationType === AnimationTypes.flipX"
+    [@flipInY]="shouldShow && showAnimationType === AnimationTypes.flipY"
+    [@flipOutX]="shouldHide && hideAnimationType === AnimationTypes.flipX"
+    [@flipOutY]="shouldHide && hideAnimationType === AnimationTypes.flipY"
+    class="animated-card-wrapper"
+>
+    <ng-content></ng-content>
+</div>

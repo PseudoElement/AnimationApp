@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { UserEffects, userReducer } from './core/store/user';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
         HttpClientModule,
         StoreModule.forRoot({ user: userReducer }),
         EffectsModule.forRoot([UserEffects]),
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

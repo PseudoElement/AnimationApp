@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IInfoCard } from 'src/app/core';
+import { AnimationTypes, IInfoCard } from 'src/app/core';
 import { AboutService } from 'src/app/core/services/about.service';
 
 @Component({
@@ -21,5 +21,9 @@ export class AboutComponent implements OnInit {
     }
     click(e: Event) {
         console.log((e.target as HTMLElement).offsetLeft);
+    }
+
+    get AnimationTypes() {
+        return AnimationTypes;
     }
 }
