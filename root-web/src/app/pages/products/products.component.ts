@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnimationTypes } from 'src/app/core';
+import { AnimationTypes, SidesX } from 'src/app/core';
 
 @Component({
     selector: 'app-products',
@@ -7,7 +7,11 @@ import { AnimationTypes } from 'src/app/core';
     styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent {
+    activeSlide: SidesX = 'left';
     get AnimationTypes() {
         return AnimationTypes;
+    }
+    public setActiveSlide(activeSlide: SidesX) {
+        this.activeSlide = activeSlide;
     }
 }

@@ -1,6 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { Cookies, UserOnClient, confirmPasswords, getNameByEmail, omitObjectProp } from 'src/app/core';
+import { Cookies, UserOnClient, alerts, confirmPasswords, getNameByEmail, omitObjectProp } from 'src/app/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -66,10 +66,10 @@ export class RegisterFormComponent {
             this.registerForm.reset();
             this.modalService.toggleVisibility('auth');
             this.alertService.isOpen$.next(true);
-            this.alertService.message$.next("User's successfully created!");
+            this.alertService.message$.next(alerts.successRegister);
         } else {
             this.alertService.isOpen$.next(true);
-            this.alertService.message$.next('User already exists!');
+            this.alertService.message$.next(alerts.userExists);
         }
     }
 }

@@ -9,4 +9,5 @@ import { ButtonClassNames } from 'src/app/core';
 export class ButtonComponent {
     @Input() className: ButtonClassNames = '';
     @Input() withArrow: boolean = false;
+    @Input() isReverseArrow: boolean = false;
 }

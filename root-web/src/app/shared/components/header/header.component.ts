@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, Observable, fromEvent } from 'rxjs';
-import { Cookies, UserOnClient, links, scrollPoints } from 'src/app/core';
+import { Cookies, UserOnClient, alerts, links, scrollPoints } from 'src/app/core';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     public onLogout() {
         this.alertService.isOpen$.next(true);
-        this.alertService.message$.next('You got off system!');
+        this.alertService.message$.next(alerts.logout);
         this.store.dispatch(UserActions.unsetUser());
         Cookies.deleteCookie('id');
         Cookies.deleteCookie('token');

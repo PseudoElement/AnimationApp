@@ -1,30 +1,20 @@
 <div class="products-wrapper">
-    <p>products works!</p>
-    <div class="cards">
-        <div class="card" appRotateXY>
-            <app-animated-card
-                [showAnimationType]="AnimationTypes.fadeLeft"
-                [hideAnimationType]="AnimationTypes.fadeRight"
-            ></app-animated-card>
-        </div>
-
-        <div class="card" appRotateXY>
-            <app-animated-card
-                appRotateXY
-                [showAnimationType]="AnimationTypes.fadeRight"
-                [hideAnimationType]="AnimationTypes.fadeLeft"
-            ></app-animated-card>
-        </div>
-
-        <div class="card" appRotateXY>
-            <app-animated-card appRotateXY [showAnimationType]="AnimationTypes.shake"></app-animated-card>
-        </div>
-        <div class="card" appRotateXY>
-            <app-animated-card
-                appRotateXY
-                [showAnimationType]="AnimationTypes.fadeUp"
-                [hideAnimationType]="AnimationTypes.fadeDown"
-            ></app-animated-card>
-        </div>
-    </div>
+    <app-full-screen-two-slides-slider>
+        <app-full-screen-slide
+            (click)="setActiveSlide('left')"
+            [title]="'Left part'"
+            [side]="'left'"
+            [isActive]="activeSlide === 'left'"
+        >
+            LEFT LEFT
+        </app-full-screen-slide>
+        <app-full-screen-slide
+            (click)="setActiveSlide('right')"
+            [title]="'Right part'"
+            [side]="'right'"
+            [isActive]="activeSlide === 'right'"
+        >
+            RIGHT RIGHT
+        </app-full-screen-slide>
+    </app-full-screen-two-slides-slider>
 </div>

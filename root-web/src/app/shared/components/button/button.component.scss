@@ -45,23 +45,13 @@ button {
     }
 }
 .withArrow-btn {
-    @include flex-row-start;
-    position: relative;
-    top: 0;
-    padding: 20px;
-    color: $c-black;
-    font-weight: $fw-bold;
-    border-radius: 30px;
+    @include flex-row-center;
+    transition: all 0.3s;
     background: none;
     width: 100%;
     height: 100%;
-    box-shadow: 0 5px 1px 3px $c-gray;
-    transition: all 0.3s;
     &:hover {
         background: none;
-        color: $c-black;
-        top: 4px;
-        box-shadow: 0 2px 0px 2px $c-gray;
         span {
             opacity: 1;
             animation: move 0.8s ease-out infinite;
@@ -77,6 +67,9 @@ button {
         font-size: $fs-52;
         left: 10px;
         opacity: 0;
+    }
+    .reverse {
+        transform: rotate(180deg);
     }
 }
 @keyframes move {

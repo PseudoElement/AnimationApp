@@ -1,0 +1,11 @@
+<div class="slide" [ngClass]="{ 'active-slide': isActive }">
+    <div class="toggle-bar" [ngClass]="{ 'left-toggle-bar': side === 'right', 'right-toggle-bar': side === 'left' }">
+        <p class="title">
+            {{ title }}
+        </p>
+        <app-button [withArrow]="true" [className]="'withArrow-btn'" [isReverseArrow]="side === 'left'"></app-button>
+    </div>
+    <div class="body" [ngClass]="{ 'left-body': side === 'left', 'right-body': side === 'right' }">
+        <ng-content></ng-content>
+    </div>
+</div>

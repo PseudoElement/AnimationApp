@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
-import { Cookies, omitObjectProp } from 'src/app/core';
+import { Cookies, alerts, omitObjectProp } from 'src/app/core';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ModalService } from 'src/app/core/services/modal.service';
@@ -35,17 +35,17 @@ export class LoginFormComponent {
         const users = await firstValueFrom(this.authService.getAllUsers());
         const foundUser = users.find((user) => user.email === email);
         if (!foundUser) {
-            this.alertService.message$.next("User doesn't exist");
+            this.alertService.message$.next(alerts.userDoesntExist);
             this.alertService.isOpen$.next(true);
         } else if (foundUser && foundUser.password !== password) {
-            this.alertService.message$.next('Incorrect password');
+            this.alertService.message$.next(alerts.incorrectPassword);
             this.alertService.isOpen$.next(true);
         } else {
             const userWithoutPass = omitObjectProp('password', foundUser);
             this.store.dispatch(UserActions.setUser(userWithoutPass));
             Cookies.setCookie('token', JSON.stringify(userWithoutPass.token));
             Cookies.setCookie('id', JSON.stringify(userWithoutPass.id));
-            this.alertService.message$.next('Successfull authorization :)');
+            this.alertService.message$.next(alerts.successLogin);
             this.alertService.isOpen$.next(true);
             this.modalService.toggleVisibility('auth');
             this.loginForm.reset();

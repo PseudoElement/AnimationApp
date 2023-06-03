@@ -1,5 +1,3 @@
-// export type AnimationTypes = 'fadeLeft' | 'fadeRight' | 'fadeUp' | 'fadeDown' | 'bounceRight' | 'bounceLeft';
-
 export const AnimationTypes = {
     fadeLeft: 'fadeLeft',
     fadeRight: 'fadeRight',
