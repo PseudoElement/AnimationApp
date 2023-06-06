@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IInfoCard } from 'src/app/core';
+import { InfoCardTypes } from './model';
 
 @Component({
     selector: 'app-info-card',
@@ -8,4 +9,5 @@ import { IInfoCard } from 'src/app/core';
 })
 export class InfoCardComponent {
     @Input() data!: IInfoCard;
+    @Input() type: InfoCardTypes = 'developer';
 }

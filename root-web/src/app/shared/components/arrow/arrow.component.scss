@@ -1,0 +1,47 @@
+@use '../../../../styles.scss' as *;
+.arrow-wrapper {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.visible {
+    opacity: 1;
+}
+span {
+    background-image: $grad-indigo;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    font-size: $fs-52;
+}
+.direct {
+    span {
+        left: 10px;
+        animation: move 0.8s linear infinite;
+        animation-delay: 0.3s;
+    }
+}
+.reverse {
+    span {
+        transform: rotate(180deg);
+        right: 10px;
+        animation: move-reverse 0.8s linear infinite;
+        animation-delay: 0.3s;
+    }
+}
+
+@keyframes move {
+    0% {
+        left: 10px;
+    }
+    100% {
+        left: 30px;
+    }
+}
+@keyframes move-reverse {
+    0% {
+        right: 10px;
+    }
+    100% {
+        right: 30px;
+    }
+}

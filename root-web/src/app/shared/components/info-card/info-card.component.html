@@ -1,4 +1,4 @@
-<div class="info-card-wrapper">
+<div *ngIf="type === 'developer'; else appCard" class="developer-card-wrapper">
     <div class="left">
         <img [src]="data.img" alt="photo" />
     </div>
@@ -13,3 +13,6 @@
         </a>
     </div>
 </div>
+<ng-template #appCard>
+    <div class="app-card-wrapper"></div>
+</ng-template>

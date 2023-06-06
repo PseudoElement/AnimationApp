@@ -10,9 +10,11 @@ import { AboutService } from 'src/app/core/services/about.service';
 export class AboutComponent implements OnInit {
     cards: IInfoCard[] = [];
     teamPhoto: string = '../../../assets/img/png/Developers.png';
+    paddingLeft!: number;
     constructor(private aboutService: AboutService) {}
 
     ngOnInit(): void {
+        this.paddingLeft = window.innerWidth * 0.1;
         this.aboutService.getAbout().subscribe((res) => {
             this.cards = res.cards;
             this.teamPhoto = res.teamPhoto;

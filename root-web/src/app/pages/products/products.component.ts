@@ -7,7 +7,7 @@ import { AnimationTypes, SidesX } from 'src/app/core';
     styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent {
-    activeSlide: SidesX = 'left';
+    activeSlide: SidesX = 'right';
     get AnimationTypes() {
         return AnimationTypes;
     }

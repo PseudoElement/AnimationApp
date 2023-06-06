@@ -1,6 +1,6 @@
 @use '../../../../styles.scss' as *;
 
-.info-card-wrapper {
+.developer-card-wrapper {
     @include flex-row-start;
     width: 700px;
     padding: 20px;
@@ -38,7 +38,6 @@
     position: relative;
     top: 0;
     color: $c-black;
-    font-weight: $fw-bold;
     border-radius: 30px;
     background: none;
     width: 100%;
@@ -46,13 +45,20 @@
     box-shadow: 0 5px 1px 3px $c-gray;
     transition: all 0.3s;
     &:hover {
-        color: $c-black;
         top: 4px;
         box-shadow: 0 2px 0px 2px $c-gray;
     }
     .btn-text {
+        font-weight: $fw-bold;
         background-image: $grad-pink;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+}
+.app-card-wrapper {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    background-color: purple;
+    font-size: $fs-32;
 }

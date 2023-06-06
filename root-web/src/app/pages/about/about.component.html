@@ -1,17 +1,17 @@
 <div class="about-wrapper">
     <h1 class="title">Our team</h1>
-    <app-animated-card [showAnimationType]="AnimationTypes.fadeDown" [once]="true">
-        <img class="team-photo" appRotateXY [perspective]="40" [src]="teamPhoto" alt="TeamPhoto" />
+    <app-animated-card [showAnimationType]="AnimationTypes.fadeDown" [once]="true" [fromStart]="true">
+        <img #teamImage class="team-photo" appRotateXY [perspective]="40" [src]="teamPhoto" alt="TeamPhoto" />
     </app-animated-card>
-    <div *ngIf="cards.length" class="cards">
+    <div *ngIf="cards.length" class="cards" appOpacity [type]="'instant'">
         <div
             #card1
             class="card-1"
             appElementMove
-            [newCoordXTarget]="0"
+            [newCoordXTarget]="paddingLeft"
             [direction]="'ltr'"
             [once]="true"
-            [transitionValue]="'left 0.5s'"
+            [transitionValue]="'left 0.8s'"
         >
             <app-info-card [data]="cards[0]"></app-info-card>
         </div>
@@ -19,10 +19,10 @@
             #card2
             class="card-2"
             appElementMove
-            [newCoordXTarget]="0"
+            [newCoordXTarget]="paddingLeft"
             [direction]="'rtl'"
             [once]="true"
-            [transitionValue]="'right 0.5s'"
+            [transitionValue]="'right 0.8s'"
         >
             <app-info-card [data]="cards[1]"></app-info-card>
         </div>
@@ -30,10 +30,10 @@
             #card3
             class="card-3"
             appElementMove
-            [newCoordXTarget]="0"
+            [newCoordXTarget]="paddingLeft"
             [direction]="'ltr'"
             [once]="true"
-            [transitionValue]="'left 0.5s'"
+            [transitionValue]="'left 0.8s'"
         >
             <app-info-card [data]="cards[2]"></app-info-card>
         </div>

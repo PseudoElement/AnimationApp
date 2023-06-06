@@ -56,7 +56,7 @@ export class OpacityDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         setTimeout(() => (this.topYCoord = window.scrollY + this.element.getBoundingClientRect().top), 0);
-        this.transition = this.type === 'by0.2' ? 'none' : 'all 0.3s';
+        this.transition = this.type === 'by0.2' ? 'none' : 'all 0.2s';
         this.cd.detectChanges();
     }
 

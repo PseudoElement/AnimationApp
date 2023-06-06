@@ -26,6 +26,7 @@ import { AnimatedCardComponent } from './components/animated-card/animated-card.
 import { RotateXYDirective } from './directives/rotate-xy.directive';
 import { FullScreenTwoSlidesSliderComponent } from './components/full-screen-two-slides-slider/full-screen-two-slides-slider.component';
 import { FullScreenSlideComponent } from './components/full-screen-two-slides-slider/full-screen-slide/full-screen-slide.component';
+import { ArrowComponent } from './components/arrow/arrow.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { FullScreenSlideComponent } from './components/full-screen-two-slides-sl
         RotateXYDirective,
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
+        ArrowComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
     exports: [
@@ -78,6 +80,7 @@ import { FullScreenSlideComponent } from './components/full-screen-two-slides-sl
         RotateXYDirective,
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
+        ArrowComponent,
     ],
 })
 export class SharedModule {}

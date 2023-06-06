@@ -50,6 +50,7 @@ import { AnimationTypes } from 'src/app/core';
     ],
 })
 export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
+    @Input() fromStart?: boolean = false;
     @Input() once: boolean = false;
     @Input() showAnimationType: keyof typeof AnimationTypes = 'fadeUp';
     @Input() hideAnimationType: keyof typeof AnimationTypes = 'fadeDown';
@@ -81,6 +82,10 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.el = this.elRef?.nativeElement;
+        if (this.fromStart) {
+            this.shouldShow = true;
+            this.opacity = 1;
+        }
         setTimeout(
             () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 1.3),
             0
