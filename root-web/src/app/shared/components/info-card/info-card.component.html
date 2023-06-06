@@ -1,12 +1,12 @@
 <div *ngIf="type === 'developer'; else appCard" class="developer-card-wrapper">
     <div class="left">
-        <img [src]="data.img" alt="photo" />
+        <img [src]="developerData?.img" alt="photo" />
     </div>
     <div class="right">
-        <h1 class="name">{{ data.name }}</h1>
-        <p class="post">{{ data.post }}</p>
-        <p class="info">{{ data.info }}</p>
-        <a [routerLink]="data.path" class="btn-wrapper">
+        <h1 class="name">{{ developerData?.name }}</h1>
+        <p class="post">{{ developerData?.post }}</p>
+        <p class="info">{{ developerData?.info }}</p>
+        <a [routerLink]="developerData?.path" class="btn-wrapper">
             <app-button [withArrow]="true" [className]="'withArrow-btn'">
                 <p class="btn-text">More info</p>
             </app-button>
@@ -14,5 +14,16 @@
     </div>
 </div>
 <ng-template #appCard>
-    <div class="app-card-wrapper"></div>
+    <div appRotateX>
+        <div class="app-card-wrapper">
+            <div class="left">
+                <img [src]="appData?.img" alt="photo" />
+            </div>
+            <div class="right">
+                <h1>{{ appData?.title }}</h1>
+                <p>{{ appData?.description }}</p>
+                <p>{{ appData?.url }}</p>
+            </div>
+        </div>
+    </div>
 </ng-template>

@@ -2,3 +2,6 @@
 .products-wrapper {
     position: relative;
 }
+.applications-wrapper {
+    @include flex-column-center;
+}

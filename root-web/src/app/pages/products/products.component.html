@@ -6,7 +6,9 @@
             [side]="'left'"
             [isActive]="activeSlide === 'left'"
         >
-            asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd asdasd
+            <div class="applications-wrapper">
+                <app-info-card *ngFor="let app of applications" [type]="'app'" [appData]="app"></app-info-card>
+            </div>
         </app-full-screen-slide>
         <app-full-screen-slide
             (click)="setActiveSlide('right')"

@@ -9,7 +9,7 @@ import { AboutService } from 'src/app/core/services/about.service';
 })
 export class AboutComponent implements OnInit {
     cards: IInfoCard[] = [];
-    teamPhoto: string = '../../../assets/img/png/Developers.png';
+    teamPhoto: string = '';
     paddingLeft!: number;
     constructor(private aboutService: AboutService) {}
 
@@ -18,13 +18,8 @@ export class AboutComponent implements OnInit {
         this.aboutService.getAbout().subscribe((res) => {
             this.cards = res.cards;
             this.teamPhoto = res.teamPhoto;
-            console.log(this.teamPhoto);
         });
     }
-    click(e: Event) {
-        console.log((e.target as HTMLElement).offsetLeft);
-    }
-
     get AnimationTypes() {
         return AnimationTypes;
     }

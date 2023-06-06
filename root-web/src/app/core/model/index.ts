@@ -12,3 +12,4 @@ export * from './cookies';
 export * from './about';
 export * from './developer';
 export * from './animations';
+export * from './products';

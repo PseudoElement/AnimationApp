@@ -20,9 +20,15 @@
 .cards {
     background: $c-green;
     position: relative;
+    z-index: 200000;
     width: 100%;
     padding: 0 10%;
     height: 1400px;
+}
+.card-1,
+.card-2,
+.card-3 {
+    z-index: 1;
 }
 .card-1 {
     position: absolute;

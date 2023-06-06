@@ -9,7 +9,16 @@ const routes: Routes = [
     { path: '', component: HomepageComponent, title: 'Bimba | Home' },
     { path: 'about', component: AboutComponent, title: 'Bimba | About Us' },
     { path: 'products', component: ProductsComponent, title: 'Bimba | Products' },
-    { path: 'developer/:id', component: DeveloperComponent, title: 'Bimba | Developers' },
+    {
+        path: 'developer',
+        children: [
+            {
+                path: ':id',
+                component: DeveloperComponent,
+                title: 'Bimba | Developers',
+            },
+        ],
+    },
     { path: '**', redirectTo: '' },
 ];
 
