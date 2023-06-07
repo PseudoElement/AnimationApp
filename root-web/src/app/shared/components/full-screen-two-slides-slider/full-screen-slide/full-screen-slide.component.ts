@@ -13,8 +13,8 @@ export class FullScreenSlideComponent {
     @Input() isActive: boolean = false;
     @Input() side: SidesX = 'left';
     isHoverToggleBar: boolean = false;
-    isVisibleHeader$: BehaviorSubject<boolean>;
+    isFullHeightToggleBar$: BehaviorSubject<boolean>;
     constructor(private headerService: HeaderService) {
-        this.isVisibleHeader$ = this.headerService.isVisible$;
+        this.isFullHeightToggleBar$ = this.headerService.isScrolled$;
     }
 }

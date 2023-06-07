@@ -17,7 +17,7 @@ import { selectUser, UserActions } from 'src/app/core/store/user';
 export class HeaderComponent implements OnInit, OnDestroy {
     links = links;
     isDestroyed$: Subject<boolean> = new Subject();
-    isScrolled = false;
+    isScrolled$: BehaviorSubject<boolean>;
     isVisibleHeader$: BehaviorSubject<boolean>;
     user$: Observable<UserOnClient | null>;
 
@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ) {
         this.user$ = this.store.select(selectUser);
         this.isVisibleHeader$ = this.headerService.isVisible$;
+        this.isScrolled$ = this.headerService.isScrolled$;
     }
 
     async ngOnInit(): Promise<void> {
@@ -39,13 +40,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 let currentScrollPos = window.scrollY;
                 if (window.scrollY > scrollPoints.showHide && prevScrollpos < currentScrollPos) {
-                    this.isScrolled = true;
+                    this.isScrolled$.next(true);
                     this.isVisibleHeader$.next(false);
                 } else if (window.scrollY > scrollPoints.useOpacityHeader) {
-                    this.isScrolled = true;
+                    this.isScrolled$.next(true);
                     this.isVisibleHeader$.next(true);
                 } else {
-                    this.isScrolled = false;
+                    this.isScrolled$.next(false);
                     this.isVisibleHeader$.next(true);
                 }
                 prevScrollpos = currentScrollPos;

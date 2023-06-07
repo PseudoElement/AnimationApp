@@ -3,6 +3,7 @@
 button {
     border: none;
     cursor: pointer;
+    width: 100%;
     color: $primary-text-color;
     @include flex-row-center;
     font-size: $fs-32;

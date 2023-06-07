@@ -56,15 +56,48 @@
     }
 }
 .app-card-wrapper {
+    position: relative;
     padding: 20px;
     width: 100%;
-    max-width: 350px;
+    max-width: 800px;
     height: 100%;
     background-color: purple;
     font-size: $fs-32;
     margin: 50px 0;
+    opacity: 1;
     img {
         width: 100%;
         height: 100%;
+    }
+    &:hover {
+        cursor: url(../../../../assets/img/svg/bomb.svg);
+    }
+}
+.front-side,
+.back-side {
+    transition: all 0.333s;
+}
+.back-side {
+    position: absolute;
+    @include flex-column-center;
+    gap: 20px;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(-1, 1);
+    opacity: 0;
+    a {
+        width: 100%;
+        &:first-child {
+            gap: 10px;
+        }
+    }
+}
+.rotated {
+    .front-side {
+        opacity: 0;
+    }
+    .back-side {
+        opacity: 1;
     }
 }

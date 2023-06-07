@@ -1,4 +1,4 @@
-<header [ngClass]="{ activeHeader: isScrolled, hiddenHeader: !(isVisibleHeader$ | async) }">
+<header [ngClass]="{ activeHeader: isScrolled$ | async, hiddenHeader: !(isVisibleHeader$ | async) }">
     <a [routerLink]="'/'">
         <app-logo></app-logo>
     </a>

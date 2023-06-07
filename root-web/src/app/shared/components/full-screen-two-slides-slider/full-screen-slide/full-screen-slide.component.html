@@ -4,7 +4,7 @@
         [ngClass]="{
             'left-toggle-bar': side === 'left',
             'right-toggle-bar': side === 'right',
-            fullHeight: !(isVisibleHeader$ | async)
+            fullHeight: (isFullHeightToggleBar$ | async)
         }"
         (mouseenter)="isHoverToggleBar = true"
         (mouseleave)="isHoverToggleBar = false"
@@ -14,7 +14,7 @@
                 {{ title }}
             </p>
             <div class="arrow">
-                <app-arrow [isVisible]="isHoverToggleBar" [isReverse]="side === 'right'"></app-arrow>
+                <app-arrow [isVisible]="isHoverToggleBar" [symbolName]="side === 'left' ? 'east' : 'west'"></app-arrow>
             </div>
         </ng-container>
     </div>

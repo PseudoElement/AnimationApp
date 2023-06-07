@@ -13,23 +13,41 @@ span {
     position: relative;
     font-size: $fs-52;
 }
-.direct {
+.left-to-right {
     span {
         left: 10px;
-        animation: move 0.8s linear infinite;
+        animation: move-left-to-right 0.8s linear infinite;
         animation-delay: 0.3s;
     }
 }
-.reverse {
+.right-to-left {
     span {
-        transform: rotate(180deg);
         right: 10px;
-        animation: move-reverse 0.8s linear infinite;
+        animation: move-right-to-left 0.8s linear infinite;
+        animation-delay: 0.3s;
+    }
+}
+.bottomLeft-to-upRight {
+    span {
+        top: 10px;
+        left: 10px;
+        animation: move-diagonal-bottomLeft-to-upRight 0.8s linear infinite;
         animation-delay: 0.3s;
     }
 }
 
-@keyframes move {
+@keyframes move-diagonal-bottomLeft-to-upRight {
+    0% {
+        top: 10px;
+        left: 10px;
+    }
+    100% {
+        top: 0px;
+        left: 20px;
+    }
+}
+
+@keyframes move-left-to-right {
     0% {
         left: 10px;
     }
@@ -37,7 +55,7 @@ span {
         left: 30px;
     }
 }
-@keyframes move-reverse {
+@keyframes move-right-to-left {
     0% {
         right: 10px;
     }

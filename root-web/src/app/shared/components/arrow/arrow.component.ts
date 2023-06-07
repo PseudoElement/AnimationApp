@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SymbolNames } from './model';
 
 @Component({
     selector: 'app-arrow',
@@ -6,6 +7,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./arrow.component.scss'],
 })
 export class ArrowComponent {
-    @Input() isReverse?: boolean = false;
     @Input() isVisible: boolean = false;
+    @Input() symbolName: SymbolNames = 'east';
 }

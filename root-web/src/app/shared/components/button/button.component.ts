@@ -1,5 +1,6 @@
 import { Component, Input, HostListener } from '@angular/core';
 import { ButtonClassNames } from 'src/app/core';
+import { SymbolNames } from '../arrow/model';
 
 @Component({
     selector: 'app-button',
@@ -9,6 +10,7 @@ import { ButtonClassNames } from 'src/app/core';
 export class ButtonComponent {
     @Input() className: ButtonClassNames = '';
     @Input() withArrow: boolean = false;
+    @Input() symbolName?: SymbolNames = 'east';
     isHover = false;
     @HostListener('mouseenter') onHover() {
         this.isHover = true;

@@ -1,3 +1,11 @@
-<div [ngClass]="{ direct: !isReverse, reverse: isReverse, visible: isVisible }" class="arrow-wrapper">
-    <span class="material-symbols-outlined"> east </span>
+<div
+    [ngClass]="{
+        'left-to-right': symbolName === 'east',
+        'right-to-left': symbolName === 'west',
+        'bottomLeft-to-upRight': symbolName === 'arrow_outward',
+        visible: isVisible
+    }"
+    class="arrow-wrapper"
+>
+    <span class="material-symbols-outlined"> {{ symbolName }} </span>
 </div>

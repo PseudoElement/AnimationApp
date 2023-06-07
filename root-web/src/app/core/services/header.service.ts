@@ -6,4 +6,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HeaderService {
     isVisible$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+    isScrolled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 }

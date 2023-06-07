@@ -11,4 +11,5 @@ export class InfoCardComponent {
     @Input() developerData?: IInfoCard;
     @Input() appData?: IApplicationCard;
     @Input() type: InfoCardTypes = 'developer';
+    isCardRotated: boolean = false;
 }

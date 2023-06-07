@@ -1,6 +1,6 @@
 <button [ngClass]="className">
     <ng-content></ng-content>
     <div *ngIf="withArrow" class="arrow-wrapper">
-        <app-arrow [isVisible]="isHover"></app-arrow>
+        <app-arrow [isVisible]="isHover" [symbolName]="symbolName!"></app-arrow>
     </div>
 </button>
