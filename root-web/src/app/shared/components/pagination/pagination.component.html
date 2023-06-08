@@ -3,8 +3,7 @@
         [length]="totalCount"
         [pageSize]="pageSize"
         [pageIndex]="0"
-        [pageSizeOptions]="[1, 2, 3, 4, 5]"
-        (page)="currentPageChange.emit($event)"
+        (page)="currentPageChange.emit($event.pageIndex)"
         [hidePageSize]="true"
     ></mat-paginator>
 </div>

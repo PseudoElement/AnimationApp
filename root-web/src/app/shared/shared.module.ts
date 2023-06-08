@@ -31,6 +31,7 @@ import { ArrowComponent } from './components/arrow/arrow.component';
 import { RotateXDirective } from './directives/rotate-x.directive';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SelectComponent } from './components/select/select.component';
 
 @NgModule({
     declarations: [
@@ -61,6 +62,7 @@ import { LoaderComponent } from './components/loader/loader.component';
         RotateXDirective,
         PaginationComponent,
         LoaderComponent,
+        SelectComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -91,6 +93,7 @@ import { LoaderComponent } from './components/loader/loader.component';
         RotateXDirective,
         PaginationComponent,
         LoaderComponent,
+        SelectComponent,
     ],
 })
 export class SharedModule {}

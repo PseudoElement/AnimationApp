@@ -7,14 +7,21 @@
             [isActive]="activeSlide === 'left'"
         >
             <div class="web-wrapper">
-                <div class="applications-wrapper">
-                    <app-info-card *ngFor="let app of loadedAppCards" [type]="'app'" [appData]="app"></app-info-card>
+                <div class="main">
+                    <app-info-card *ngFor="let app of loadedWebCards" [type]="'app'" [appData]="app"></app-info-card>
                 </div>
-                <app-pagination
-                    [pageSize]="limit"
-                    [totalCount]="appTotalCount"
-                    (currentPageChange)="onPagination($event)"
-                ></app-pagination>
+                <div class="footer">
+                    <app-select
+                        [options]="pageSizeOptions"
+                        [label]="'Page size'"
+                        (onChange)="onPageSizeChange($event)"
+                    ></app-select>
+                    <app-pagination
+                        [pageSize]="limit"
+                        [totalCount]="webTotalCount"
+                        (currentPageChange)="onPagination($event)"
+                    ></app-pagination>
+                </div>
                 <app-loader [isOpen]="isLoading" [backdropSize]="'block'"></app-loader>
             </div>
         </app-full-screen-slide>
