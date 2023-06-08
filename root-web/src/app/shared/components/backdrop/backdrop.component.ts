@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BackdropSizes } from './model';
 
 @Component({
     selector: 'app-backdrop',
@@ -7,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BackdropComponent {
     @Input() isOpen: boolean = false;
+    @Input() backdropSize?: BackdropSizes = 'fullscreen';
 }

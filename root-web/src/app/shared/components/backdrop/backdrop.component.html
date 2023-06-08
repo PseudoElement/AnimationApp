@@ -1,3 +1,6 @@
-<div class="backdrop" [ngClass]="{ open: isOpen }">
+<div
+    class="backdrop"
+    [ngClass]="{ open: isOpen, fullscreen: backdropSize === 'fullscreen', block: backdropSize === 'block' }"
+>
     <ng-content></ng-content>
 </div>

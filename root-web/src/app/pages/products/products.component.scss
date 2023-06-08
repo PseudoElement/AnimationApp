@@ -1,7 +1,13 @@
 @use '../../../styles.scss' as *;
 .products-wrapper {
-    position: relative;
 }
 .applications-wrapper {
+    position: relative;
     @include flex-column-center;
+}
+.web-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

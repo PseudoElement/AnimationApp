@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NavComponent } from './components/nav/nav.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -28,6 +29,8 @@ import { FullScreenTwoSlidesSliderComponent } from './components/full-screen-two
 import { FullScreenSlideComponent } from './components/full-screen-two-slides-slider/full-screen-slide/full-screen-slide.component';
 import { ArrowComponent } from './components/arrow/arrow.component';
 import { RotateXDirective } from './directives/rotate-x.directive';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -56,8 +59,10 @@ import { RotateXDirective } from './directives/rotate-x.directive';
         FullScreenSlideComponent,
         ArrowComponent,
         RotateXDirective,
+        PaginationComponent,
+        LoaderComponent,
     ],
-    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
+    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
         NavComponent,
         InputComponent,
@@ -84,6 +89,8 @@ import { RotateXDirective } from './directives/rotate-x.directive';
         FullScreenSlideComponent,
         ArrowComponent,
         RotateXDirective,
+        PaginationComponent,
+        LoaderComponent,
     ],
 })
 export class SharedModule {}

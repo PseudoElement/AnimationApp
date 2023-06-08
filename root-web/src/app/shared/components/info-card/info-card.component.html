@@ -17,13 +17,12 @@
     <div appRotateX [(isCardRotated)]="isCardRotated">
         <div class="app-card-wrapper" [ngClass]="{ rotated: isCardRotated }">
             <div class="front-side">
-                <div class="left">
+                <div class="card-header">
                     <img [src]="appData?.img" alt="photo" loading="lazy" />
                 </div>
-                <div class="right">
+                <div class="card-main">
                     <h1>{{ appData?.title }}</h1>
                     <p>{{ appData?.description }}</p>
-                    <p>{{ appData?.url }}</p>
                 </div>
             </div>
             <div class="back-side">
