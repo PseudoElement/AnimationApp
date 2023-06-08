@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit {
     limit: number = 2;
     isLoading: boolean = false;
     pageSizeOptions: IOption[] = pageSizeOptions;
-
     constructor(private productsService: ProductsService) {}
     @ViewChild(SelectComponent) select!: SelectComponent;
     @HostListener('click', ['$event']) onCloseSelect(e: Event) {
@@ -25,7 +24,7 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit(): void {
         this.productsService.getAllWebApplications().subscribe((apps) => (this.webTotalCount = apps.length));
-        this.getPortionOfApps(this.pageIndex, this.limit);
+        this._getPortionOfApps(this.pageIndex, this.limit);
     }
 
     get AnimationTypes() {
@@ -36,13 +35,13 @@ export class ProductsComponent implements OnInit {
     }
     public onPagination(pageIndex: number): void {
         this.pageIndex = pageIndex + 1;
-        this.getPortionOfApps(this.pageIndex, this.limit);
+        !this.isLoading && this._getPortionOfApps(this.pageIndex, this.limit);
     }
     public onPageSizeChange(limit: number | string) {
         this.limit = limit as number;
-        this.getPortionOfApps(1, this.limit);
+        this._getPortionOfApps(1, this.limit);
     }
-    private getPortionOfApps(pageIndex: number, limit: number = this.limit): void {
+    private _getPortionOfApps(pageIndex: number, limit: number = this.limit): void {
         this.isLoading = true;
         this.productsService.getPortionOfApps(pageIndex, limit).subscribe((apps) => {
             this.loadedWebCards = apps;

@@ -7,6 +7,7 @@ import { IOption } from 'src/app/core';
     styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements AfterContentInit {
+    @Input() selectedValue: string | number = '';
     @Input() options!: IOption[];
     @Input() label: string = '';
     @Output() onChange: EventEmitter<number | string> = new EventEmitter();
@@ -14,8 +15,7 @@ export class SelectComponent implements AfterContentInit {
     selectedOption!: IOption;
 
     ngAfterContentInit(): void {
-        console.log('OPT', this.options);
-        this.selectedOption = this.options[0];
+        this.selectedOption = this.options.find((opt) => opt.value === this.selectedValue) ?? this.options[0];
     }
     public setSelectedOption(option: IOption) {
         this.selectedOption = option;

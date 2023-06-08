@@ -11,8 +11,9 @@ button {
     background: $c-green;
     border-radius: 10px;
     transition: all 0.2s;
-    padding: 5px;
+    padding: 3px;
     color: $primary-text-color;
+    box-sizing: border-box;
     &:hover {
         background: $c-yellow;
         color: $secondary-text-color;

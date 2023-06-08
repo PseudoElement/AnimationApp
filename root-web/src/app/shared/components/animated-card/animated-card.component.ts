@@ -90,8 +90,6 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
             });
     }
 
-    ngOnInit() {}
-
     ngAfterViewInit(): void {
         this.el = this.elRef?.nativeElement;
         if (this.fromStart) {

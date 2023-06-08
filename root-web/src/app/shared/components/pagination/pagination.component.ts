@@ -38,6 +38,6 @@ export class PaginationComponent implements AfterViewInit, OnChanges {
         });
     }
     ngOnChanges(changes: SimpleChanges) {
-        changes.pageSize && this.paginator.firstPage();
+        if (this.totalCount && changes.pageSize) this.paginator.firstPage();
     }
 }

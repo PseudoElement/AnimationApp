@@ -12,6 +12,7 @@
                 </div>
                 <div class="footer">
                     <app-select
+                        [selectedValue]="limit"
                         [options]="pageSizeOptions"
                         [label]="'Page size'"
                         (onChange)="onPageSizeChange($event)"
