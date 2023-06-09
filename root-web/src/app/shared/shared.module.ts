@@ -32,6 +32,7 @@ import { RotateXDirective } from './directives/rotate-x.directive';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SelectComponent } from './components/select/select.component';
+import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typing-animated-box.component';
 
 @NgModule({
     declarations: [
@@ -63,6 +64,7 @@ import { SelectComponent } from './components/select/select.component';
         PaginationComponent,
         LoaderComponent,
         SelectComponent,
+        TypingAnimatedBoxComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -94,6 +96,7 @@ import { SelectComponent } from './components/select/select.component';
         PaginationComponent,
         LoaderComponent,
         SelectComponent,
+        TypingAnimatedBoxComponent,
     ],
 })
 export class SharedModule {}

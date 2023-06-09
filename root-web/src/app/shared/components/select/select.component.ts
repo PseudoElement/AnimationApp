@@ -1,10 +1,12 @@
 import { Component, Input, Output, EventEmitter, AfterContentInit } from '@angular/core';
 import { IOption } from 'src/app/core';
+import { opacityAnimation, showHideAnimation } from '../../animations';
 
 @Component({
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
+    animations: [opacityAnimation, showHideAnimation(120)],
 })
 export class SelectComponent implements AfterContentInit {
     @Input() selectedValue: string | number = '';

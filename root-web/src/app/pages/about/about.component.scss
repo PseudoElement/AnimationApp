@@ -6,8 +6,8 @@
     align-items: center;
 }
 .title {
-    text-align: center;
     margin: 20px 0;
+    border-right: 20px solid;
     font-size: $fs-250;
     background-image: $grad-pink;
     background-clip: text;

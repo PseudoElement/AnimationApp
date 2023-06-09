@@ -1,6 +1,3 @@
-<div
-    class="backdrop"
-    [ngClass]="{ open: isOpen, fullscreen: backdropSize === 'fullscreen', block: backdropSize === 'block' }"
->
+<div class="backdrop" @opacityAnimation *ngIf="isOpen">
     <ng-content></ng-content>
 </div>

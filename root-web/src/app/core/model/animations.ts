@@ -12,3 +12,7 @@ export const AnimationTypes = {
     flipX: 'flipX',
     flipY: 'flipY',
 } as const;
+
+export interface ITypingAnimation {
+    durationMS: number;
+}

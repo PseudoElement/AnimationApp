@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { IDeveloper } from 'src/app/core';
 import { DeveloperService } from 'src/app/core/services/developer.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: 'app-developer',

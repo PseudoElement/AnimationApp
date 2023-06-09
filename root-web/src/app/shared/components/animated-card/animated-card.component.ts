@@ -98,7 +98,7 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
             this.cd.detectChanges();
         }
         setTimeout(
-            () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 1.3),
+            () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2.2),
             0
         );
     }

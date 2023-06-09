@@ -6,12 +6,12 @@
                 {{ selectedOption.text }}
             </app-button>
         </div>
-        <div class="options" [ngClass]="{ open: isOpen }">
-            <ng-container *ngIf="isOpen">
+        <div class="options">
+            <div @opacityAnimation @showHideAnimation *ngIf="isOpen">
                 <div *ngFor="let option of options" class="option" (click)="setSelectedOption(option)">
                     <app-button [className]="'borderRadius0'">{{ option.text }}</app-button>
                 </div>
-            </ng-container>
+            </div>
         </div>
     </div>
 </div>
