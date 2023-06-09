@@ -61,7 +61,7 @@ export class OpacityDirective implements AfterViewInit {
     }
 
     private topAnimationPoint(): number {
-        return this.type === 'by0.2' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 2;
+        return this.type === 'by0.2' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 1.2;
     }
     private bottomAnimationPoint(): number {
         return window.scrollY + this.element.getBoundingClientRect().bottom;

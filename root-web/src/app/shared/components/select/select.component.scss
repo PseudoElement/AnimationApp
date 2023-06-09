@@ -16,13 +16,15 @@
     box-sizing: border-box;
     cursor: pointer;
     .options {
+        border-radius: 0 0 10px 10px;
         position: absolute;
-        top: -104px;
+        top: 46px;
         left: 0;
         width: 100%;
         transition: all 0.5s;
         height: 0px;
         overflow-y: scroll;
+        z-index: 100;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -33,6 +35,6 @@
         width: 100%;
     }
     .open {
-        height: 100px;
+        height: 120px;
     }
 }

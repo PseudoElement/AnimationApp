@@ -4,11 +4,11 @@
     color: $c-white;
     .body {
         position: absolute;
-        padding: 5%;
+        padding: 10% 5% 5% 5%;
         width: 0;
         top: 0;
         transition: width 0.5s;
-        min-height: calc(100vh - 100px);
+        min-height: 100vh;
         visibility: hidden;
     }
     .toggle-bar {
@@ -18,9 +18,9 @@
         }
         position: fixed;
         transition: all 0.5s;
-        top: 100px;
-        width: 10%;
-        height: 90%;
+        top: 0px;
+        width: 9%;
+        height: 100%;
         visibility: visible;
         &:hover {
             .arrow {
@@ -44,7 +44,7 @@
 .active-slide {
     .body {
         background: url(../../../../../assets/img/jpg/Asphalt.jpg);
-        width: 90%;
+        width: 91%;
         visibility: visible;
     }
     .left-body {

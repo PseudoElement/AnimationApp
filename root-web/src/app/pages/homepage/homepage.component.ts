@@ -9,8 +9,6 @@ import { randomPhotos } from 'src/app/core';
 export class HomepageComponent {
     images = randomPhotos;
 
-    ngAfterViewInit() {}
-
     public getStartCoordYForElBelowTarget(target: Element): number {
         return parseInt(window.getComputedStyle(target).top);
     }

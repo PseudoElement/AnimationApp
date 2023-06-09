@@ -2,7 +2,7 @@
 .backdrop {
     z-index: 501;
     @include flex-row-center;
-    background: $black-o-07;
+    background: $rgba-black-08;
     transition: all 0.1s;
     transform: scale(0);
 }
@@ -23,7 +23,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: $black-o-07;
+    background: $rgba-black-08;
     -webkit-filter: blur(60px);
     -moz-filter: blur(60px);
     -o-filter: blur(60px);

@@ -1,5 +1,6 @@
 @use '../../../styles.scss' as *;
 .products-wrapper {
+    margin-top: -100px;
 }
 .main {
     position: relative;
@@ -12,5 +13,5 @@
     align-items: center;
 }
 .footer {
-    @include flex-row-center;
+    @include flex-column-center;
 }
