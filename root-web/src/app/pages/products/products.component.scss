@@ -1,5 +1,17 @@
 @use '../../../styles.scss' as *;
 .products-wrapper {
+    margin-top: -100px;
+}
+.main {
     position: relative;
-    height: 6000px;
+    @include flex-column-center;
+}
+.web-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer {
+    @include flex-column-center;
 }

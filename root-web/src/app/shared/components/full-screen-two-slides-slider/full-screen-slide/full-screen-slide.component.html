@@ -1,11 +1,26 @@
 <div class="slide" [ngClass]="{ 'active-slide': isActive }">
-    <div class="toggle-bar" [ngClass]="{ 'left-toggle-bar': side === 'right', 'right-toggle-bar': side === 'left' }">
-        <p class="title">
-            {{ title }}
-        </p>
-        <app-button [withArrow]="true" [className]="'withArrow-btn'" [isReverseArrow]="side === 'left'"></app-button>
+    <div
+        class="toggle-bar"
+        [ngClass]="{
+            'left-toggle-bar': side === 'left',
+            'right-toggle-bar': side === 'right',
+            fullHeight: (isFullHeightToggleBar$ | async)
+        }"
+        (mouseenter)="isHoverToggleBar = true"
+        (mouseleave)="isHoverToggleBar = false"
+    >
+        <ng-container *ngIf="!isActive">
+            <p class="title">
+                {{ title }}
+            </p>
+            <div class="arrow">
+                <app-arrow [isVisible]="isHoverToggleBar" [symbolName]="side === 'left' ? 'east' : 'west'"></app-arrow>
+            </div>
+        </ng-container>
     </div>
     <div class="body" [ngClass]="{ 'left-body': side === 'left', 'right-body': side === 'right' }">
-        <ng-content></ng-content>
+        <ng-container *ngIf="isActive">
+            <ng-content></ng-content>
+        </ng-container>
     </div>
 </div>

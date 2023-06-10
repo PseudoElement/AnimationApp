@@ -56,12 +56,12 @@ export class OpacityDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         setTimeout(() => (this.topYCoord = window.scrollY + this.element.getBoundingClientRect().top), 0);
-        this.transition = this.type === 'by0.2' ? 'none' : 'all 0.3s';
+        this.transition = this.type === 'by0.2' ? 'none' : 'all 0.2s';
         this.cd.detectChanges();
     }
 
     private topAnimationPoint(): number {
-        return this.type === 'by0.2' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 2;
+        return this.type === 'by0.2' ? this.topYCoord - window.innerHeight : this.topYCoord - window.innerHeight / 1.2;
     }
     private bottomAnimationPoint(): number {
         return window.scrollY + this.element.getBoundingClientRect().bottom;

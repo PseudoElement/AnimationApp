@@ -1,0 +1,17 @@
+<div class="select-label-wrapper">
+    <p class="label">{{ label }}</p>
+    <div *ngIf="options.length" (click)="onSelectClick()" class="select-wrapper">
+        <div class="option">
+            <app-button [className]="'borderRadius0'">
+                {{ selectedOption.text }}
+            </app-button>
+        </div>
+        <div class="options">
+            <div @opacityAnimation @showHideAnimation *ngIf="isOpen">
+                <div *ngFor="let option of options" class="option" (click)="setSelectedOption(option)">
+                    <app-button [className]="'borderRadius0'">{{ option.text }}</app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

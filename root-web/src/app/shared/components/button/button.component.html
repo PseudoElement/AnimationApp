@@ -1,4 +1,6 @@
 <button [ngClass]="className">
     <ng-content></ng-content>
-    <span *ngIf="withArrow" [ngClass]="{ reverse: isReverseArrow }" class="material-symbols-outlined"> east </span>
+    <div *ngIf="withArrow" class="arrow-wrapper">
+        <app-arrow [isVisible]="isHover" [symbolName]="symbolName!"></app-arrow>
+    </div>
 </button>

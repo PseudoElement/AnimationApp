@@ -1,0 +1,9 @@
+<div class="pagination-wrapper">
+    <mat-paginator
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        [pageIndex]="0"
+        (page)="currentPageChange.emit($event.pageIndex)"
+        [hidePageSize]="true"
+    ></mat-paginator>
+</div>

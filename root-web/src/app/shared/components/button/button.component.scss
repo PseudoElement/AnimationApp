@@ -3,6 +3,7 @@
 button {
     border: none;
     cursor: pointer;
+    width: 100%;
     color: $primary-text-color;
     @include flex-row-center;
     font-size: $fs-32;
@@ -10,8 +11,9 @@ button {
     background: $c-green;
     border-radius: 10px;
     transition: all 0.2s;
-    padding: 5px;
+    padding: 3px;
     color: $primary-text-color;
+    box-sizing: border-box;
     &:hover {
         background: $c-yellow;
         color: $secondary-text-color;
@@ -52,31 +54,8 @@ button {
     height: 100%;
     &:hover {
         background: none;
-        span {
-            opacity: 1;
-            animation: move 0.8s ease-out infinite;
-            animation-delay: 0.3s;
-        }
-    }
-    span {
-        background-image: $grad-indigo;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: opacity 0.3s;
-        position: relative;
-        font-size: $fs-52;
-        left: 10px;
-        opacity: 0;
-    }
-    .reverse {
-        transform: rotate(180deg);
     }
 }
-@keyframes move {
-    0% {
-        left: 10px;
-    }
-    100% {
-        left: 40px;
-    }
+.borderRadius0 {
+    border-radius: 0;
 }

@@ -1,8 +1,6 @@
 @use '../../../../styles.scss' as *;
 
 .animated-card-wrapper {
-    @include flex-row-center;
     width: 100%;
     height: 100%;
-    margin-bottom: 50px !important;
 }

@@ -1,53 +1,81 @@
+@use '../../../../../styles.scss' as *;
+
 .slide {
-    width: 100%;
+    color: $c-white;
     .body {
+        position: absolute;
+        padding: 10% 5% 5% 5%;
         width: 0;
-        transition: all 1s;
-        z-index: -1;
+        top: 0;
+        transition: width 0.5s;
+        min-height: 100vh;
         visibility: hidden;
     }
     .toggle-bar {
         cursor: pointer;
-        transition: all 1s;
+        @include flex-column-center {
+            justify-content: flex-start;
+        }
         position: fixed;
-        top: 100px;
-        width: 10%;
+        transition: all 0.5s;
+        top: 0px;
+        width: 9%;
         height: 100%;
-        background: pink;
         visibility: visible;
+        &:hover {
+            .arrow {
+                transition: all 0.3s;
+                border-width: 15px;
+            }
+        }
         .title {
+            @include flex-row-center;
+            flex: 0 0 80%;
+            font-weight: $fw-medium;
             writing-mode: vertical-lr;
+        }
+        .arrow {
+            @include flex-row-center;
+            width: 100%;
+            flex: 0 0 20%;
         }
     }
 }
 .active-slide {
     .body {
-        position: absolute;
-        top: 0;
-        background: green;
-        width: 90%;
+        background: url(../../../../../assets/img/jpg/Asphalt.jpg);
+        width: 91%;
         visibility: visible;
-        z-index: 1;
-        height: 90vh;
     }
     .left-body {
-        left: 10%;
+        left: 0;
     }
     .right-body {
-        right: 10%;
+        right: 0;
     }
     .toggle-bar {
         width: 0;
-        visibility: hidden;
     }
 }
 
 .left-toggle-bar {
     left: 0;
+    background: $c-blue;
     .title {
         transform: rotate(-180deg);
+    }
+    .arrow {
+        border-right: 10px solid $c-orange;
     }
 }
 .right-toggle-bar {
     right: 0;
+    background: $c-vinous;
+    .arrow {
+        border-left: 10px solid $c-orange;
+    }
+}
+.fullHeight {
+    top: 0px !important;
+    height: 100% !important;
 }

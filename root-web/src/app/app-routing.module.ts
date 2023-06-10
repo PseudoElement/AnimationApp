@@ -6,10 +6,20 @@ import { ProductsComponent } from './pages/products/products.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 
 const routes: Routes = [
-    { path: '', component: HomepageComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'products', component: ProductsComponent },
-    { path: 'developer/:id', component: DeveloperComponent },
+    { path: '', component: HomepageComponent, title: 'Bimba | Home' },
+    { path: 'about', component: AboutComponent, title: 'Bimba | About Us' },
+    { path: 'products', component: ProductsComponent, title: 'Bimba | Products' },
+    {
+        path: 'developer',
+        children: [
+            {
+                path: ':id',
+                component: DeveloperComponent,
+                title: 'Bimba | Developers',
+            },
+        ],
+    },
+    { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

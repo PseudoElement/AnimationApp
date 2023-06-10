@@ -2,19 +2,47 @@
     <app-full-screen-two-slides-slider>
         <app-full-screen-slide
             (click)="setActiveSlide('left')"
-            [title]="'Left part'"
+            [title]="'Web-applications'"
             [side]="'left'"
             [isActive]="activeSlide === 'left'"
         >
-            LEFT LEFT
+            <div class="web-wrapper">
+                <div class="main">
+                    <app-info-card *ngFor="let app of loadedWebCards" [type]="'app'" [appData]="app"></app-info-card>
+                </div>
+                <div class="footer">
+                    <app-select
+                        [selectedValue]="limit"
+                        [options]="pageSizeOptions"
+                        [label]="'Page size'"
+                        (onChange)="onPageSizeChange($event)"
+                    ></app-select>
+                    <app-pagination
+                        [pageSize]="limit"
+                        [totalCount]="webTotalCount"
+                        (currentPageChange)="onPagination($event)"
+                    ></app-pagination>
+                </div>
+                <app-loader [isOpen]="isLoading" [backdropSize]="'block'"></app-loader>
+            </div>
         </app-full-screen-slide>
         <app-full-screen-slide
             (click)="setActiveSlide('right')"
-            [title]="'Right part'"
+            [title]="'2D-Games'"
             [side]="'right'"
             [isActive]="activeSlide === 'right'"
         >
-            RIGHT RIGHT
+            <div class="games-wrapper">
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+                RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+            </div>
         </app-full-screen-slide>
     </app-full-screen-two-slides-slider>
 </div>

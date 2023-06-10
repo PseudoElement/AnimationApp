@@ -5,11 +5,16 @@ $c-green: #00bf68;
 $c-red: #e30016;
 $c-light-blue: #00aff0;
 $c-gray: rgb(178, 178, 178);
+$c-blue: #3726d0;
+$c-orange: #fe4c10;
+$c-vinous: #99004c;
 
 //rgba
-
-$black-o-04: rgba(0, 0, 0, 0.4);
-$white-o-03: rgba(255, 255, 255, 0.3);
+$rgba-black-04: rgba(0, 0, 0, 0.4);
+$rgba-black-08: rgba(0, 0, 0, 0.8);
+$rgba-white-03: rgba(255, 255, 255, 0.3);
+$rgba-vinous-07: rgba(240, 52, 121, 0.7);
+$rgba-blue-07: rgba(53, 208, 219, 0.7);
 $rgb-pink: rgb(255, 58, 229);
 $rgb-indigo: rgb(104, 39, 255);
 
@@ -18,15 +23,18 @@ $rgb-indigo: rgb(104, 39, 255);
 $grad-pink: linear-gradient(180deg, rgba(227, 0, 251, 1) 24%, rgba(255, 118, 155, 1) 74%);
 $grad-indigo: linear-gradient(180deg, rgba(178, 0, 251, 1) 21%, rgba(118, 139, 255, 1) 65%);
 $grad-light-blue: linear-gradient(180deg, rgba(242, 255, 255, 1) 62%, rgba(229, 245, 251, 1) 100%);
+$grad-caribbean-green: linear-gradient(180deg, rgba(70, 255, 175, 1) 0%, rgba(0, 236, 255, 1) 100%);
 
 :root {
     --primary-text-color: $c-white;
     --secondary-text-color: $c-black;
     --bg-color: $c-black;
-    --primary-rgba: $white-o-03;
-    --secondary-rgba: $black-o-04;
+    --primary-rgba: $rgba-white-03;
+    --secondary-rgba: $rgba-black-04;
+    --header-bg-color: $rgba-vinous-07;
 }
 
+$header-bg-color: var(--header-bg-color);
 $primary-text-color: var(--primary-text-color);
 $secondary-text-color: var(--secondary-text-color);
 $primary-bg-color: var(--bg-color);

@@ -1,4 +1,13 @@
-import { Component, ElementRef, ViewChild, Input, OnDestroy, HostBinding, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    ViewChild,
+    Input,
+    OnDestroy,
+    HostBinding,
+    AfterViewInit,
+    ChangeDetectorRef,
+} from '@angular/core';
 import {
     fadeInRightAnimation,
     fadeOutRightAnimation,
@@ -50,6 +59,7 @@ import { AnimationTypes } from 'src/app/core';
     ],
 })
 export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
+    @Input() fromStart?: boolean = false;
     @Input() once: boolean = false;
     @Input() showAnimationType: keyof typeof AnimationTypes = 'fadeUp';
     @Input() hideAnimationType: keyof typeof AnimationTypes = 'fadeDown';
@@ -62,7 +72,8 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
     sub: Subscription;
     showYPoint!: number;
 
-    constructor() {
+    constructor(private cd: ChangeDetectorRef) {
+        this.fromStart && (this.opacity = 1);
         this.sub = fromEvent(window, 'wheel')
             .pipe()
             .subscribe(() => {
@@ -81,8 +92,13 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.el = this.elRef?.nativeElement;
+        if (this.fromStart) {
+            this.shouldShow = true;
+            setTimeout(() => (this.opacity = 1), 0);
+            this.cd.detectChanges();
+        }
         setTimeout(
-            () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 1.3),
+            () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2.2),
             0
         );
     }

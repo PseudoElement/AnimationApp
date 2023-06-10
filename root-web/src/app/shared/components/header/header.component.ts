@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil, Observable, fromEvent } from 'rxjs';
+import { Subject, takeUntil, Observable, fromEvent, BehaviorSubject } from 'rxjs';
 import { Cookies, UserOnClient, alerts, links, scrollPoints } from 'src/app/core';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { HeaderService } from 'src/app/core/services/header.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { AppState } from 'src/app/core/store/store';
@@ -16,17 +17,20 @@ import { selectUser, UserActions } from 'src/app/core/store/user';
 export class HeaderComponent implements OnInit, OnDestroy {
     links = links;
     isDestroyed$: Subject<boolean> = new Subject();
-    isScrolled = false;
-    isVisibleHeader = true;
+    isScrolled$: BehaviorSubject<boolean>;
+    isVisibleHeader$: BehaviorSubject<boolean>;
     user$: Observable<UserOnClient | null>;
 
     constructor(
         public modalService: ModalService,
         public themeService: ThemeService,
         private store: Store<AppState>,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private headerService: HeaderService
     ) {
         this.user$ = this.store.select(selectUser);
+        this.isVisibleHeader$ = this.headerService.isVisible$;
+        this.isScrolled$ = this.headerService.isScrolled$;
     }
 
     async ngOnInit(): Promise<void> {
@@ -36,14 +40,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 let currentScrollPos = window.scrollY;
                 if (window.scrollY > scrollPoints.showHide && prevScrollpos < currentScrollPos) {
-                    this.isScrolled = true;
-                    this.isVisibleHeader = false;
+                    this.isScrolled$.next(true);
+                    this.isVisibleHeader$.next(false);
                 } else if (window.scrollY > scrollPoints.useOpacityHeader) {
-                    this.isScrolled = true;
-                    this.isVisibleHeader = true;
+                    this.isScrolled$.next(true);
+                    this.isVisibleHeader$.next(true);
                 } else {
-                    this.isScrolled = false;
-                    this.isVisibleHeader = true;
+                    this.isScrolled$.next(false);
+                    this.isVisibleHeader$.next(true);
                 }
                 prevScrollpos = currentScrollPos;
             });

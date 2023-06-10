@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NavComponent } from './components/nav/nav.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -26,6 +27,12 @@ import { AnimatedCardComponent } from './components/animated-card/animated-card.
 import { RotateXYDirective } from './directives/rotate-xy.directive';
 import { FullScreenTwoSlidesSliderComponent } from './components/full-screen-two-slides-slider/full-screen-two-slides-slider.component';
 import { FullScreenSlideComponent } from './components/full-screen-two-slides-slider/full-screen-slide/full-screen-slide.component';
+import { ArrowComponent } from './components/arrow/arrow.component';
+import { RotateXDirective } from './directives/rotate-x.directive';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { SelectComponent } from './components/select/select.component';
+import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typing-animated-box.component';
 
 @NgModule({
     declarations: [
@@ -52,8 +59,14 @@ import { FullScreenSlideComponent } from './components/full-screen-two-slides-sl
         RotateXYDirective,
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
+        ArrowComponent,
+        RotateXDirective,
+        PaginationComponent,
+        LoaderComponent,
+        SelectComponent,
+        TypingAnimatedBoxComponent,
     ],
-    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule],
+    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
         NavComponent,
         InputComponent,
@@ -78,6 +91,12 @@ import { FullScreenSlideComponent } from './components/full-screen-two-slides-sl
         RotateXYDirective,
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
+        ArrowComponent,
+        RotateXDirective,
+        PaginationComponent,
+        LoaderComponent,
+        SelectComponent,
+        TypingAnimatedBoxComponent,
     ],
 })
 export class SharedModule {}

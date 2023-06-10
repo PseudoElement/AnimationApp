@@ -1,6 +1,6 @@
 @use '../../../../styles.scss' as *;
 
-.info-card-wrapper {
+.developer-card-wrapper {
     @include flex-row-start;
     width: 700px;
     padding: 20px;
@@ -38,7 +38,6 @@
     position: relative;
     top: 0;
     color: $c-black;
-    font-weight: $fw-bold;
     border-radius: 30px;
     background: none;
     width: 100%;
@@ -46,13 +45,71 @@
     box-shadow: 0 5px 1px 3px $c-gray;
     transition: all 0.3s;
     &:hover {
-        color: $c-black;
         top: 4px;
         box-shadow: 0 2px 0px 2px $c-gray;
     }
     .btn-text {
+        font-weight: $fw-bold;
         background-image: $grad-pink;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+}
+.app-card-wrapper {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    box-shadow: inset 0 0 150px 10px black;
+    border-radius: 20px;
+    font-size: $fs-32;
+    margin: 50px 0;
+    &:hover {
+        cursor: url(../../../../assets/img/svg/bomb.svg);
+    }
+}
+.front-side,
+.back-side {
+    transition: all 0.333s;
+}
+.front-side {
+    @include flex-column-center;
+    height: 100%;
+    .card-header {
+        position: relative;
+        img {
+            position: relative;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .card-main {
+        text-align: center;
+    }
+}
+.back-side {
+    position: absolute;
+    @include flex-column-center;
+    gap: 20px;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(-1, 1);
+    opacity: 0;
+    a {
+        width: 100%;
+        &:first-child {
+            gap: 10px;
+        }
+    }
+}
+.rotated {
+    .front-side {
+        opacity: 0;
+    }
+    .back-side {
+        opacity: 1;
     }
 }

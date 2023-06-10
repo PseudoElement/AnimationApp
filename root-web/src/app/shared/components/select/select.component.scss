@@ -1,0 +1,37 @@
+@use '../../../../styles.scss' as *;
+
+.select-label-wrapper {
+    @include flex-row-center;
+    .label {
+        text-align: center;
+    }
+}
+.select-wrapper {
+    position: relative;
+    @include flex-column-center;
+    width: 100%;
+    min-width: 200px;
+    height: 50px;
+    border: 4px solid $c-white;
+    box-sizing: border-box;
+    cursor: pointer;
+    .options {
+        border-radius: 0 0 10px 10px;
+        position: absolute;
+        top: 46px;
+        left: 0;
+        width: 100%;
+        transition: all 0.5s;
+        max-height: 120px;
+        overflow-y: scroll;
+        z-index: 100;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .option {
+        width: 100%;
+    }
+}

@@ -1,4 +1,5 @@
 <app-alert></app-alert>
+<app-loader [backdropSize]="'fullscreen'" [isOpen]="(isLoading$ | async)!"></app-loader>
 <app-header></app-header>
 <app-auth-modal></app-auth-modal>
 <main>

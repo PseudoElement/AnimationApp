@@ -1,3 +1,157 @@
+@use '../../../styles.scss' as *;
+:root {
+    --angle: 90deg;
+}
 .developer-wrapper {
-    padding: 0 10%;
+    @include flex-column-center;
+    margin-top: -100px;
+    padding: 100px 10%;
+    background: url(../../../assets/img/gif/coding.gif) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.photo {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    animation: morph 5s ease-in-out infinite;
+    object-fit: cover;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    border: 5px solid $c-yellow;
+
+    @keyframes morph {
+        0% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        50% {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+
+        100% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+    }
+}
+.name {
+    font-weight: $fw-semibold;
+    font-size: $fs-250;
+    background-image: $grad-caribbean-green;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 20px solid;
+    align-self: center;
+}
+
+.main {
+    margin: 40px 0;
+    width: 100%;
+    padding: 40px;
+    font-weight: $fw-bold;
+    background: $rgba-black-08;
+    @include flex-row-space-between {
+        align-items: baseline;
+    }
+
+    .left {
+        flex: 1 1 45%;
+        .title {
+            font-size: $fs-85;
+            background-image: $grad-pink;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .skills-wrapper {
+            background-image: $grad-indigo;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            .skill {
+            }
+        }
+    }
+    .right {
+        flex: 1 1 45%;
+        .title {
+            font-size: $fs-85;
+            background-image: $grad-indigo;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .info-wrapper {
+            background-image: $grad-pink;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            .infoItem {
+            }
+        }
+    }
+
+    .skill::before,
+    .infoItem::before {
+        content: '✔';
+        margin-right: 20px;
+    }
+}
+.footer-wrapper {
+    width: 100%;
+}
+.footer {
+    @include flex-column-center;
+    width: 100%;
+    .title {
+        font-size: $fs-85;
+        letter-spacing: 5px;
+        background-image: $grad-caribbean-green;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .socials {
+        @include flex-row-space-around;
+        width: 100%;
+    }
+    svg {
+        cursor: pointer;
+        path {
+            transition: all 250ms;
+        }
+        &.linkedin {
+            &:hover {
+                path {
+                    &:first-child {
+                        fill: #0078d4;
+                    }
+                }
+            }
+        }
+        &.vk {
+            &:hover {
+                path {
+                    &:first-child {
+                        fill: #1976d2;
+                    }
+                }
+            }
+        }
+        &.github {
+            &:hover {
+                path {
+                    &:first-child {
+                        fill: black;
+                    }
+                }
+            }
+        }
+        &.telegram {
+            &:hover {
+                path {
+                    &:first-child {
+                        fill: #29b6f6;
+                    }
+                }
+            }
+        }
+    }
 }
