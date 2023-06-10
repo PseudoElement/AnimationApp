@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { zoomInOnEnterAnimation } from 'angular-animations';
 import { AnimationTypes, IApplicationCard, IOption, SidesX, pageSizeOptions } from 'src/app/core';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { SelectComponent } from 'src/app/shared/components/select/select.component';
@@ -7,6 +8,7 @@ import { SelectComponent } from 'src/app/shared/components/select/select.compone
     selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss'],
+    animations: [zoomInOnEnterAnimation()],
 })
 export class ProductsComponent implements OnInit {
     activeSlide: SidesX = 'left';

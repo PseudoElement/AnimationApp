@@ -8,7 +8,12 @@
         >
             <div class="web-wrapper">
                 <div class="main">
-                    <app-info-card *ngFor="let app of loadedWebCards" [type]="'app'" [appData]="app"></app-info-card>
+                    <app-info-card
+                        @zoomInOnEnter
+                        *ngFor="let app of loadedWebCards"
+                        [type]="'app'"
+                        [appData]="app"
+                    ></app-info-card>
                 </div>
                 <div class="footer">
                     <app-select
