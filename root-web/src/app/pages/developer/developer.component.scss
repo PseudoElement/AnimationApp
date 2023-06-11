@@ -4,7 +4,6 @@
 }
 .developer-wrapper {
     @include flex-column-center;
-    margin-top: -100px;
     padding: 100px 10%;
     background: url(../../../assets/img/gif/coding.gif) no-repeat;
     background-size: cover;
@@ -111,47 +110,8 @@
     .socials {
         @include flex-row-space-around;
         width: 100%;
-    }
-    svg {
-        cursor: pointer;
-        path {
-            transition: all 250ms;
-        }
-        &.linkedin {
-            &:hover {
-                path {
-                    &:first-child {
-                        fill: #0078d4;
-                    }
-                }
-            }
-        }
-        &.vk {
-            &:hover {
-                path {
-                    &:first-child {
-                        fill: #1976d2;
-                    }
-                }
-            }
-        }
-        &.github {
-            &:hover {
-                path {
-                    &:first-child {
-                        fill: black;
-                    }
-                }
-            }
-        }
-        &.telegram {
-            &:hover {
-                path {
-                    &:first-child {
-                        fill: #29b6f6;
-                    }
-                }
-            }
+        a {
+            cursor: pointer;
         }
     }
 }

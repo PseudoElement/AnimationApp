@@ -40,7 +40,10 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
         this.transition = this.transitionValue ?? 'all 0.1s';
         this.cd.detectChanges();
         setTimeout(() => (this.absoluteOffsetTopTarget = this.target.getBoundingClientRect().top + window.scrollY), 0);
-        setTimeout(() => (this.startAnimationPoint = (this.absoluteOffsetTopTarget as number) - this.windowHeight), 0);
+        setTimeout(
+            () => (this.startAnimationPoint = (this.absoluteOffsetTopTarget as number) - this.windowHeight / 4),
+            0
+        );
         fromEvent(document, 'scroll')
             .pipe(takeUntil(this.isDestroyed$))
             .subscribe(() => {

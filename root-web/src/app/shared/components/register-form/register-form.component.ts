@@ -33,9 +33,9 @@ export class RegisterFormComponent {
                 '',
                 [
                     Validators.required,
-                    Validators.minLength(5),
+                    Validators.minLength(9),
                     Validators.maxLength(20),
-                    Validators.pattern('^[a-zA-Z]+$'),
+                    Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
                 ],
             ],
             confirmPassword: [''],

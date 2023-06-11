@@ -1,8 +1,8 @@
 <div class="wrapper">
-    <div class="running-lines-wrapper">
-        <app-running-line [images]="images" [dir]="'rtl'"></app-running-line>
-        <app-running-line [images]="images"></app-running-line>
-        <app-running-line [images]="images" [dir]="'rtl'"></app-running-line>
+    <div *ngIf="data" class="running-lines-wrapper">
+        <app-running-line [images]="data.firstRunningLine" [dir]="'rtl'"></app-running-line>
+        <app-running-line [images]="data.secondRunningLine"></app-running-line>
+        <app-running-line [images]="data.thirdRunningLine" [dir]="'rtl'"></app-running-line>
     </div>
 
     <div class="main">
@@ -63,5 +63,22 @@
             </div>
         </div>
     </div>
-    <div appOpacity [type]="'instant'" class="footer"></div>
+    <div class="footer-wrapper">
+        <app-animated-card [showAnimationType]="'zoomIn'" [hideAnimationType]="'zoomOut'" [ratioShowYPoint]="1.5">
+            <div class="footer-card-wrapper">
+                <div class="title">Our Tools</div>
+                <div class="footer">
+                    <div
+                        *ngFor="let svgName of footerSvgNames; let i = index"
+                        class="grid-area"
+                        [ngClass]="'area-' + (i + 1)"
+                    >
+                        <div class="skill-svg-wrapper" appRotateXY [perspective]="20">
+                            <app-svg [name]="svgName"></app-svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-animated-card>
+    </div>
 </div>

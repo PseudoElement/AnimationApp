@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { zoomInOnEnterAnimation } from 'angular-animations';
-import { AnimationTypes, IApplicationCard, IOption, SidesX, pageSizeOptions } from 'src/app/core';
+import { Subscription } from 'rxjs';
+import { AnimationTypes, IApplicationCard, IOption, SidesX, pageSizeOptions, scrollToStart } from 'src/app/core';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { SelectComponent } from 'src/app/shared/components/select/select.component';
 
@@ -10,7 +11,7 @@ import { SelectComponent } from 'src/app/shared/components/select/select.compone
     styleUrls: ['./products.component.scss'],
     animations: [zoomInOnEnterAnimation()],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, AfterViewInit {
     activeSlide: SidesX = 'left';
     loadedWebCards: IApplicationCard[] = [];
     webTotalCount: number = 0;
@@ -29,6 +30,10 @@ export class ProductsComponent implements OnInit {
         this._getPortionOfApps(this.pageIndex, this.limit);
     }
 
+    ngAfterViewInit(): void {
+        scrollToStart();
+    }
+
     get AnimationTypes() {
         return AnimationTypes;
     }
@@ -43,9 +48,9 @@ export class ProductsComponent implements OnInit {
         this.limit = limit as number;
         this._getPortionOfApps(1, this.limit);
     }
-    private _getPortionOfApps(pageIndex: number, limit: number = this.limit): void {
+    private _getPortionOfApps(pageIndex: number, limit: number = this.limit): Subscription {
         this.isLoading = true;
-        this.productsService.getPortionOfApps(pageIndex, limit).subscribe((apps) => {
+        return this.productsService.getPortionOfApps(pageIndex, limit).subscribe((apps) => {
             this.loadedWebCards = apps;
             this.isLoading = false;
         });

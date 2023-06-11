@@ -12,3 +12,5 @@ export * from './about';
 export * from './developer';
 export * from './animations';
 export * from './products';
+export * from './pipes';
+export * from './homepage';

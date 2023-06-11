@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BackdropSizes } from './model';
 import { opacityAnimation } from '../../animations';
 
 @Component({
@@ -10,5 +9,4 @@ import { opacityAnimation } from '../../animations';
 })
 export class BackdropComponent {
     @Input() isOpen: boolean = false;
-    @Input() backdropSize?: BackdropSizes = 'fullscreen';
 }
