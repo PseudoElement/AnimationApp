@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IDeveloper } from 'src/app/core';
+import { IDeveloper, scrollToStart } from 'src/app/core';
 import { DeveloperService } from 'src/app/core/services/developer.service';
-import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
     selector: 'app-developer',
@@ -10,20 +9,16 @@ import { LoadingService } from 'src/app/core/services/loading.service';
     styleUrls: ['./developer.component.scss'],
     animations: [],
 })
-export class DeveloperComponent {
+export class DeveloperComponent implements AfterViewInit {
     data?: IDeveloper;
     id: string;
-    constructor(
-        private developerService: DeveloperService,
-        private route: ActivatedRoute,
-        private loadingService: LoadingService
-    ) {
+    constructor(private developerService: DeveloperService, private route: ActivatedRoute) {
         this.id = this.route.snapshot.params.id;
-        this.loadingService.isLoading$.next(true);
         this.developerService.getDeveloper(this.id).subscribe((dev) => {
             this.data = dev;
-            console.log(this.data);
-            this.loadingService.isLoading$.next(false);
         });
+    }
+    ngAfterViewInit(): void {
+        scrollToStart();
     }
 }

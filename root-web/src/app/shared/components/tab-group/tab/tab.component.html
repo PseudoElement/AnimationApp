@@ -4,7 +4,7 @@
             {{ title }}
         </app-button>
     </div>
-    <div *ngIf="isOpen" class="body">
+    <div @zoomInOnEnter *ngIf="isOpen" class="body">
         <ng-content></ng-content>
     </div>
 </div>

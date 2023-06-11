@@ -8,5 +8,5 @@
         type="text"
         [formControl]="control"
     />
-    <p *ngIf="control.dirty && control.touched && error" class="error">{{ error }}</p>
+    <p *ngIf="control.dirty && control.touched && error" class="error">{{ error | errorTransform }}</p>
 </div>

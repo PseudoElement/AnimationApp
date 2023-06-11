@@ -28,6 +28,9 @@ import {
     flipOutXAnimation,
     flipInYAnimation,
     flipOutYAnimation,
+    zoomInOnEnterAnimation,
+    zoomOutAnimation,
+    zoomInAnimation,
 } from 'angular-animations';
 import { Subscription, fromEvent } from 'rxjs';
 import { AnimationTypes } from 'src/app/core';
@@ -56,6 +59,9 @@ import { AnimationTypes } from 'src/app/core';
         flipOutXAnimation({ duration: 1000 }),
         flipInYAnimation({ duration: 1000 }),
         flipOutYAnimation({ duration: 1000 }),
+        zoomInOnEnterAnimation(),
+        zoomOutAnimation({ duration: 1000 }),
+        zoomInAnimation({ duration: 1000 }),
     ],
 })
 export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
@@ -63,6 +69,7 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
     @Input() once: boolean = false;
     @Input() showAnimationType: keyof typeof AnimationTypes = 'fadeUp';
     @Input() hideAnimationType: keyof typeof AnimationTypes = 'fadeDown';
+    @Input() ratioShowYPoint: number = 1.2;
     @ViewChild('elRef') elRef?: ElementRef;
     @HostBinding('style.opacity') opacity = 0;
     @HostBinding('style.transition') transition = 'opacity 1s';
@@ -74,7 +81,7 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
 
     constructor(private cd: ChangeDetectorRef) {
         this.fromStart && (this.opacity = 1);
-        this.sub = fromEvent(window, 'wheel')
+        this.sub = fromEvent(window, 'scroll')
             .pipe()
             .subscribe(() => {
                 if (window.scrollY > this.showYPoint) {
@@ -98,7 +105,9 @@ export class AnimatedCardComponent implements OnDestroy, AfterViewInit {
             this.cd.detectChanges();
         }
         setTimeout(
-            () => (this.showYPoint = this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2.2),
+            () =>
+                (this.showYPoint =
+                    this.el.getBoundingClientRect().top + window.scrollY - window.innerHeight / this.ratioShowYPoint),
             0
         );
     }

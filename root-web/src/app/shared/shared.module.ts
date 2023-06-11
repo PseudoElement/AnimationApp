@@ -33,6 +33,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { LoaderComponent } from './components/loader/loader.component';
 import { SelectComponent } from './components/select/select.component';
 import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typing-animated-box.component';
+import { SvgComponent } from './components/svg/svg.component';
+import { ErrorTransformPipe } from './pipes/error-transform.pipe';
 
 @NgModule({
     declarations: [
@@ -65,6 +67,8 @@ import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typ
         LoaderComponent,
         SelectComponent,
         TypingAnimatedBoxComponent,
+        SvgComponent,
+        ErrorTransformPipe,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -97,6 +101,8 @@ import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typ
         LoaderComponent,
         SelectComponent,
         TypingAnimatedBoxComponent,
+        SvgComponent,
+        ErrorTransformPipe,
     ],
 })
 export class SharedModule {}

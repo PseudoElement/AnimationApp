@@ -11,6 +11,9 @@ export const AnimationTypes = {
     flip: 'flip',
     flipX: 'flipX',
     flipY: 'flipY',
+    zoomInEnter: 'zoomInEnter',
+    zoomIn: 'zoomIn',
+    zoomOut: 'zoomOut',
 } as const;
 
 export interface ITypingAnimation {

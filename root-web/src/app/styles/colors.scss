@@ -31,10 +31,10 @@ $grad-caribbean-green: linear-gradient(180deg, rgba(70, 255, 175, 1) 0%, rgba(0,
     --bg-color: $c-black;
     --primary-rgba: $rgba-white-03;
     --secondary-rgba: $rgba-black-04;
-    --header-bg-color: $rgba-vinous-07;
+    --vinous-blue-bg-color: $rgba-vinous-07;
 }
 
-$header-bg-color: var(--header-bg-color);
+$vinous-blue-bg-color: var(--vinous-blue-bg-color);
 $primary-text-color: var(--primary-text-color);
 $secondary-text-color: var(--secondary-text-color);
 $primary-bg-color: var(--bg-color);

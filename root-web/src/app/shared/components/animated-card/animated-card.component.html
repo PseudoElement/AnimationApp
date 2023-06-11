@@ -19,6 +19,9 @@
     [@flipInY]="shouldShow && showAnimationType === AnimationTypes.flipY"
     [@flipOutX]="shouldHide && hideAnimationType === AnimationTypes.flipX"
     [@flipOutY]="shouldHide && hideAnimationType === AnimationTypes.flipY"
+    [@zoomInOnEnter]="showAnimationType === 'zoomInEnter'"
+    [@zoomIn]="shouldShow && showAnimationType === AnimationTypes.zoomIn"
+    [@zoomOut]="shouldHide && hideAnimationType === AnimationTypes.zoomOut"
     class="animated-card-wrapper"
 >
     <ng-content></ng-content>

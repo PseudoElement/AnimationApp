@@ -10,9 +10,9 @@
             #card1
             class="card-1"
             appElementMove
+            [once]="true"
             [newCoordXTarget]="paddingLeft"
             [direction]="'ltr'"
-            [once]="true"
             [transitionValue]="'left 0.8s'"
         >
             <app-info-card [developerData]="cards[0]"></app-info-card>
@@ -21,9 +21,9 @@
             #card2
             class="card-2"
             appElementMove
+            [once]="true"
             [newCoordXTarget]="paddingLeft"
             [direction]="'rtl'"
-            [once]="true"
             [transitionValue]="'right 0.8s'"
         >
             <app-info-card [developerData]="cards[1]"></app-info-card>
@@ -32,9 +32,9 @@
             #card3
             class="card-3"
             appElementMove
+            [once]="true"
             [newCoordXTarget]="paddingLeft"
             [direction]="'ltr'"
-            [once]="true"
             [transitionValue]="'left 0.8s'"
         >
             <app-info-card [developerData]="cards[2]"></app-info-card>

@@ -26,9 +26,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         const id = Cookies.getCookie('id');
-        if (id) {
-            this.store.dispatch(loadUser({ id: JSON.parse(id) }));
-        }
+        if (id) this.store.dispatch(loadUser({ id: JSON.parse(id) }));
         this.themeService.initTheme();
     }
 }

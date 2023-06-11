@@ -3,6 +3,7 @@
     @include flex-column-start;
     margin-bottom: 20px;
     width: 100%;
+    position: relative;
 }
 .field {
     border: 3px solid $c-black;
@@ -11,12 +12,15 @@
     border-radius: 15px;
     padding: 5px 10px;
     transition: all 0.2s;
+    width: 100%;
 }
 .errorField {
     border: 3px solid $c-red;
 }
 
 .error {
+    width: 100%;
+    max-width: 400px;
     color: $c-red;
     font-size: $fs-16;
 }

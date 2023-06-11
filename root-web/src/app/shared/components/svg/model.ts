@@ -1,0 +1,15 @@
+export type SvgNames =
+    | 'angular'
+    | 'react'
+    | 'c#'
+    | 'js'
+    | 'ts'
+    | 'unity'
+    | 'nest'
+    | 'mongodb'
+    | 'sql'
+    | 'docker'
+    | 'linkedin'
+    | 'vk'
+    | 'telegram'
+    | 'github';

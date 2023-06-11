@@ -1,6 +1,7 @@
 @use '../../../styles.scss' as *;
 
 .wrapper {
+    padding: 100px 0;
 }
 .running-lines-wrapper {
 }
@@ -110,10 +111,74 @@ img {
         -webkit-text-fill-color: transparent;
     }
 }
-.footer {
+.footer-wrapper {
     position: relative;
     z-index: -1;
     top: 1400px;
-    height: 1000px;
-    background: $c-green;
+    padding: 100px 0;
+    .title {
+        font-size: $fs-85;
+        font-weight: $fw-semibold;
+        margin-bottom: 50px;
+        background-image: $grad-caribbean-green;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 5px;
+    }
+}
+.footer-card-wrapper {
+    @include flex-column-center;
+}
+.footer {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    .grid-area {
+        @include flex-row-center;
+    }
+    .skill-svg-wrapper {
+        @include flex-row-center;
+        padding: 20px;
+        width: 100%;
+        max-width: 300px;
+        transition: background-color 0.3s;
+        border-radius: 10px;
+        &:hover {
+            background-color: $vinous-blue-bg-color;
+        }
+    }
+    .area-1 {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+    .area-2 {
+        grid-area: 1 / 4 / 2 / 7;
+    }
+    .area-3 {
+        grid-area: 1 / 7 / 2 / 10;
+    }
+    .area-4 {
+        grid-area: 1 / 10 / 2 / 13;
+    }
+    .area-5 {
+        grid-area: 2 / 1 / 3 / 5;
+    }
+    .area-6 {
+        grid-area: 2 / 5 / 3 / 9;
+    }
+    .area-7 {
+        grid-area: 2 / 9 / 3 / 13;
+    }
+    .area-8 {
+        grid-area: 3 / 2 / 4 / 7;
+    }
+    .area-9 {
+        grid-area: 3 / 7 / 4 / 12;
+    }
+    .area-10 {
+        grid-area: 4 / 5 / 5 / 9;
+    }
 }

@@ -27,14 +27,14 @@ export class ThemeService {
             root.style.setProperty('--bg-color', colors.black);
             root.style.setProperty('--primary-rgba', colors.rgbaWhite03);
             root.style.setProperty('--secondary-rgba', colors.rgbaBlack08);
-            root.style.setProperty('--header-bg-color', colors.rgbaVinous07);
+            root.style.setProperty('--vinous-blue-bg-color', colors.rgbaVinous07);
         } else {
             root.style.setProperty('--primary-text-color', colors.black);
             root.style.setProperty('--secondary-text-color', colors.white);
             root.style.setProperty('--bg-color', colors.white);
             root.style.setProperty('--primary-rgba', colors.rgbaBlack08);
             root.style.setProperty('--secondary-rgba', colors.rgbaWhite03);
-            root.style.setProperty('--header-bg-color', colors.rgbaBlue07);
+            root.style.setProperty('--vinous-blue-bg-color', colors.rgbaBlue07);
         }
     }
 }
