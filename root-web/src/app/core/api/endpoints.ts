@@ -1,6 +1,6 @@
 import { Endpoints } from '../model';
 
-export const baseURL = 'http://localhost:3000';
+export const baseURL = 'https://animation-app-beige.vercel.app';
 
 export const endpoints: Endpoints = {
     getAllUsers: `${baseURL}/users`,

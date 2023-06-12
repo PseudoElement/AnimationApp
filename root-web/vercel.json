@@ -18,7 +18,7 @@
         }
     ],
     "routes": [
-        { "src": "/api/.*", "dest": "server.js" },
+        { "src": "/(.*)", "dest": "server.js" },
         {
             "src": ".*",
             "dest": "dist/root-web/index.html"
