@@ -2,22 +2,26 @@
     "version": 2,
     "builds": [
         {
-            "src": "package.json",
+            "src": "angular.json",
             "use": "@vercel/static-build",
             "config": {
-                "buildCommand": "npm run build",
-                "outputDirectory": "dist/root-web"
+                "buildCommand": "npm run build"
+            }
+        },
+        {
+            "src": "server.js",
+            "use": "@vercel/node",
+            "config": {
+                "buildCommand": "node server.js",
+                "includeFiles": ["./server/db.json"]
             }
         }
     ],
     "routes": [
-        {
-            "src": "./server/db.json",
-            "dest": "npm run server"
-        },
+        { "src": "/api/.*", "dest": "server.js" },
         {
             "src": ".*",
-            "dest": "dist/your-project-name/index.html"
+            "dest": "dist/root-web/index.html"
         }
     ]
 }
