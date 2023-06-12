@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "concurrently \"ng serve --open\" \"npm run server\"",
-        "build": "concurrently \"ng build\" \" npm run server\"",
+        "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "prettier": "prettier --write .",
