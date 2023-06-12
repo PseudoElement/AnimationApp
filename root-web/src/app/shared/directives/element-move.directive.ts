@@ -14,6 +14,7 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
     @Input() newCoordXTarget: number | null = null;
     @Input() once?: boolean;
     @Input() transitionValue?: string;
+    @Input() startPointRatio: number = 4;
     absoluteOffsetTopTarget: number | null = null;
     isDestroyed$: Subject<boolean> = new Subject();
     windowHeight: number;
@@ -41,7 +42,9 @@ export class ElementMoveDirective implements AfterViewInit, OnDestroy {
         this.cd.detectChanges();
         setTimeout(() => (this.absoluteOffsetTopTarget = this.target.getBoundingClientRect().top + window.scrollY), 0);
         setTimeout(
-            () => (this.startAnimationPoint = (this.absoluteOffsetTopTarget as number) - this.windowHeight / 4),
+            () =>
+                (this.startAnimationPoint =
+                    (this.absoluteOffsetTopTarget as number) - this.windowHeight / this.startPointRatio),
             0
         );
         fromEvent(document, 'scroll')

@@ -14,6 +14,7 @@
         @include flex-row-center;
         max-width: 50%;
         img {
+            object-fit: cover;
             width: 220px;
             height: 220px;
             border-radius: 50%;
