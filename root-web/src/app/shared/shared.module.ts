@@ -28,13 +28,14 @@ import { RotateXYDirective } from './directives/rotate-xy.directive';
 import { FullScreenTwoSlidesSliderComponent } from './components/full-screen-two-slides-slider/full-screen-two-slides-slider.component';
 import { FullScreenSlideComponent } from './components/full-screen-two-slides-slider/full-screen-slide/full-screen-slide.component';
 import { ArrowComponent } from './components/arrow/arrow.component';
-import { RotateXDirective } from './directives/rotate-x.directive';
+import { RotateYDirective } from './directives/rotate-y.directive';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SelectComponent } from './components/select/select.component';
 import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typing-animated-box.component';
 import { SvgComponent } from './components/svg/svg.component';
 import { ErrorTransformPipe } from './pipes/error-transform.pipe';
+import { RotateZDirective } from './directives/rotate-z.directive';
 
 @NgModule({
     declarations: [
@@ -62,13 +63,14 @@ import { ErrorTransformPipe } from './pipes/error-transform.pipe';
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
         ArrowComponent,
-        RotateXDirective,
+        RotateYDirective,
         PaginationComponent,
         LoaderComponent,
         SelectComponent,
         TypingAnimatedBoxComponent,
         SvgComponent,
         ErrorTransformPipe,
+        RotateZDirective,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -96,13 +98,14 @@ import { ErrorTransformPipe } from './pipes/error-transform.pipe';
         FullScreenTwoSlidesSliderComponent,
         FullScreenSlideComponent,
         ArrowComponent,
-        RotateXDirective,
+        RotateYDirective,
         PaginationComponent,
         LoaderComponent,
         SelectComponent,
         TypingAnimatedBoxComponent,
         SvgComponent,
         ErrorTransformPipe,
+        RotateZDirective,
     ],
 })
 export class SharedModule {}

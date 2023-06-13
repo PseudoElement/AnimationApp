@@ -1,9 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
-    selector: '[appRotateX]',
+    selector: '[appRotateY]',
 })
-export class RotateXDirective implements AfterViewInit {
+export class RotateYDirective implements AfterViewInit {
     @Input() isCardRotated: boolean = false;
     @Output() isCardRotatedChange: EventEmitter<boolean> = new EventEmitter(false);
     el: HTMLElement;
