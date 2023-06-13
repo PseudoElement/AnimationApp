@@ -1,9 +1,9 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
     selector: '[appRotateZ]',
 })
-export class RotateZDirective implements AfterViewInit {
+export class RotateZDirective {
     @Input() rotateAngle: number = 180;
     @Input() startAngle: number = 0;
     @Input() previousTransformStyle?: string = '';
@@ -22,8 +22,5 @@ export class RotateZDirective implements AfterViewInit {
             this.el.style.transform = this.previousTransformStyle + `rotateZ(${this.rotateAngle}deg)`;
         }
         this.prevScrollPos = currentScrollPos;
-    }
-    ngAfterViewInit(): void {
-        console.log(window.getComputedStyle(this.el).rotate);
     }
 }
