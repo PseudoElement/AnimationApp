@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { zoomInOnEnterAnimation } from 'angular-animations';
 import { Subscription } from 'rxjs';
 import { AnimationTypes, IApplicationCard, IOption, SidesX, pageSizeOptions, scrollToStart } from 'src/app/core';
@@ -11,23 +11,20 @@ import { SelectComponent } from 'src/app/shared/components/select/select.compone
     styleUrls: ['./products.component.scss'],
     animations: [zoomInOnEnterAnimation()],
 })
-export class ProductsComponent implements OnInit, AfterViewInit {
+export class ProductsComponent implements AfterViewInit {
     activeSlide: SidesX = 'left';
     loadedWebCards: IApplicationCard[] = [];
     webTotalCount: number = 0;
     pageIndex: number = 1;
     limit: number = 2;
-    isLoading: boolean = false;
     pageSizeOptions: IOption[] = pageSizeOptions;
-    constructor(private productsService: ProductsService) {}
+    constructor(private productsService: ProductsService) {
+        this.productsService.getAllWebApplications().subscribe((apps) => (this.webTotalCount = apps.length));
+        this._getPortionOfApps(this.pageIndex, this.limit);
+    }
     @ViewChild(SelectComponent) select!: SelectComponent;
     @HostListener('click', ['$event']) onCloseSelect(e: Event) {
         !(e.target as HTMLElement).closest('.select-wrapper') && this.select.onClose();
-    }
-
-    ngOnInit(): void {
-        this.productsService.getAllWebApplications().subscribe((apps) => (this.webTotalCount = apps.length));
-        this._getPortionOfApps(this.pageIndex, this.limit);
     }
 
     ngAfterViewInit(): void {
@@ -42,17 +39,15 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     }
     public onPagination(pageIndex: number): void {
         this.pageIndex = pageIndex + 1;
-        !this.isLoading && this._getPortionOfApps(this.pageIndex, this.limit);
+        this._getPortionOfApps(this.pageIndex, this.limit);
     }
     public onPageSizeChange(limit: number | string) {
         this.limit = limit as number;
         this._getPortionOfApps(1, this.limit);
     }
     private _getPortionOfApps(pageIndex: number, limit: number = this.limit): Subscription {
-        this.isLoading = true;
         return this.productsService.getPortionOfApps(pageIndex, limit).subscribe((apps) => {
             this.loadedWebCards = apps;
-            this.isLoading = false;
         });
     }
 }

@@ -31,21 +31,21 @@
                 "post": "C#-developer",
                 "info": "OOP-king, he knows about design-patterns more than you about yourself.",
                 "img": "../../../../assets/img/jpg/Artur.jpg",
-                "path": "/developer/cucold"
+                "path": "/developer/artur"
             },
             {
                 "name": "Pavel",
                 "post": "Fullstack-developer",
                 "info": "Angular/React-expert, from time to time has practice in bff-building.",
                 "img": "../../../../assets/img/jpg/Sintol.jpg",
-                "path": "/developer/sintol"
+                "path": "/developer/pavel"
             },
             {
                 "name": "Alexandr",
                 "post": "Phaser3/Unity-developer",
                 "info": "Phaser3-owner, there is nothing all over the world he couldn't implement on Phaser3.",
                 "img": "../../../../assets/img/jpg/Sashka.jpg",
-                "path": "/developer/borow"
+                "path": "/developer/alexandr"
             }
         ]
     },
@@ -117,7 +117,7 @@
     "products-games": [],
     "developer": [
         {
-            "id": "cucold",
+            "id": "artur",
             "name": "Artur",
             "info": [
                 "Good knowledge of OOP, SOLID, design pattern and common web application architectures",
@@ -142,7 +142,7 @@
             }
         },
         {
-            "id": "borow",
+            "id": "alexandr",
             "name": "Alexandr",
             "info": [
                 "Experienced in creating games on Unity and Phaser3",
@@ -168,7 +168,7 @@
             }
         },
         {
-            "id": "sintol",
+            "id": "pavel",
             "name": "Pavel",
             "info": [
                 "Strong knowledge of Angular and React",

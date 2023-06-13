@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { zoomInOnEnterAnimation } from 'angular-animations';
 import { IDeveloper, scrollToStart } from 'src/app/core';
 import { DeveloperService } from 'src/app/core/services/developer.service';
 
@@ -7,7 +8,7 @@ import { DeveloperService } from 'src/app/core/services/developer.service';
     selector: 'app-developer',
     templateUrl: './developer.component.html',
     styleUrls: ['./developer.component.scss'],
-    animations: [],
+    animations: [zoomInOnEnterAnimation({ duration: 300 })],
 })
 export class DeveloperComponent implements AfterViewInit {
     data?: IDeveloper;

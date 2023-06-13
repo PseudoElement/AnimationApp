@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { slideInLeftOnEnterAnimation } from 'angular-animations';
 import { AnimationTypes, IInfoCard, scrollToStart } from 'src/app/core';
 import { AboutService } from 'src/app/core/services/about.service';
 
@@ -6,6 +7,7 @@ import { AboutService } from 'src/app/core/services/about.service';
     selector: 'app-about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
+    animations: [slideInLeftOnEnterAnimation({ duration: 300 })],
 })
 export class AboutComponent implements AfterViewInit {
     cards: IInfoCard[] = [];
