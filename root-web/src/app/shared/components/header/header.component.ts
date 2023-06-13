@@ -5,6 +5,7 @@ import { Cookies, UserOnClient, alerts, links, scrollPoints } from 'src/app/core
 import { AlertService } from 'src/app/core/services/alert.service';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { ModalService } from 'src/app/core/services/modal.service';
+import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { AppState } from 'src/app/core/store/store';
 import { selectUser, UserActions } from 'src/app/core/store/user';
@@ -20,17 +21,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isScrolled$: BehaviorSubject<boolean>;
     isVisibleHeader$: BehaviorSubject<boolean>;
     user$: Observable<UserOnClient | null>;
+    logoSize: number = 85;
 
     constructor(
         public modalService: ModalService,
         public themeService: ThemeService,
         private store: Store<AppState>,
         private alertService: AlertService,
-        private headerService: HeaderService
+        private headerService: HeaderService,
+        private screenSizeService: ScreenSizeService
     ) {
         this.user$ = this.store.select(selectUser);
         this.isVisibleHeader$ = this.headerService.isVisible$;
         this.isScrolled$ = this.headerService.isScrolled$;
+        this.screenSizeService
+            .getSizes()
+            .pipe(takeUntil(this.isDestroyed$))
+            .subscribe((size) => {
+                if (size.width > 1024) {
+                    this.logoSize = 85;
+                } else {
+                    this.logoSize = 70;
+                }
+            });
     }
 
     async ngOnInit(): Promise<void> {

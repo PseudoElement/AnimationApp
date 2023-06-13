@@ -1,8 +1,22 @@
 <div class="wrapper">
     <div *ngIf="data" class="running-lines-wrapper">
-        <app-running-line [images]="data.firstRunningLine" [dir]="'rtl'"></app-running-line>
-        <app-running-line [images]="data.secondRunningLine"></app-running-line>
-        <app-running-line [images]="data.thirdRunningLine" [dir]="'rtl'"></app-running-line>
+        <app-running-line
+            [images]="data.firstRunningLine"
+            [dir]="'rtl'"
+            [imgHeight]="runningLineImgSize"
+            [imgWidth]="runningLineImgSize"
+        ></app-running-line>
+        <app-running-line
+            [images]="data.secondRunningLine"
+            [imgHeight]="runningLineImgSize"
+            [imgWidth]="runningLineImgSize"
+        ></app-running-line>
+        <app-running-line
+            [images]="data.thirdRunningLine"
+            [dir]="'rtl'"
+            [imgHeight]="runningLineImgSize"
+            [imgWidth]="runningLineImgSize"
+        ></app-running-line>
     </div>
 
     <div class="main">
@@ -31,6 +45,7 @@
             <p
                 #p1
                 appElementMove
+                [startPointRatio]="10"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p1)"
@@ -42,6 +57,7 @@
             <p
                 #p2
                 appElementMove
+                [startPointRatio]="10"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p2)"
@@ -53,6 +69,7 @@
             <p
                 #p3
                 appElementMove
+                [startPointRatio]="10"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p3)"
@@ -71,11 +88,11 @@
         </div>
         <div appOpacity class="slogan">
             <div class="leftPart">
-                <p class="mainLine">Без</p>
+                <h1 class="mainLine">Без</h1>
                 <p class="secondLine">Как</p>
             </div>
             <div class="rightPart">
-                <p class="mainLine">Boobook</p>
+                <h1 class="mainLine">Boobook</h1>
                 <p class="secondLine">без рук</p>
             </div>
         </div>

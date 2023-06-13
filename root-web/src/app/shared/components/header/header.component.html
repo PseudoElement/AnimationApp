@@ -1,6 +1,6 @@
 <header [ngClass]="{ activeHeader: isScrolled$ | async, hiddenHeader: !(isVisibleHeader$ | async) }">
     <a [routerLink]="'/'">
-        <app-logo></app-logo>
+        <app-logo [logoSize]="logoSize"></app-logo>
     </a>
     <app-nav [links]="links"></app-nav>
     <div class="theme-button-wrapper">

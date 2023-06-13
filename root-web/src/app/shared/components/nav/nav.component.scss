@@ -4,6 +4,11 @@
     margin-left: 100px;
     @include flex-row-center;
     font-weight: $fw-semibold;
+    @include tablet {
+        margin-left: 30px;
+        font-weight: $fw-medium;
+        font-size: $fs-24;
+    }
 }
 .link {
     border-radius: 20px;

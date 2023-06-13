@@ -6,7 +6,7 @@
     color: $primary-text-color;
     z-index: 600;
     top: -150px;
-    left: 50%;
+    left: 50vw;
     font-weight: $fw-semibold;
     transform: translateX(-50%);
     background: url(../../../../assets/img/png/WoodenBoard.png) no-repeat;
@@ -23,6 +23,6 @@
 .close-btn {
     position: absolute;
     z-index: 10;
-    top: 0px;
-    right: 15px;
+    top: 10px;
+    right: 30px;
 }

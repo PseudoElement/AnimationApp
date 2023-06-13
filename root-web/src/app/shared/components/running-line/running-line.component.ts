@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-running-line',
@@ -26,6 +26,4 @@ export class RunningLineComponent implements OnInit {
                 root.style.setProperty('--end', translateX + 'px');
         }
     }
-
-    constructor(private el: ElementRef) {}
 }

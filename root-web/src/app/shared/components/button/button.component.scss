@@ -18,6 +18,10 @@ button {
         background: $c-yellow;
         color: $secondary-text-color;
     }
+    @include tablet {
+        font-size: $fs-24;
+        font-weight: $fw-light;
+    }
 }
 .theme-btn {
     background: none;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 
 @Component({
     selector: 'app-logo',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
+    @Input() logoSize: number = 85;
     constructor() {}
 }

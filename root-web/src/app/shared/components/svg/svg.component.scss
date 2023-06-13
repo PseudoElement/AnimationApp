@@ -1,3 +1,5 @@
+@use '../../../../styles.scss' as *;
+
 svg {
     path {
         transition: all 250ms;
@@ -37,5 +39,20 @@ svg {
                 }
             }
         }
+    }
+}
+svg {
+    @include laptop {
+        width: 150px;
+        height: 150px;
+    }
+}
+.linkedin,
+.telegram,
+.github,
+.vk {
+    @include laptop {
+        width: 150px;
+        height: 150px;
     }
 }

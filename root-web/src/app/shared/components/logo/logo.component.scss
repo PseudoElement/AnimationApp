@@ -10,4 +10,10 @@
         margin-top: -25px;
         color: $primary-text-color;
     }
+    @include tablet {
+        font-size: $fs-18;
+        p {
+            margin-top: -15px;
+        }
+    }
 }

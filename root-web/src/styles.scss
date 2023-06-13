@@ -1,6 +1,7 @@
 @import './app/styles/colors.scss';
 @import './app/styles/fonts.scss';
 @import './app/styles/mixins.scss';
+@import './app/styles/breakpoints.scss';
 
 * {
     padding: 0;
@@ -31,5 +32,8 @@ body {
         border: none;
         background: none;
         cursor: pointer;
+    }
+    @include laptop {
+        font-size: $fs-24;
     }
 }

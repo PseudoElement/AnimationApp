@@ -14,7 +14,10 @@ header {
     background: none;
     font-family: $ff-Atyp;
     font-size: $fs-32;
-    color: red !important;
+    // color: red !important;
+    @include laptop {
+        padding: 0 50px;
+    }
 }
 .hiddenHeader {
     top: -150px;
@@ -27,6 +30,9 @@ header {
     right: 300px;
     top: 50%;
     transform: translateY(-50%);
+    @include tablet {
+        right: 230px;
+    }
 }
 .auth-button-wrapper {
     position: absolute;
