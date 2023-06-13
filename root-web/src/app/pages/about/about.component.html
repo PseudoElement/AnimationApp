@@ -3,7 +3,14 @@
         <h1 class="title">Our team</h1>
     </app-typing-animated-box>
     <app-animated-card [showAnimationType]="AnimationTypes.fadeDown" [once]="true" [fromStart]="true">
-        <img #teamImage class="team-photo" appRotateXY [perspective]="40" [src]="teamPhoto" alt="TeamPhoto" />
+        <img
+            #teamImage
+            class="team-photo"
+            appRotateXY
+            [perspective]="40"
+            src="../../../assets/img/jpg/Team.jpg"
+            alt="TeamPhoto"
+        />
     </app-animated-card>
     <div *ngIf="cards.length" class="cards">
         <div
