@@ -34,7 +34,7 @@
             appRotateZ
             [rotateAngle]="100"
             appParallax
-            [ratio]="0.8"
+            [ratio]="1"
             class="bombImg"
             src="../../../assets/img/svg/bomb.svg"
             alt="Bomb"
@@ -45,7 +45,7 @@
             <p
                 #p1
                 appElementMove
-                [startPointRatio]="10"
+                [startPointRatio]="startPointRatioCollorfullWords"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p1)"
@@ -57,7 +57,7 @@
             <p
                 #p2
                 appElementMove
-                [startPointRatio]="10"
+                [startPointRatio]="startPointRatioCollorfullWords"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p2)"
@@ -69,7 +69,7 @@
             <p
                 #p3
                 appElementMove
-                [startPointRatio]="10"
+                [startPointRatio]="startPointRatioCollorfullWords"
                 [elBelowTarget]="underDynamicWords"
                 [newCoordXTarget]="underDynamicWords.offsetLeft"
                 [startCoordYElBelow]="getStartCoordYForElBelowTarget(p3)"

@@ -36,4 +36,10 @@ body {
     @include laptop {
         font-size: $fs-24;
     }
+    @include tablet {
+        font-size: $fs-22;
+    }
+    @include mobile {
+        font-size: $fs-18;
+    }
 }

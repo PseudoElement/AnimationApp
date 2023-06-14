@@ -1,7 +1,14 @@
 import { Subscription } from 'rxjs';
 import { footerSvgNames } from './../../core/constants/homepage';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { IHomePageData, randomPhotos, scrollToStart } from 'src/app/core';
+import {
+    IHomePageData,
+    MAX_LAPTOP_WIDTH,
+    MAX_MOBILE_WIDTH,
+    MAX_TABLET_WIDTH,
+    randomPhotos,
+    scrollToStart,
+} from 'src/app/core';
 import { HomepageService } from 'src/app/core/services/homepage.service';
 import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 import { SvgNames } from 'src/app/shared/components/svg/model';
@@ -17,16 +24,20 @@ export class HomepageComponent implements AfterViewInit, OnDestroy {
     footerSvgNames: SvgNames[] = footerSvgNames;
     sizeSub: Subscription;
     runningLineImgSize: number = 170;
+    startPointRatioCollorfullWords: number = 10;
 
     constructor(private homepageService: HomepageService, private screenSizeService: ScreenSizeService) {
         this.homepageService.getHomePageData().subscribe((data) => (this.data = data));
         this.sizeSub = this.screenSizeService.getSizes().subscribe((screen) => {
-            console.log(screen.width);
-            if (screen.width > 1368) {
+            if (screen.width > MAX_LAPTOP_WIDTH) {
                 this.runningLineImgSize = 170;
-            } else {
-                console.log('ELSE');
+                this.startPointRatioCollorfullWords = 10;
+            } else if (screen.width > MAX_MOBILE_WIDTH) {
                 this.runningLineImgSize = 135;
+                this.startPointRatioCollorfullWords = 15;
+            } else {
+                this.runningLineImgSize = 110;
+                this.startPointRatioCollorfullWords = 20;
             }
         });
     }

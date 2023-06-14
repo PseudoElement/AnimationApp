@@ -1,19 +1,39 @@
-<header [ngClass]="{ activeHeader: isScrolled$ | async, hiddenHeader: !(isVisibleHeader$ | async) }">
-    <a [routerLink]="'/'">
-        <app-logo [logoSize]="logoSize"></app-logo>
-    </a>
-    <app-nav [links]="links"></app-nav>
-    <div class="theme-button-wrapper">
-        <app-button (click)="onChangeTheme()" [className]="'theme-btn'">
-            <span class="material-symbols-outlined"> {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }} </span>
-        </app-button>
-    </div>
-    <div *ngIf="!(user$ | async); else logout" class="auth-button-wrapper">
-        <app-button (click)="openModal()"> Login / Register </app-button>
-    </div>
-    <ng-template #logout>
-        <div class="auth-button-wrapper">
-            <app-button (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-button>
+<header
+    [ngClass]="{ activeHeader: isScrolled$ | async, hiddenHeader: !(isVisibleHeader$ | async), mobileHeader: isMobile }"
+>
+    <ng-container *ngIf="!isMobile; else mobileHeader">
+        <a [routerLink]="'/'">
+            <app-logo [logoSize]="logoSize"></app-logo>
+        </a>
+        <app-nav [links]="links"></app-nav>
+        <div class="theme-button-wrapper">
+            <app-button (click)="onChangeTheme()" [className]="'theme-btn'">
+                <span class="material-symbols-outlined">
+                    {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }}
+                </span>
+            </app-button>
+        </div>
+        <div *ngIf="!(user$ | async); else logout" class="auth-button-wrapper">
+            <app-button (click)="openModal()"> Login / Register </app-button>
+        </div>
+        <ng-template #logout>
+            <div class="auth-button-wrapper">
+                <app-button (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-button>
+            </div>
+        </ng-template>
+    </ng-container>
+    <ng-template #mobileHeader>
+        <div class="theme-button-wrapper">
+            <app-button (click)="onChangeTheme()" [className]="'theme-btn'">
+                <span class="material-symbols-outlined">
+                    {{ themeService.theme === 'dark' ? 'sunny' : 'dark_mode' }}
+                </span>
+            </app-button>
+        </div>
+        <div class="menu-btn-wrapper">
+            <app-button [className]="'theme-btn'">
+                <span class="material-symbols-outlined"> menu </span>
+            </app-button>
         </div>
     </ng-template>
 </header>

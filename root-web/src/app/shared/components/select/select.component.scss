@@ -4,6 +4,7 @@
     @include flex-row-center;
     .label {
         text-align: center;
+        margin-right: 10px;
     }
 }
 .select-wrapper {
@@ -11,7 +12,7 @@
     @include flex-column-center;
     width: 100%;
     min-width: 200px;
-    height: 50px;
+    height: 100%;
     border: 4px solid $c-white;
     box-sizing: border-box;
     cursor: pointer;
@@ -33,5 +34,8 @@
     }
     .option {
         width: 100%;
+        button {
+            width: 100%;
+        }
     }
 }

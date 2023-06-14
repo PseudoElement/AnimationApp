@@ -1,6 +1,6 @@
 $mobile-width: 768px;
-$laptop-width: 1368px;
 $tablet-width: 1024px;
+$laptop-width: 1368px;
 
 @mixin laptop {
     @media screen and (max-width: $laptop-width) {

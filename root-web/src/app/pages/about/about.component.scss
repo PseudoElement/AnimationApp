@@ -4,10 +4,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding: 100px;
     background: url(../../../assets/img/jpg/Beach.webp) no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    @include mobile {
+        padding: 30px;
+    }
 }
 .title {
     margin: 20px 0;
@@ -16,6 +19,15 @@
     background-image: $grad-pink;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    @include laptop {
+        font-size: $fs-150;
+    }
+    @include tablet {
+        font-size: $fs-110;
+    }
+    @include mobile {
+        font-size: $fs-64;
+    }
 }
 .team-photo {
     position: relative;
@@ -26,7 +38,10 @@
 .cards {
     position: relative;
     width: 100%;
-    height: 1400px;
+    height: 1500px;
+    @include mobile {
+        height: 1800px;
+    }
 }
 .card-1 {
     position: absolute;
@@ -37,9 +52,15 @@
     position: absolute;
     top: 500px;
     right: -1000px;
+    @include mobile {
+        top: 650px;
+    }
 }
 .card-3 {
     position: absolute;
     top: 950px;
     left: -1000px;
+    @include mobile {
+        top: 1250px;
+    }
 }

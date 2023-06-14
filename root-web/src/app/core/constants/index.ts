@@ -4,3 +4,4 @@ export * from './colors';
 export * from './alertService';
 export * from './products';
 export * from './pipes';
+export * from './breakpoints';

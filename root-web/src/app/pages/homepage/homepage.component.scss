@@ -2,10 +2,14 @@
 
 $top-pos-first-collorful-word-desktop: 390px;
 $top-pos-first-collorful-word-laptop: 230px;
-$top-pos-first-collorful-word-tablet: 110px;
+$top-pos-first-collorful-word-tablet: 160px;
+$top-pos-first-collorful-word-mobile: 105px;
 
 .wrapper {
     padding: 100px 0;
+    @include mobile {
+        padding: 70px 0;
+    }
 }
 .main {
     position: relative;
@@ -18,6 +22,10 @@ $top-pos-first-collorful-word-tablet: 110px;
     }
     @include tablet {
         height: 140px;
+    }
+    @include mobile {
+        margin-top: -120px;
+        padding: 0 30px;
     }
 
     .colorfullWords {
@@ -41,6 +49,11 @@ $top-pos-first-collorful-word-tablet: 110px;
                 font-size: $fs-52;
                 font-weight: $fw-semibold;
             }
+            @include mobile {
+                max-height: 55px;
+                border-radius: 15px;
+                font-size: $fs-40;
+            }
         }
         :nth-child(1) {
             left: -800px;
@@ -53,6 +66,9 @@ $top-pos-first-collorful-word-tablet: 110px;
             @include tablet {
                 top: $top-pos-first-collorful-word-tablet;
             }
+            @include mobile {
+                top: $top-pos-first-collorful-word-mobile;
+            }
         }
         :nth-child(2) {
             background-color: $c-green;
@@ -64,6 +80,9 @@ $top-pos-first-collorful-word-tablet: 110px;
             @include tablet {
                 top: calc($top-pos-first-collorful-word-tablet + 70px);
             }
+            @include mobile {
+                top: calc($top-pos-first-collorful-word-mobile + 60px);
+            }
         }
         :nth-child(3) {
             left: -800px;
@@ -74,6 +93,9 @@ $top-pos-first-collorful-word-tablet: 110px;
             }
             @include tablet {
                 top: calc($top-pos-first-collorful-word-tablet + 140px);
+            }
+            @include mobile {
+                top: calc($top-pos-first-collorful-word-mobile + 120px);
             }
         }
     }
@@ -94,7 +116,7 @@ h1 {
         font-size: $fs-110;
         line-height: 70px;
     }
-    @include tablet {
+    @include mobile {
         font-size: $fs-64;
         line-height: 45px;
     }
@@ -109,6 +131,9 @@ h1 {
     @include tablet {
         top: $top-pos-first-collorful-word-tablet;
     }
+    @include mobile {
+        top: $top-pos-first-collorful-word-mobile;
+    }
     .info {
         margin-top: 30px;
         max-width: 1500px;
@@ -116,6 +141,9 @@ h1 {
         padding-right: 10%;
         @include laptop {
             font-size: $fs-32;
+        }
+        @include mobile {
+            font-size: $fs-24;
         }
     }
 }
@@ -137,6 +165,9 @@ img {
     @include tablet {
         top: 400px;
     }
+    @include mobile {
+        right: -100px;
+    }
 }
 .bombImg {
     position: absolute;
@@ -150,6 +181,9 @@ img {
     @include tablet {
         top: 1100px;
     }
+    @include mobile {
+        top: 900px;
+    }
 }
 .rocketImg,
 .bombImg {
@@ -158,6 +192,9 @@ img {
     }
     @include tablet {
         max-height: 300px;
+    }
+    @include mobile {
+        max-height: 200px;
     }
 }
 
@@ -175,6 +212,10 @@ img {
     }
     @include tablet {
         top: 700px;
+    }
+    @include mobile {
+        top: 550px;
+        padding: 0 30px;
     }
 
     .leftPart {
@@ -228,6 +269,10 @@ img {
     @include tablet {
         top: 800px;
     }
+    @include mobile {
+        top: 550px;
+        z-index: 1;
+    }
     .title {
         font-size: $fs-85;
         font-weight: $fw-semibold;
@@ -236,10 +281,12 @@ img {
         background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: 5px;
-    }
-    @include laptop {
-        .title {
+        white-space: nowrap;
+        @include laptop {
             font-size: $fs-64;
+        }
+        @include mobile {
+            font-size: $fs-52;
         }
     }
 }
@@ -253,7 +300,9 @@ img {
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-
+    @include mobile {
+        padding: 0 20px;
+    }
     .grid-area {
         @include flex-row-center;
     }
@@ -269,6 +318,10 @@ img {
         }
         @include laptop {
             max-width: 200px;
+        }
+        @include mobile {
+            max-width: 100px;
+            max-height: 100px;
         }
     }
     .area-1 {

@@ -46,6 +46,10 @@ svg {
         width: 150px;
         height: 150px;
     }
+    @include mobile {
+        width: 80px;
+        height: 80px;
+    }
 }
 .linkedin,
 .telegram,

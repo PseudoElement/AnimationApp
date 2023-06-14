@@ -27,6 +27,7 @@ button {
     background: none;
     padding: 10px;
     border-radius: 50%;
+    max-width: 50px;
     &:hover {
         background: $secondary-rgba;
         color: $primary-text-color;

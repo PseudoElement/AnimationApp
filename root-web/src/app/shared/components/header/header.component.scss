@@ -14,9 +14,28 @@ header {
     background: none;
     font-family: $ff-Atyp;
     font-size: $fs-32;
-    // color: red !important;
     @include laptop {
         padding: 0 50px;
+    }
+    @include mobile {
+        height: 70px;
+    }
+}
+.auth-button-wrapper,
+.theme-button-wrapper,
+.menu-btn-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mobileHeader {
+    // @include flex-row-space-between;
+    .theme-button-wrapper {
+        // left: 50px;
+        right: calc(100% - 70px);
+    }
+    .menu-btn-wrapper {
+        position: absolute;
+        right: 40px;
     }
 }
 .hiddenHeader {
@@ -28,8 +47,6 @@ header {
 .theme-button-wrapper {
     position: absolute;
     right: 300px;
-    top: 50%;
-    transform: translateY(-50%);
     @include tablet {
         right: 230px;
     }
@@ -37,6 +54,4 @@ header {
 .auth-button-wrapper {
     position: absolute;
     right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
 }

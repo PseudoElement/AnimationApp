@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, Observable, fromEvent, BehaviorSubject } from 'rxjs';
-import { Cookies, UserOnClient, alerts, links, scrollPoints } from 'src/app/core';
+import { Cookies, MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH, UserOnClient, alerts, links, scrollPoints } from 'src/app/core';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { ModalService } from 'src/app/core/services/modal.service';
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isVisibleHeader$: BehaviorSubject<boolean>;
     user$: Observable<UserOnClient | null>;
     logoSize: number = 85;
+    isMobile: boolean = false;
 
     constructor(
         public modalService: ModalService,
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private store: Store<AppState>,
         private alertService: AlertService,
         private headerService: HeaderService,
-        private screenSizeService: ScreenSizeService
+        public screenSizeService: ScreenSizeService
     ) {
         this.user$ = this.store.select(selectUser);
         this.isVisibleHeader$ = this.headerService.isVisible$;
@@ -38,9 +39,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .getSizes()
             .pipe(takeUntil(this.isDestroyed$))
             .subscribe((size) => {
-                if (size.width > 1024) {
+                if (size.width > MAX_TABLET_WIDTH) {
                     this.logoSize = 85;
+                    this.isMobile = false;
+                } else if (size.width > MAX_MOBILE_WIDTH) {
+                    this.isMobile = false;
                 } else {
+                    this.isMobile = true;
                     this.logoSize = 70;
                 }
             });
@@ -64,7 +69,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 }
                 prevScrollpos = currentScrollPos;
             });
-        this.alertService.message$.subscribe((val) => console.log('message', val));
     }
 
     ngOnDestroy(): void {

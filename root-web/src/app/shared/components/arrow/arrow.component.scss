@@ -12,6 +12,9 @@ span {
     -webkit-text-fill-color: transparent;
     position: relative;
     font-size: $fs-52;
+    @include mobile {
+        font-size: $fs-32;
+    }
 }
 .left-to-right {
     span {
