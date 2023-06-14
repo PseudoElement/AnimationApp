@@ -7,6 +7,7 @@ $top-pos-first-collorful-word-mobile: 105px;
 
 .wrapper {
     padding: 100px 0;
+    width: 100vw;
     @include mobile {
         padding: 70px 0;
     }
@@ -117,7 +118,7 @@ h1 {
         line-height: 70px;
     }
     @include mobile {
-        font-size: $fs-64;
+        font-size: 58px;
         line-height: 45px;
     }
 }
@@ -157,29 +158,31 @@ img {
     position: absolute;
     top: 800px;
     right: 0;
-    transform: rotateZ(-45deg);
+    img {
+        transform: rotateZ(-45deg);
+    }
     @include laptop {
         top: 500px;
-        right: -190px;
+        right: 100px;
     }
     @include tablet {
         top: 400px;
     }
     @include mobile {
-        right: -100px;
+        // right: -100px;
     }
 }
 .bombImg {
     position: absolute;
-    top: 1900px;
+    top: 2000px;
     left: 100px;
     z-index: -1;
     @include laptop {
         top: 1300px;
-        left: -100px;
     }
     @include tablet {
         top: 1100px;
+        left: 50px;
     }
     @include mobile {
         top: 900px;
@@ -188,13 +191,19 @@ img {
 .rocketImg,
 .bombImg {
     @include laptop {
-        max-height: 400px;
+        img {
+            max-height: 400px;
+        }
     }
     @include tablet {
-        max-height: 300px;
+        img {
+            max-height: 300px;
+        }
     }
     @include mobile {
-        max-height: 200px;
+        img {
+            max-height: 200px;
+        }
     }
 }
 
@@ -259,7 +268,7 @@ img {
 }
 .footer-wrapper {
     position: relative;
-    padding: 0 100px;
+    // padding: 0 100px;
     z-index: -1;
     top: 1400px;
     padding-bottom: 100px;
@@ -301,7 +310,7 @@ img {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     @include mobile {
-        padding: 0 20px;
+        // padding: 0 20px;
     }
     .grid-area {
         @include flex-row-center;

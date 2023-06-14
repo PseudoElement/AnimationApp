@@ -31,13 +31,13 @@ export class HomepageComponent implements AfterViewInit, OnDestroy {
         this.sizeSub = this.screenSizeService.getSizes().subscribe((screen) => {
             if (screen.width > MAX_LAPTOP_WIDTH) {
                 this.runningLineImgSize = 170;
-                this.startPointRatioCollorfullWords = 10;
+                this.startPointRatioCollorfullWords = 7;
             } else if (screen.width > MAX_MOBILE_WIDTH) {
                 this.runningLineImgSize = 135;
                 this.startPointRatioCollorfullWords = 15;
             } else {
                 this.runningLineImgSize = 110;
-                this.startPointRatioCollorfullWords = 20;
+                this.startPointRatioCollorfullWords = 17.5;
             }
         });
     }

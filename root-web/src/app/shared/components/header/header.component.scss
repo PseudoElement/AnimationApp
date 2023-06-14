@@ -28,9 +28,7 @@ header {
     transform: translateY(-50%);
 }
 .mobileHeader {
-    // @include flex-row-space-between;
     .theme-button-wrapper {
-        // left: 50px;
         right: calc(100% - 70px);
     }
     .menu-btn-wrapper {
@@ -54,4 +52,13 @@ header {
 .auth-button-wrapper {
     position: absolute;
     right: 50px;
+}
+.menu-list-wrapper {
+    background: $vinous-blue-bg-color;
+    position: fixed;
+    @include flex-row-center;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
 }

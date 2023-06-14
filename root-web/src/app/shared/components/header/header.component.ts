@@ -9,11 +9,14 @@ import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { AppState } from 'src/app/core/store/store';
 import { selectUser, UserActions } from 'src/app/core/store/user';
+import { opacityAnimation } from '../../animations';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
+    animations: [opacityAnimation],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     links = links;
@@ -23,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     user$: Observable<UserOnClient | null>;
     logoSize: number = 85;
     isMobile: boolean = false;
+    isOpenMobileMenu: boolean = false;
 
     constructor(
         public modalService: ModalService,
@@ -30,7 +34,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private store: Store<AppState>,
         private alertService: AlertService,
         private headerService: HeaderService,
-        public screenSizeService: ScreenSizeService
+        public screenSizeService: ScreenSizeService,
+        private router: Router
     ) {
         this.user$ = this.store.select(selectUser);
         this.isVisibleHeader$ = this.headerService.isVisible$;
@@ -90,5 +95,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     public openModal() {
         this.modalService.toggleVisibility('auth');
+    }
+
+    public onMenuClick() {
+        this.isOpenMobileMenu = !this.isOpenMobileMenu;
+    }
+
+    public onNavigationClick(url: string) {
+        this.router.navigateByUrl(url);
     }
 }

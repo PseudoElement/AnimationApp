@@ -30,10 +30,23 @@
                 </span>
             </app-button>
         </div>
-        <div class="menu-btn-wrapper">
+        <div class="menu-btn-wrapper" (click)="onMenuClick()">
             <app-button [className]="'theme-btn'">
                 <span class="material-symbols-outlined"> menu </span>
             </app-button>
         </div>
     </ng-template>
 </header>
+<div @opacityAnimation *ngIf="isMobile && isOpenMobileMenu" (click)="onMenuClick()" class="menu-list-wrapper">
+    <app-menu-list>
+        <app-menu-item (click)="onNavigationClick('/')">Home</app-menu-item>
+        <app-menu-item (click)="onNavigationClick('/about')">About</app-menu-item>
+        <app-menu-item (click)="onNavigationClick('/products')">Products</app-menu-item>
+        <ng-container *ngIf="!(user$ | async); else logoutItem">
+            <app-menu-item (click)="openModal()">Login / Register</app-menu-item>
+        </ng-container>
+        <ng-template #logoutItem>
+            <app-menu-item (click)="onLogout()">Logout</app-menu-item>
+        </ng-template>
+    </app-menu-list>
+</div>

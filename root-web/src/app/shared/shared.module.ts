@@ -36,6 +36,8 @@ import { TypingAnimatedBoxComponent } from './components/typing-animated-box/typ
 import { SvgComponent } from './components/svg/svg.component';
 import { ErrorTransformPipe } from './pipes/error-transform.pipe';
 import { RotateZDirective } from './directives/rotate-z.directive';
+import { MenuListComponent } from './components/menu-list/menu-list.component';
+import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
 
 @NgModule({
     declarations: [
@@ -71,6 +73,8 @@ import { RotateZDirective } from './directives/rotate-z.directive';
         SvgComponent,
         ErrorTransformPipe,
         RotateZDirective,
+        MenuListComponent,
+        MenuItemComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -106,6 +110,8 @@ import { RotateZDirective } from './directives/rotate-z.directive';
         SvgComponent,
         ErrorTransformPipe,
         RotateZDirective,
+        MenuListComponent,
+        MenuItemComponent,
     ],
 })
 export class SharedModule {}
