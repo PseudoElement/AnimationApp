@@ -23,6 +23,9 @@
         </ng-template>
     </ng-container>
     <ng-template #mobileHeader>
+        <a [routerLink]="'/'">
+            <app-logo [logoSize]="logoSize"></app-logo>
+        </a>
         <div class="theme-button-wrapper">
             <app-button (click)="onChangeTheme()" [className]="'theme-btn'">
                 <span class="material-symbols-outlined">
@@ -46,7 +49,7 @@
             <app-menu-item (click)="openModal()">Login / Register</app-menu-item>
         </ng-container>
         <ng-template #logoutItem>
-            <app-menu-item (click)="onLogout()">Logout</app-menu-item>
+            <app-menu-item (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-menu-item>
         </ng-template>
     </app-menu-list>
 </div>

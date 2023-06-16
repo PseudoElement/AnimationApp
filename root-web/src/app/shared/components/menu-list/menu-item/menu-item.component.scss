@@ -1,9 +1,7 @@
 @use '../../../../../styles.scss' as *;
 
 .menu-item {
-    @include flex-row-center;
     padding: 10px;
-    button {
-        width: 100%;
-    }
+    width: 50vw;
+    height: 80px;
 }

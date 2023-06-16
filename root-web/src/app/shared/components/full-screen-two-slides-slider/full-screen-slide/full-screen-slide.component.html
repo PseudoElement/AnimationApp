@@ -13,8 +13,13 @@
             <p class="title">
                 {{ title }}
             </p>
-            <div class="arrow">
-                <app-arrow [isVisible]="isHoverToggleBar" [symbolName]="side === 'left' ? 'east' : 'west'"></app-arrow>
+            <div class="arrow-wrapper">
+                <div class="arrow">
+                    <app-arrow
+                        [isVisible]="isHoverToggleBar"
+                        [symbolName]="side === 'left' ? 'east' : 'west'"
+                    ></app-arrow>
+                </div>
             </div>
         </ng-container>
     </div>
