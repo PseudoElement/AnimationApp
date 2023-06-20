@@ -4,7 +4,7 @@
     color: $c-white;
     .body {
         position: absolute;
-        padding: 10% 5% 5% 5%;
+        padding: 100px 5% 5% 5%;
         width: 0;
         top: 0;
         transition: width 0.5s;
@@ -35,13 +35,13 @@
             font-weight: $fw-medium;
             writing-mode: vertical-lr;
         }
-        .arrow {
+        .arrow-wrapper {
             @include flex-row-center;
             width: 100%;
             flex: 0 0 20%;
         }
         @include mobile {
-            width: 90px;
+            width: 50px;
         }
     }
 }
@@ -51,7 +51,7 @@
         width: calc(100% - 120px);
         visibility: visible;
         @include mobile {
-            width: calc(100% - 90px);
+            width: calc(100% - 50px);
         }
     }
     .left-body {
@@ -71,18 +71,24 @@
     .title {
         transform: rotate(-180deg);
     }
-    .arrow {
+    .arrow-wrapper {
         border-right: 10px solid $c-orange;
         @include mobile {
+            .arrow {
+                margin-left: -40px;
+            }
         }
     }
 }
 .right-toggle-bar {
     right: 0;
     background: $c-vinous;
-    .arrow {
+    .arrow-wrapper {
         border-left: 10px solid $c-orange;
         @include mobile {
+            .arrow {
+                margin-right: -40px;
+            }
         }
     }
 }

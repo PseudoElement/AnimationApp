@@ -27,9 +27,13 @@ header {
     top: 50%;
     transform: translateY(-50%);
 }
+.theme-button-wrapper,
+.menu-btn-wrapper {
+    border-radius: 50%;
+}
 .mobileHeader {
     .theme-button-wrapper {
-        right: calc(100% - 70px);
+        right: 125px;
     }
     .menu-btn-wrapper {
         position: absolute;
