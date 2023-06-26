@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { endpoints } from '../api/endpoints';
-import { UserOnServer } from '../model';
+import { ILoginData, IRegisterData, IUser } from '../model';
 
 @Injectable({
     providedIn: 'root',
@@ -12,15 +12,19 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    public getAllUsers(): Observable<UserOnServer[]> {
-        return this.http.get<UserOnServer[]>(endpoints.getAllUsers as string);
+    public getAllUsers(): Observable<IUser[]> {
+        return this.http.get<IUser[]>(endpoints.getAllUsers as string);
     }
 
-    public registerUser(user: UserOnServer): Observable<UserOnServer> {
-        return this.http.post<UserOnServer>(endpoints.registerUser as string, user);
+    public registerUser(data: IRegisterData): Observable<HttpResponse<IUser>> {
+        return this.http.post<IUser>(endpoints.registerUser as string, data, { observe: 'response' });
     }
 
-    public getUser(id: string): Observable<UserOnServer> {
-        return this.http.get<UserOnServer>((endpoints.getUser as (id: string) => string)(id));
+    public loginUser(data: ILoginData): Observable<HttpResponse<IUser>> {
+        return this.http.post<IUser>(endpoints.loginUser as string, data, { observe: 'response' });
+    }
+
+    public getUser(id: string): Observable<IUser> {
+        return this.http.get<IUser>((endpoints.getUser as (id: string) => string)(id));
     }
 }

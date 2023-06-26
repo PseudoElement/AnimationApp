@@ -14,7 +14,6 @@ export class UserEffects {
         this.actions$.pipe(
             ofType(UserActions.loadUser),
             mergeMap((action) => this.authService.getUser(action.id)),
-            map((user) => UserActions.setUser(omitObjectProp('password', user))),
             catchError((err) => {
                 this.alertService.isOpen$.next(true);
                 this.alertService.message$.next(alerts.requestError);

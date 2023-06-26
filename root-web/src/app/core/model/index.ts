@@ -14,3 +14,5 @@ export * from './animations';
 export * from './products';
 export * from './pipes';
 export * from './homepage';
+export * from './auth';
+export * from './chat-page';

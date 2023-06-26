@@ -1,14 +1,7 @@
-export interface UserOnServer {
+export interface IUser {
     email: string;
-    name: string;
-    password: string;
     id: string;
     token: string;
-}
-
-export interface UserOnClient {
-    email: string | null;
-    name: string | null;
-    id: string | null;
-    token: string | null;
+    created_at: Date;
+    updated_at: Date;
 }

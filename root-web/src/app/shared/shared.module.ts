@@ -38,6 +38,8 @@ import { ErrorTransformPipe } from './pipes/error-transform.pipe';
 import { RotateZDirective } from './directives/rotate-z.directive';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { MessageComponent } from './components/chat/message/message.component';
 
 @NgModule({
     declarations: [
@@ -75,6 +77,8 @@ import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.co
         RotateZDirective,
         MenuListComponent,
         MenuItemComponent,
+        ChatComponent,
+        MessageComponent,
     ],
     imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
     exports: [
@@ -112,6 +116,8 @@ import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.co
         RotateZDirective,
         MenuListComponent,
         MenuItemComponent,
+        ChatComponent,
+        MessageComponent,
     ],
 })
 export class SharedModule {}

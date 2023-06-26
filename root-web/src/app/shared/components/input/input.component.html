@@ -1,12 +1,20 @@
-<div class="input-wrapper">
-    <label [for]="id">{{ label }}</label>
-    <input
-        [placeholder]="placeholder"
-        [ngClass]="{ errorField: control.dirty && control.touched && error }"
-        class="field"
-        [id]="id"
-        type="text"
-        [formControl]="control"
-    />
-    <p *ngIf="control.dirty && control.touched && error" class="error">{{ error | errorTransform }}</p>
-</div>
+<ng-container *ngIf="isFormControl; else defaultControl">
+    <div class="input-wrapper">
+        <label [for]="id">{{ label }}</label>
+        <input
+            [placeholder]="placeholder"
+            [ngClass]="{ errorField: control.dirty && control.touched && error }"
+            class="field"
+            [id]="id"
+            [type]="type"
+            [formControl]="control"
+        />
+        <p *ngIf="control.dirty && control.touched && error" class="error">{{ error | errorTransform }}</p>
+    </div>
+</ng-container>
+<ng-template #defaultControl>
+    <div class="input-wrapper">
+        <label [for]="id">{{ label }}</label>
+        <input [placeholder]="placeholder" class="field" [id]="id" [type]="type" />
+    </div>
+</ng-template>

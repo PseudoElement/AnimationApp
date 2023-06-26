@@ -1,0 +1,9 @@
+@use '../../../styles.scss' as *;
+
+.chat-page-wrapper {
+    padding: 100px 0;
+    width: 100vw;
+    @include mobile {
+        padding: 70px 0;
+    }
+}

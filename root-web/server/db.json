@@ -24,7 +24,6 @@
     },
 
     "about": {
-        "teamPhoto": "../../../assets/img/png/Developers.png",
         "cards": [
             {
                 "name": "Artur",

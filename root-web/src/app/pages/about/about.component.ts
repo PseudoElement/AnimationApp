@@ -13,13 +13,11 @@ import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 })
 export class AboutComponent implements AfterViewInit, OnDestroy {
     cards: IInfoCard[] = [];
-    teamPhoto: string = '';
     cardXPos: number = 100;
     sizeSub: Subscription;
     constructor(private aboutService: AboutService, private screenSizeService: ScreenSizeService) {
         this.aboutService.getAbout().subscribe((res) => {
-            this.cards = res.cards;
-            this.teamPhoto = res.teamPhoto;
+            // this.cards = res.cards;
         });
         this.sizeSub = this.screenSizeService.getSizes().subscribe((screen) => {
             if (screen.width > MAX_LAPTOP_WIDTH) {

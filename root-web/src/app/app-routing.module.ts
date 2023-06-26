@@ -4,11 +4,13 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
+import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
 const routes: Routes = [
     { path: '', component: HomepageComponent, title: 'Home' },
     { path: 'about', component: AboutComponent, title: 'About Us' },
     { path: 'products', component: ProductsComponent, title: 'Products' },
+    { path: 'chat', component: ChatPageComponent, title: 'Chat' },
     {
         path: 'developer',
         children: [

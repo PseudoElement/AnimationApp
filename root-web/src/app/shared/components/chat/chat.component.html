@@ -1,0 +1,6 @@
+<div class="chat-wrapper">
+    <div *ngIf="!messages.length" class="no-message">No message yet.</div>
+    <div *ngIf="messages.length" class="messages">
+        <app-message *ngFor="let message of messages" [data]="message"></app-message>
+    </div>
+</div>

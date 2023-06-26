@@ -14,6 +14,7 @@ export class InputComponent {
     @Input() id?: string;
     @Input() label: string = '';
     @Input() type?: InputTypes = 'text';
+    @Input() isFormControl?: boolean = true;
     get error(): keyof IErrors | null {
         if (!this.control.errors) return null;
         else return Object.keys(this.control.errors)[0] as keyof IErrors;

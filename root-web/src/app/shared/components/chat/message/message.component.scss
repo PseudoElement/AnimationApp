@@ -1,0 +1,7 @@
+@use '../../../../../styles.scss' as *;
+
+.message-wrapper {
+    @include flex-column-start {
+        justify-content: space-between;
+    }
+}

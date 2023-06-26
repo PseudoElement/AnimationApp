@@ -11,6 +11,7 @@ import { UserEffects, userReducer } from './core/store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingHandlerInterceptor } from './core/interceptors/loading-handler.interceptor';
+import { HandleCorsInterceptor } from './core/interceptors/handle-cors.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -29,6 +30,11 @@ import { LoadingHandlerInterceptor } from './core/interceptors/loading-handler.i
         {
             provide: HTTP_INTERCEPTORS,
             useClass: LoadingHandlerInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HandleCorsInterceptor,
             multi: true,
         },
     ],

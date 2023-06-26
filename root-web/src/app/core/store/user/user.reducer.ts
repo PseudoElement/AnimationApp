@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserOnClient } from '../../model';
 import { UserActions } from '.';
 import { omitObjectProp } from '../../utils';
+import { IUser } from '../../model';
 
 export interface UserState {
-    user: UserOnClient | null;
+    user: IUser | null;
 }
 
 const initialState: UserState = {
@@ -17,6 +17,6 @@ export const userReducer = createReducer(
     on(UserActions.unsetUser, (state) => ({ ...state, user: null })),
     on(UserActions.setUserName, (state, action) => {
         const newName = action.name;
-        return { ...state, user: { ...state.user, name: newName } as UserOnClient };
+        return { ...state, user: { ...state.user, name: newName } as IUser };
     })
 );

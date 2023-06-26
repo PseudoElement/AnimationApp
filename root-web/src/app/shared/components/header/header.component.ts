@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, Observable, fromEvent, BehaviorSubject } from 'rxjs';
-import { Cookies, MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH, UserOnClient, alerts, links, scrollPoints } from 'src/app/core';
+import { Cookies, IUser, MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH, alerts, links, scrollPoints } from 'src/app/core';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { ModalService } from 'src/app/core/services/modal.service';
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isDestroyed$: Subject<boolean> = new Subject();
     isScrolled$: BehaviorSubject<boolean>;
     isVisibleHeader$: BehaviorSubject<boolean>;
-    user$: Observable<UserOnClient | null>;
+    user$: Observable<IUser | null>;
     logoSize: number = 85;
     isMobile: boolean = false;
     isOpenMobileMenu: boolean = false;

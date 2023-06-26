@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
-import { Cookies, alerts, omitObjectProp } from 'src/app/core';
+import { Cookies, IUser, alerts, omitObjectProp } from 'src/app/core';
+import { status } from 'src/app/core/api';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ModalService } from 'src/app/core/services/modal.service';
@@ -32,19 +33,19 @@ export class LoginFormComponent {
         if (this.alertService.isOpen$.value) return;
         const email = this.loginForm.value.email as string;
         const password = this.loginForm.value.password as string;
-        const users = await firstValueFrom(this.authService.getAllUsers());
-        const foundUser = users.find((user) => user.email === email);
-        if (!foundUser) {
+        const response = await firstValueFrom(this.authService.loginUser({ email, password }));
+        console.log('RESP', response);
+        if (response.status === status.notFound) {
             this.alertService.message$.next(alerts.userDoesntExist);
             this.alertService.isOpen$.next(true);
-        } else if (foundUser && foundUser.password !== password) {
+        } else if (response.status === status.unauthorized) {
             this.alertService.message$.next(alerts.incorrectPassword);
             this.alertService.isOpen$.next(true);
         } else {
-            const userWithoutPass = omitObjectProp('password', foundUser);
-            this.store.dispatch(UserActions.setUser(userWithoutPass));
-            Cookies.setCookie('token', JSON.stringify(userWithoutPass.token));
-            Cookies.setCookie('id', JSON.stringify(userWithoutPass.id));
+            const user = response.body as IUser;
+            this.store.dispatch(UserActions.setUser(user));
+            Cookies.setCookie('token', JSON.stringify(user.token));
+            Cookies.setCookie('id', JSON.stringify(user.id));
             this.alertService.message$.next(alerts.successLogin);
             this.alertService.isOpen$.next(true);
             this.modalService.toggleVisibility('auth');

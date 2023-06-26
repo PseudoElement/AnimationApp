@@ -6,6 +6,7 @@ import {
     MAX_LAPTOP_WIDTH,
     MAX_MOBILE_WIDTH,
     MAX_TABLET_WIDTH,
+    homepageData,
     randomPhotos,
     scrollToStart,
 } from 'src/app/core';
@@ -20,24 +21,24 @@ import { SvgNames } from 'src/app/shared/components/svg/model';
 })
 export class HomepageComponent implements AfterViewInit, OnDestroy {
     images = randomPhotos;
-    data?: IHomePageData;
+    data: IHomePageData = homepageData;
     footerSvgNames: SvgNames[] = footerSvgNames;
     sizeSub: Subscription;
     runningLineImgSize: number = 170;
     startPointRatioCollorfullWords: number = 10;
 
     constructor(private homepageService: HomepageService, private screenSizeService: ScreenSizeService) {
-        this.homepageService.getHomePageData().subscribe((data) => (this.data = data));
+        // this.homepageService.getHomePageData().subscribe((data) => (this.data = data));
         this.sizeSub = this.screenSizeService.getSizes().subscribe((screen) => {
             if (screen.width > MAX_LAPTOP_WIDTH) {
                 this.runningLineImgSize = 170;
-                this.startPointRatioCollorfullWords = 7;
+                this.startPointRatioCollorfullWords = 2;
             } else if (screen.width > MAX_MOBILE_WIDTH) {
                 this.runningLineImgSize = 135;
-                this.startPointRatioCollorfullWords = 15;
+                this.startPointRatioCollorfullWords = 3;
             } else {
                 this.runningLineImgSize = 110;
-                this.startPointRatioCollorfullWords = 17.5;
+                this.startPointRatioCollorfullWords = 3;
             }
         });
     }
