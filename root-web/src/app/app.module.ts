@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingHandlerInterceptor } from './core/interceptors/loading-handler.interceptor';
 import { HandleCorsInterceptor } from './core/interceptors/handle-cors.interceptor';
+import { chatReducer } from './core/store/chat';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,7 +23,7 @@ import { HandleCorsInterceptor } from './core/interceptors/handle-cors.intercept
         PagesModule,
         RouterModule,
         HttpClientModule,
-        StoreModule.forRoot({ user: userReducer }),
+        StoreModule.forRoot({ user: userReducer, chat: chatReducer }),
         EffectsModule.forRoot([UserEffects]),
         BrowserAnimationsModule,
     ],

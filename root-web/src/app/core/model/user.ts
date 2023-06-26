@@ -1,7 +1,10 @@
 export interface IUser {
     email: string;
     id: string;
-    token: string;
+    access_token: string;
     created_at: Date;
-    updated_at: Date;
+}
+
+export interface IUserWithName extends IUser {
+    name: string;
 }

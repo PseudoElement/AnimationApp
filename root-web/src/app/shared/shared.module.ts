@@ -20,7 +20,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
 import { SkipEventBehaviourDirective } from './directives/skip-event-behaviour.directive';
 import { OpacityDirective } from './directives/opacity.directive';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
 import { AnimatedCardComponent } from './components/animated-card/animated-card.component';
@@ -80,7 +80,14 @@ import { MessageComponent } from './components/chat/message/message.component';
         ChatComponent,
         MessageComponent,
     ],
-    imports: [CommonModule, BrowserAnimationsModule, RouterModule, ReactiveFormsModule, MatPaginatorModule],
+    imports: [
+        CommonModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MatPaginatorModule,
+        FormsModule,
+    ],
     exports: [
         NavComponent,
         InputComponent,

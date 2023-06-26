@@ -13,8 +13,6 @@
     </div>
 </ng-container>
 <ng-template #defaultControl>
-    <div class="input-wrapper">
-        <label [for]="id">{{ label }}</label>
-        <input [placeholder]="placeholder" class="field" [id]="id" [type]="type" />
-    </div>
+    <label *ngIf="label" [for]="id">{{ label }}</label>
+    <input [placeholder]="placeholder" class="field" [id]="id" [type]="type" />
 </ng-template>

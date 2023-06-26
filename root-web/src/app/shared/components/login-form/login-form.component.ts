@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
-import { Cookies, IUser, alerts, omitObjectProp } from 'src/app/core';
+import { Cookies, IUser, alerts, getNameByEmail, omitObjectProp } from 'src/app/core';
 import { status } from 'src/app/core/api';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -34,7 +34,6 @@ export class LoginFormComponent {
         const email = this.loginForm.value.email as string;
         const password = this.loginForm.value.password as string;
         const response = await firstValueFrom(this.authService.loginUser({ email, password }));
-        console.log('RESP', response);
         if (response.status === status.notFound) {
             this.alertService.message$.next(alerts.userDoesntExist);
             this.alertService.isOpen$.next(true);
@@ -43,8 +42,9 @@ export class LoginFormComponent {
             this.alertService.isOpen$.next(true);
         } else {
             const user = response.body as IUser;
-            this.store.dispatch(UserActions.setUser(user));
-            Cookies.setCookie('token', JSON.stringify(user.token));
+            const userWithName = { ...user, name: getNameByEmail(user.email) };
+            this.store.dispatch(UserActions.setUser(userWithName));
+            Cookies.setCookie('token', JSON.stringify(user.access_token));
             Cookies.setCookie('id', JSON.stringify(user.id));
             this.alertService.message$.next(alerts.successLogin);
             this.alertService.isOpen$.next(true);

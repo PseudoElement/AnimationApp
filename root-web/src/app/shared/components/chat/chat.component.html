@@ -3,4 +3,15 @@
     <div *ngIf="messages.length" class="messages">
         <app-message *ngFor="let message of messages" [data]="message"></app-message>
     </div>
+    <div class="send-message-wrapper">
+        <app-input
+            #inputNgModel="ngModel"
+            [(ngModel)]="inputText"
+            ngDefaultControl
+            [isFormControl]="false"
+            [name]="'message'"
+            [placeholder]="'Input message...'"
+        ></app-input>
+        <app-button (click)="inputText && onSubmit()">Send</app-button>
+    </div>
 </div>

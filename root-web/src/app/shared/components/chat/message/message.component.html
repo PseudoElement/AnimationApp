@@ -1,4 +1,4 @@
-<div class="message-wrapper">
+<div class="message-wrapper" [ngClass]="{ 'my-message': !data.isMine, 'another-message': data.isMine }">
     <h4>{{ data.author }}</h4>
     <h3>{{ data.text }}</h3>
     <h5>{{ data.createdAt }}</h5>

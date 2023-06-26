@@ -1,6 +1,7 @@
 @use '../../../styles.scss' as *;
 
 .chat-page-wrapper {
+    @include flex-column-center;
     padding: 100px 0;
     width: 100vw;
     @include mobile {

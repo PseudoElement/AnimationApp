@@ -1,7 +1,15 @@
 @use '../../../../../styles.scss' as *;
 
 .message-wrapper {
+    margin: 20px 0;
     @include flex-column-start {
         justify-content: space-between;
     }
+}
+.my-message {
+    align-self: end;
+}
+
+.another-message {
+    align-self: start;
 }

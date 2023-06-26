@@ -55,8 +55,9 @@ export class RegisterFormComponent {
             this.alertService.message$.next(alerts.userExists);
         } else {
             const user = response.body as IUser;
-            this.store.dispatch(UserActions.setUser(user));
-            Cookies.setCookie('token', JSON.stringify(user.token));
+            const userWithName = { ...user, name: getNameByEmail(user.email) };
+            this.store.dispatch(UserActions.setUser(userWithName));
+            Cookies.setCookie('token', JSON.stringify(user.access_token));
             Cookies.setCookie('id', JSON.stringify(user.id));
             this.registerForm.reset();
             this.modalService.toggleVisibility('auth');
