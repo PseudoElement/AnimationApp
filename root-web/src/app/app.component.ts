@@ -1,5 +1,4 @@
-import { BehaviorSubject, Observable, filter, interval, map, mergeMap, switchMap, tap, timer } from 'rxjs';
-import { ajax } from 'rxjs/ajax';
+import { BehaviorSubject, filter } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
 import { ModalService } from './core/services/modal.service';
