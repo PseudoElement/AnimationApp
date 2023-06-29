@@ -1,24 +1,98 @@
 @use '../../../../styles.scss' as *;
 
 .chat-wrapper {
-    background: aqua;
+    position: relative;
+    background: url(../../../../assets/img/jpg/BG-Telegram.jpg) no-repeat;
+    background-size: cover;
     border-radius: 15px;
-    width: 500px;
-    height: 800px;
+    width: 90vw;
+    max-width: 800px;
+    height: 900px;
     padding: 20px;
+    color: $c-black;
+    overflow-x: hidden;
     @include flex-column-center {
         justify-content: space-between;
     }
 }
 
 .messages {
+    position: relative;
+    z-index: 2;
     @include flex-column-center;
+    width: 100%;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .send-message-wrapper {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    @include flex-row-center;
-    :last-child {
-        margin-left: 20px;
-        height: 100%;
+    @include flex-row-center {
+        justify-content: flex-start;
+    }
+    :first-child {
+        flex: 1 0 90%;
+    }
+
+    .send-btn-wrapper {
+        margin-left: 10px;
+        position: relative;
+        width: 55px;
+        height: 55px;
+        color: $c-white;
+        cursor: pointer;
+        font-size: $fs-40;
+        font-weight: $fw-bold;
+        span {
+        }
+    }
+}
+
+.message-wrapper {
+    margin: 20px 0;
+    @include flex-column-start {
+        justify-content: space-between;
+    }
+    .main {
+        padding: 5px;
+        width: 100%;
+        max-width: 300px;
+        word-wrap: break-word;
+    }
+    .footer {
+        font-size: $fs-16;
+    }
+}
+.my-message {
+    align-self: flex-end;
+    @include flex-column-start;
+    .header,
+    .footer {
+        align-self: flex-end;
+        margin-left: 5px;
+    }
+    .main {
+        background: greenyellow;
+        border-radius: 5px;
+        text-align: end;
+    }
+}
+
+.another-message {
+    align-self: flex-start;
+    @include flex-column-start;
+    .main {
+        background: white;
+        border-radius: 5px;
+    }
+    .header,
+    .footer {
+        align-self: flex-start;
+        margin-left: 5px;
     }
 }

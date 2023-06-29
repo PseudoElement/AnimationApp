@@ -24,6 +24,17 @@ button {
         font-weight: $fw-light;
     }
 }
+.send-btn {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background: $c-light-blue;
+    &:hover {
+        opacity: 0.8;
+        background: $c-light-blue;
+    }
+}
 .theme-btn {
     background: none;
     padding: 10px;
@@ -65,4 +76,7 @@ button {
 }
 .borderRadius0 {
     border-radius: 0;
+}
+.disabled {
+    opacity: 0.4;
 }

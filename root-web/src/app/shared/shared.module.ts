@@ -39,7 +39,7 @@ import { RotateZDirective } from './directives/rotate-z.directive';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { MessageComponent } from './components/chat/message/message.component';
+import { ListenKeyClickDirective } from './directives/submit-on-enter.directive';
 
 @NgModule({
     declarations: [
@@ -78,7 +78,7 @@ import { MessageComponent } from './components/chat/message/message.component';
         MenuListComponent,
         MenuItemComponent,
         ChatComponent,
-        MessageComponent,
+        ListenKeyClickDirective,
     ],
     imports: [
         CommonModule,
@@ -124,7 +124,7 @@ import { MessageComponent } from './components/chat/message/message.component';
         MenuListComponent,
         MenuItemComponent,
         ChatComponent,
-        MessageComponent,
+        ListenKeyClickDirective,
     ],
 })
 export class SharedModule {}

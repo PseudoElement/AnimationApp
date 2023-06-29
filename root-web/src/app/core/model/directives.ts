@@ -4,3 +4,5 @@ export interface ISkipEventSettings {
 }
 
 export type OpacityTypes = 'instant' | 'by0.05';
+
+export type KeyCodes = 'Space' | 'Enter';

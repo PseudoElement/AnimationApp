@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IUserWithName } from '../../model';
+import { IUser, IUserWithName } from '../../model';
 
 export const setUser = createAction('[USER] setUser', props<IUserWithName>());
 export const unsetUser = createAction('[USER] unsetUser');

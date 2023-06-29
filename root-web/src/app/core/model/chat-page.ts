@@ -1,10 +1,15 @@
 export interface IMessage {
     id: string;
     text: string;
-    author: string;
+    authorEmail: string;
     createdAt: Date;
 }
 
-export interface IMessageFromServer extends IMessage {
+export interface IMessageFromServer {
+    body: IMessage;
+}
+
+export interface IMessageInStore extends IMessage {
     isMine: boolean;
+    name: string;
 }

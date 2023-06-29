@@ -11,6 +11,7 @@ export class ButtonComponent {
     @Input() className: ButtonClassNames = '';
     @Input() withArrow: boolean = false;
     @Input() symbolName?: SymbolNames = 'east';
+    @Input() disabled?: boolean = false;
     isHover = false;
     @HostListener('mouseenter') onHover() {
         this.isHover = true;

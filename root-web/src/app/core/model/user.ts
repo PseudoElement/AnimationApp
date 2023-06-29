@@ -5,6 +5,10 @@ export interface IUser {
     created_at: Date;
 }
 
+export interface IUserWithoutAccessToken {
+    user: Omit<IUserWithName, 'access_token'>;
+}
+
 export interface IUserWithName extends IUser {
     name: string;
 }

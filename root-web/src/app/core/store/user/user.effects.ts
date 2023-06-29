@@ -6,23 +6,21 @@ import { AuthService } from '../../services/auth.service';
 import { Cookies, getNameByEmail } from '../../utils';
 import { AlertService } from '../../services/alert.service';
 import { alerts } from '../../constants';
-import { IUserWithName } from '../../model';
 
 @Injectable()
 export class UserEffects {
     constructor(private actions$: Actions, private authService: AuthService, private alertService: AlertService) {}
 
     private _getToken() {
-        return Cookies.getCookie('token') ?? '';
+        return JSON.parse(Cookies.getCookie('token') ?? '');
     }
 
     loadUser$ = createEffect(() =>
         this.actions$.pipe(
             ofType(UserActions.loadUser),
             mergeMap((action) => this.authService.getUser(action.id)),
-            map((user) => ({ ...user, name: getNameByEmail(user.email), access_token: this._getToken() })),
-            tap(console.log),
-            map((user: IUserWithName) => UserActions.setUser(user)),
+            map((user) => ({ ...user.user, access_token: this._getToken(), name: getNameByEmail(user.user.email) })),
+            map((user) => UserActions.setUser(user)),
             catchError((err) => {
                 this.alertService.isOpen$.next(true);
                 this.alertService.message$.next(alerts.requestError);

@@ -7,17 +7,18 @@ import { Store } from '@ngrx/store';
 import { selectUserEmail, selectUserName } from '../store/user';
 import { baseURL } from '../api';
 import { ChatActions } from '../store/chat';
+import { getNameByEmail } from '../utils';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ChatService {
     socket!: Socket;
-    userName: string = '';
+    userEmail: string = '';
 
     constructor(public store: Store<AppState>) {
         this.socket = io(baseURL);
-        this.store.select(selectUserName).subscribe((name) => (this.userName = name as string));
+        this.store.select(selectUserEmail).subscribe((email) => (this.userEmail = email as string));
         this.handleMessageFromServer();
     }
 
@@ -26,8 +27,12 @@ export class ChatService {
     }
 
     public handleMessageFromServer() {
-        this.socket.on('messageFromServer', (message: IMessage) => {
-            const fullDataMessage = { ...message, isMine: message.author === this.userName };
+        this.socket.on('messageFromServer', (message: IMessageFromServer) => {
+            const fullDataMessage = {
+                ...message.body,
+                name: getNameByEmail(message.body.authorEmail),
+                isMine: message.body.authorEmail === this.userEmail,
+            };
             this.store.dispatch(ChatActions.addMessage(fullDataMessage));
         });
     }

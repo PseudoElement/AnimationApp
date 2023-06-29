@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { IMessageFromServer } from '../../model';
+import { IMessageInStore } from '../../model';
 import { ChatActions } from '.';
 
 export interface ChatState {
-    messages: IMessageFromServer[];
+    messages: IMessageInStore[];
 }
 
 const initialState: ChatState = {

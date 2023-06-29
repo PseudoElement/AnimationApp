@@ -14,5 +14,13 @@
 </ng-container>
 <ng-template #defaultControl>
     <label *ngIf="label" [for]="id">{{ label }}</label>
-    <input [placeholder]="placeholder" class="field" [id]="id" [type]="type" />
+    <input
+        [placeholder]="placeholder"
+        class="field"
+        [id]="id"
+        [type]="type"
+        [name]="name"
+        [(ngModel)]="ngModelValue"
+        (ngModelChange)="onChange($event)"
+    />
 </ng-template>
