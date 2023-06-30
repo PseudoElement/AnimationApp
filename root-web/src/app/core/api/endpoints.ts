@@ -13,4 +13,5 @@ export const endpoints: Endpoints = {
     getWebApplications: `${baseURL}/products-web`,
     getGames: `${baseURL}/products-games`,
     getHomepage: `${baseURL}/home-page`,
+    getAllMessagesFromDB: `${baseURL}/chat/messages`,
 };

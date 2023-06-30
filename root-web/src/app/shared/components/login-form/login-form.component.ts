@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
-import { Cookies, IUser, alerts, getNameByEmail, omitObjectProp } from 'src/app/core';
+import { Cookies, IUser, alerts, getNameByEmail } from 'src/app/core';
 import { status } from 'src/app/core/api';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';

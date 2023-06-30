@@ -1,6 +1,6 @@
 <div class="chat-wrapper">
     <div *ngIf="!messages.length" class="no-message">No message yet.</div>
-    <div *ngIf="messages.length" class="messages">
+    <div class="messages" [ngClass]="{ 'hidden-messages': !messages.length }" #messagesRef>
         <ng-container *ngFor="let message of messages">
             <div *ngIf="message.isMine" @fadeInRightOnEnter class="message-wrapper my-message">
                 <ng-container *ngTemplateOutlet="messageTemplate; context: { data: message }"></ng-container>
@@ -12,14 +12,18 @@
     </div>
     <div class="send-message-wrapper">
         <app-input
-            (appListenKeyClick)="inputText && onSubmit()"
+            (appListenKeyClick)="inputText.trim() && onSubmit()"
             [(ngModelValue)]="inputText"
             [isFormControl]="false"
             [name]="'message'"
             [placeholder]="'Input message...'"
         ></app-input>
         <div class="send-btn-wrapper">
-            <app-button (click)="inputText && onSubmit()" [className]="'send-btn'" [disabled]="isMessageCooldown">
+            <app-button
+                (click)="inputText.trim() && onSubmit()"
+                [className]="'send-btn'"
+                [disabled]="isMessageCooldown"
+            >
                 <span class="material-symbols-outlined"> send </span>
             </app-button>
         </div>

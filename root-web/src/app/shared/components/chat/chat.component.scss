@@ -7,7 +7,7 @@
     border-radius: 15px;
     width: 90vw;
     max-width: 800px;
-    height: 900px;
+    height: 70vh;
     padding: 20px;
     color: $c-black;
     overflow-x: hidden;
@@ -19,14 +19,20 @@
 .messages {
     position: relative;
     z-index: 2;
-    @include flex-column-center;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    height: 90%;
     overflow-x: hidden;
     &::-webkit-scrollbar {
         display: none;
     }
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.hidden-messages {
+    display: none;
 }
 .send-message-wrapper {
     position: relative;

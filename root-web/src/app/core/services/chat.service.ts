@@ -1,13 +1,14 @@
-import { Observable } from 'rxjs';
+import { Observable, map, tap, filter } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Socket, io } from 'socket.io-client';
-import { IMessage, IMessageFromServer } from '../model';
+import { IMessage, IMessageFromServer, IMessagesFromServer } from '../model';
 import { AppState } from '../store/store';
 import { Store } from '@ngrx/store';
 import { selectUserEmail, selectUserName } from '../store/user';
-import { baseURL } from '../api';
+import { baseURL, endpoints } from '../api';
 import { ChatActions } from '../store/chat';
 import { getNameByEmail } from '../utils';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -16,17 +17,37 @@ export class ChatService {
     socket!: Socket;
     userEmail: string = '';
 
-    constructor(public store: Store<AppState>) {
+    constructor(public store: Store<AppState>, public http: HttpClient) {
         this.socket = io(baseURL);
         this.store.select(selectUserEmail).subscribe((email) => (this.userEmail = email as string));
-        this.handleMessageFromServer();
+        this._getAllMessagesFromDB();
+        this._handleMessageFromServer();
+    }
+
+    private _getAllMessagesFromDB(): void {
+        this.http
+            .get<IMessagesFromServer>(endpoints.getAllMessagesFromDB as string)
+            .pipe(
+                map((res) => res.messages),
+                filter((messages) => messages.length > 0),
+                map((messages) =>
+                    messages.map((message) => ({
+                        ...message,
+                        name: getNameByEmail(message.authorEmail),
+                        isMine: message.authorEmail === this.userEmail,
+                    }))
+                )
+            )
+            .subscribe((messages) => {
+                this.store.dispatch(ChatActions.loadMessagesFromDB({ messages }));
+            });
     }
 
     public sendMessage(body: IMessage) {
         this.socket.emit('messageFromClient', body);
     }
 
-    public handleMessageFromServer() {
+    private _handleMessageFromServer() {
         this.socket.on('messageFromServer', (message: IMessageFromServer) => {
             const fullDataMessage = {
                 ...message.body,
