@@ -5,12 +5,13 @@ import { AboutComponent } from './pages/about/about.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
+import { authGuard } from './core';
 
 const routes: Routes = [
     { path: '', component: HomepageComponent, title: 'Home' },
     { path: 'about', component: AboutComponent, title: 'About Us' },
     { path: 'products', component: ProductsComponent, title: 'Products' },
-    { path: 'chat', component: ChatPageComponent, title: 'Chat' },
+    { path: 'chat', component: ChatPageComponent, title: 'Chat', canActivate: [authGuard] },
     {
         path: 'developer',
         children: [

@@ -24,6 +24,7 @@ export class ChatComponent implements OnDestroy, OnInit {
     messagesWrapper!: HTMLElement;
 
     constructor(private chatService: ChatService, private store: Store<AppState>) {
+        this.chatService.getAllMessagesFromDB();
         this.store
             .pipe(select(selectUserEmail), takeUntil(this.isDestroyed$))
             .subscribe((email) => (this.authorEmail = email as string));
@@ -64,9 +65,5 @@ export class ChatComponent implements OnDestroy, OnInit {
             behavior: 'smooth',
             top: this.messagesWrapper.scrollHeight,
         });
-    }
-
-    log(e: any) {
-        console.log(e);
     }
 }

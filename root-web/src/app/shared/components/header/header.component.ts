@@ -88,7 +88,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public onLogout() {
         this.alertService.isOpen$.next(true);
         this.alertService.message$.next(alerts.logout);
-        this.store.dispatch(UserActions.unsetUser());
+        // this.store.dispatch(UserActions.unsetUser());
+        this.store.dispatch(UserActions.logoutUser());
         Cookies.deleteCookie('id');
         Cookies.deleteCookie('token');
     }

@@ -33,14 +33,8 @@ export class LoginFormComponent {
         if (this.alertService.isOpen$.value) return;
         const email = this.loginForm.value.email as string;
         const password = this.loginForm.value.password as string;
-        const response = await firstValueFrom(this.authService.loginUser({ email, password }));
-        if (response.status === status.notFound) {
-            this.alertService.message$.next(alerts.userDoesntExist);
-            this.alertService.isOpen$.next(true);
-        } else if (response.status === status.unauthorized) {
-            this.alertService.message$.next(alerts.incorrectPassword);
-            this.alertService.isOpen$.next(true);
-        } else {
+        try {
+            const response = await firstValueFrom(this.authService.loginUser({ email, password }));
             const user = response.body as IUser;
             const userWithName = { ...user, name: getNameByEmail(user.email) };
             this.store.dispatch(UserActions.setUser(userWithName));
@@ -50,6 +44,6 @@ export class LoginFormComponent {
             this.alertService.isOpen$.next(true);
             this.modalService.toggleVisibility('auth');
             this.loginForm.reset();
-        }
+        } catch (err) {}
     }
 }

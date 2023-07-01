@@ -10,9 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { UserEffects, userReducer } from './core/store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoadingHandlerInterceptor } from './core/interceptors/loading-handler.interceptor';
 import { HandleCorsInterceptor } from './core/interceptors/handle-cors.interceptor';
 import { chatReducer } from './core/store/chat';
+import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
 
 @NgModule({
     declarations: [AppComponent],
@@ -36,6 +36,11 @@ import { chatReducer } from './core/store/chat';
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HandleCorsInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorHandlerInterceptor,
             multi: true,
         },
     ],

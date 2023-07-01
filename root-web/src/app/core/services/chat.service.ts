@@ -1,7 +1,7 @@
 import { Observable, map, tap, filter } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Socket, io } from 'socket.io-client';
-import { IMessage, IMessageFromServer, IMessagesFromServer } from '../model';
+import { IMessage, IMessageFromServer } from '../model';
 import { AppState } from '../store/store';
 import { Store } from '@ngrx/store';
 import { selectUserEmail, selectUserName } from '../store/user';
@@ -20,15 +20,13 @@ export class ChatService {
     constructor(public store: Store<AppState>, public http: HttpClient) {
         this.socket = io(baseURL);
         this.store.select(selectUserEmail).subscribe((email) => (this.userEmail = email as string));
-        this._getAllMessagesFromDB();
         this._handleMessageFromServer();
     }
 
-    private _getAllMessagesFromDB(): void {
+    public getAllMessagesFromDB(): void {
         this.http
-            .get<IMessagesFromServer>(endpoints.getAllMessagesFromDB as string)
+            .get<IMessage[]>(endpoints.getAllMessagesFromDB as string)
             .pipe(
-                map((res) => res.messages),
                 filter((messages) => messages.length > 0),
                 map((messages) =>
                     messages.map((message) => ({

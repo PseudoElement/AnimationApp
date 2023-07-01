@@ -2,7 +2,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Cookies, IUser, alerts, confirmPasswords, getNameByEmail, omitObjectProp } from 'src/app/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable, catchError, firstValueFrom, lastValueFrom, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/store/store';
 import { selectUser, UserActions } from 'src/app/core/store/user';
@@ -49,11 +49,8 @@ export class RegisterFormComponent {
         if (this.alertService.isOpen$.value) return;
         const email = this.registerForm.value.email as string;
         const password = this.registerForm.value.password as string;
-        const response = await firstValueFrom(this.authService.registerUser({ email, password }));
-        if (response.status === status.conflict) {
-            this.alertService.isOpen$.next(true);
-            this.alertService.message$.next(alerts.userExists);
-        } else {
+        try {
+            const response = await firstValueFrom(this.authService.registerUser({ email, password }));
             const user = response.body as IUser;
             const userWithName = { ...user, name: getNameByEmail(user.email) };
             this.store.dispatch(UserActions.setUser(userWithName));
@@ -63,6 +60,6 @@ export class RegisterFormComponent {
             this.modalService.toggleVisibility('auth');
             this.alertService.isOpen$.next(true);
             this.alertService.message$.next(alerts.successRegister);
-        }
+        } catch (e) {}
     }
 }

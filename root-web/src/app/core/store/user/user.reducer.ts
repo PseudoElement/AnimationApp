@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserActions } from '.';
-import { omitObjectProp } from '../../utils';
-import { IUser, IUserWithName } from '../../model';
+import { IUserWithName } from '../../model';
 
 export interface UserState {
     user: IUserWithName | null;

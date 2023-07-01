@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { endpoints } from '../api/endpoints';
