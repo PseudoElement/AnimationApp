@@ -24,6 +24,7 @@ export class CursorBgComponent implements OnInit {
             this.el.style.left = `${window.scrollX + mouseX}px`;
         }
     }
+
     ngOnInit(): void {
         this.el = this.elRef.nativeElement;
     }

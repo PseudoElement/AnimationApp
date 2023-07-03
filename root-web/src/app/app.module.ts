@@ -10,7 +10,6 @@ import { StoreModule } from '@ngrx/store';
 import { UserEffects, userReducer } from './core/store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HandleCorsInterceptor } from './core/interceptors/handle-cors.interceptor';
 import { chatReducer } from './core/store/chat';
 import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
 
@@ -31,11 +30,6 @@ import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
         {
             provide: HTTP_INTERCEPTORS,
             useClass: LoadingHandlerInterceptor,
-            multi: true,
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HandleCorsInterceptor,
             multi: true,
         },
         {
