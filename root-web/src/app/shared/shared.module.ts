@@ -40,6 +40,7 @@ import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ListenKeyClickDirective } from './directives/submit-on-enter.directive';
+import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
 
 @NgModule({
     declarations: [
@@ -79,6 +80,7 @@ import { ListenKeyClickDirective } from './directives/submit-on-enter.directive'
         MenuItemComponent,
         ChatComponent,
         ListenKeyClickDirective,
+        CursorBgComponent,
     ],
     imports: [
         CommonModule,
@@ -125,6 +127,7 @@ import { ListenKeyClickDirective } from './directives/submit-on-enter.directive'
         MenuItemComponent,
         ChatComponent,
         ListenKeyClickDirective,
+        CursorBgComponent,
     ],
 })
 export class SharedModule {}

@@ -2,11 +2,11 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Store, select } from '@ngrx/store';
 import { IMessageInStore } from 'src/app/core';
 import { ChatService } from 'src/app/core/services/chat.service';
-import { selectMessages } from 'src/app/core/store/chat';
+import { ChatActions, selectIsOpenChat, selectMessages } from 'src/app/core/store/chat';
 import { AppState } from 'src/app/core/store/store';
 import { selectUserEmail } from 'src/app/core/store/user';
 import { fadeInLeftOnEnterAnimation, fadeInRightOnEnterAnimation } from 'angular-animations';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { Observable, Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
     selector: 'app-chat',
@@ -22,9 +22,11 @@ export class ChatComponent implements OnDestroy, OnInit {
     isDestroyed$: Subject<boolean> = new Subject();
     @ViewChild('messagesRef', { static: true }) messagesWrapperRef!: ElementRef;
     messagesWrapper!: HTMLElement;
+    isOpenChat$: Observable<boolean>;
 
     constructor(private chatService: ChatService, private store: Store<AppState>) {
         this.chatService.getAllMessagesFromDB();
+        this.isOpenChat$ = this.store.select(selectIsOpenChat);
         this.store
             .pipe(select(selectUserEmail), takeUntil(this.isDestroyed$))
             .subscribe((email) => (this.authorEmail = email as string));
@@ -43,6 +45,10 @@ export class ChatComponent implements OnDestroy, OnInit {
 
     ngOnDestroy(): void {
         this.isDestroyed$.next(true);
+    }
+
+    public onOpenChat() {
+        this.store.dispatch(ChatActions.openChat());
     }
 
     public onSubmit() {

@@ -1,0 +1,16 @@
+@use '../../../../styles.scss' as *;
+.cursor-bg {
+    position: absolute;
+    display: block;
+    z-index: 999999;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: $vinous-blue-bg-color;
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hidden {
+    display: none;
+}

@@ -2,6 +2,7 @@
 <app-loader [isOpen]="(isLoading$ | async)!"></app-loader>
 <app-header></app-header>
 <app-auth-modal></app-auth-modal>
+<app-cursor-bg></app-cursor-bg>
 <main [@slideInLeft]="isChangedRoute">
     <router-outlet></router-outlet>
 </main>

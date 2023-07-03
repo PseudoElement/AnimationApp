@@ -4,10 +4,12 @@ import { ChatActions } from '.';
 
 export interface ChatState {
     messages: IMessageInStore[];
+    isOpenChat: boolean;
 }
 
 const initialState: ChatState = {
     messages: [],
+    isOpenChat: false,
 };
 
 export const chatReducer = createReducer(
@@ -17,5 +19,6 @@ export const chatReducer = createReducer(
     on(ChatActions.deleteMessage, (state, action) => {
         const filteredMessages = state.messages.filter((message) => message.id !== action.id);
         return { ...state, messages: filteredMessages };
-    })
+    }),
+    on(ChatActions.openChat, (state) => ({ ...state, isOpenChat: true }))
 );

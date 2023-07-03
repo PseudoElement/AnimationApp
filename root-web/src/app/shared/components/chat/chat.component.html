@@ -28,6 +28,9 @@
             </app-button>
         </div>
     </div>
+    <app-backdrop [isOpen]="!(isOpenChat$ | async)" [size]="'block'">
+        <app-button (click)="onOpenChat()">Join chat</app-button>
+    </app-backdrop>
 </div>
 
 <ng-template #messageTemplate let-data="data">
