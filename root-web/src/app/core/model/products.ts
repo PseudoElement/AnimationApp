@@ -1,9 +1,9 @@
 export interface IApplicationCard {
-    img: string;
-    description: string;
+    authorPhoto: string;
+    authorLink: string;
     title: string;
+    description: string;
     url: string;
-    author: string;
 }
 
 export interface IGameCard {}

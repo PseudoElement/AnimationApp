@@ -18,7 +18,7 @@
         <div class="app-card-wrapper" [ngClass]="{ rotated: isCardRotated }">
             <div class="front-side">
                 <div class="card-header">
-                    <img [src]="appData?.img" alt="photo" loading="lazy" />
+                    <img [src]="appData?.authorPhoto" alt="photo" loading="lazy" />
                 </div>
                 <div class="card-main">
                     <h1>{{ appData?.title }}</h1>
@@ -29,7 +29,7 @@
                 <a class="back-btn-wrapper" [href]="appData?.url" target="_blank">
                     <app-button [withArrow]="true" [symbolName]="'arrow_outward'">Visit</app-button>
                 </a>
-                <a class="back-btn-wrapper" [routerLink]="appData?.author" target="_blank">
+                <a class="back-btn-wrapper" [routerLink]="appData?.authorLink" target="_blank">
                     <app-button [withArrow]="true">Author</app-button>
                 </a>
             </div>

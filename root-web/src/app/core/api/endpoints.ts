@@ -10,8 +10,8 @@ export const endpoints: Endpoints = {
     loginUser: `${baseURL}/auth/login`,
     getDeveloper: (id: string) => `${baseURL}/developers/${id}`,
     getAbout: `${baseURL}/about`,
-    getWebApplications: `${baseURL}/products-web`,
-    getGames: `${baseURL}/products-games`,
+    getWebApplications: `${baseURL}/products/apps`,
+    getGames: `${baseURL}/products/games`,
     getHomepage: `${baseURL}/home-page`,
     getAllMessagesFromDB: `${baseURL}/chat/messages`,
 };
