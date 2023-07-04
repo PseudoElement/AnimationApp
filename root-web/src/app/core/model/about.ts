@@ -1,9 +1,9 @@
 export interface IInfoCard {
-    img: string;
+    photoSrcData: string;
     name: string;
     post: string;
     info: string;
-    path: string;
+    pathToPage: string;
 }
 
 export interface IAboutPageResponse {

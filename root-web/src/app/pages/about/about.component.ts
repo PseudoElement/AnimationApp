@@ -17,7 +17,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     sizeSub: Subscription;
     constructor(private aboutService: AboutService, private screenSizeService: ScreenSizeService) {
         this.aboutService.getAbout().subscribe((res) => {
-            // this.cards = res.cards;
+            this.cards = res;
+            console.log(this.cards);
         });
         this.sizeSub = this.screenSizeService.getSizes().subscribe((screen) => {
             if (screen.width > MAX_LAPTOP_WIDTH) {

@@ -1,5 +1,5 @@
 export interface IApplicationCard {
-    authorPhoto: string;
+    authorPhotoSrcData: string;
     authorLink: string;
     title: string;
     description: string;

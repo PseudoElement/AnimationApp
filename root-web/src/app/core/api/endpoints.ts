@@ -9,7 +9,7 @@ export const endpoints: Endpoints = {
     registerUser: `${baseURL}/auth/register`,
     loginUser: `${baseURL}/auth/login`,
     getDeveloper: (id: string) => `${baseURL}/developers/${id}`,
-    getAbout: `${baseURL}/about`,
+    getAbout: `${baseURL}/about/developer-cards`,
     getWebApplications: `${baseURL}/products/apps`,
     getGames: `${baseURL}/products/games`,
     getHomepage: `${baseURL}/home-page`,

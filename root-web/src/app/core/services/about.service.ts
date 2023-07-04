@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAboutPageResponse } from '../model';
+import { IAboutPageResponse, IInfoCard } from '../model';
 import { endpoints } from '../api/endpoints';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { endpoints } from '../api/endpoints';
 export class AboutService {
     constructor(private http: HttpClient) {}
 
-    public getAbout(): Observable<IAboutPageResponse> {
-        return this.http.get<IAboutPageResponse>(endpoints.getAbout as string);
+    public getAbout(): Observable<IInfoCard[]> {
+        return this.http.get<IInfoCard[]>(endpoints.getAbout as string);
     }
 }

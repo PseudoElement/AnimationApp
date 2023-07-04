@@ -1,12 +1,12 @@
 <div *ngIf="type === 'developer'; else appCard" class="developer-card-wrapper">
     <div class="left">
-        <img [src]="developerData?.img" alt="photo" loading="lazy" />
+        <img [src]="developerData?.photoSrcData" alt="photo" loading="lazy" />
     </div>
     <div class="right">
         <h1 class="name">{{ developerData?.name }}</h1>
         <p class="post">{{ developerData?.post }}</p>
         <p class="info">{{ developerData?.info }}</p>
-        <a [routerLink]="developerData?.path" class="btn-wrapper">
+        <a [routerLink]="developerData?.pathToPage" class="btn-wrapper">
             <app-button [withArrow]="true" [className]="'withArrow-btn'">
                 <p class="btn-text">More info</p>
             </app-button>
@@ -18,7 +18,7 @@
         <div class="app-card-wrapper" [ngClass]="{ rotated: isCardRotated }">
             <div class="front-side">
                 <div class="card-header">
-                    <img [src]="appData?.authorPhoto" alt="photo" loading="lazy" />
+                    <img [src]="appData?.authorPhotoSrcData" alt="photo" loading="lazy" />
                 </div>
                 <div class="card-main">
                     <h1>{{ appData?.title }}</h1>
