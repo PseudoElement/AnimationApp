@@ -4,7 +4,8 @@
     position: relative;
     @include flex-column-center;
 }
-.web-wrapper {
+.web-wrapper,
+.games-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;

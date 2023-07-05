@@ -9,6 +9,7 @@ import { loadUser } from './core/store/user/user.actions';
 import { LoadingService } from './core/services/loading.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { slideInLeftAnimation } from 'angular-animations';
+import { CookiesService } from './core/services/cookies.service';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit {
         public modalService: ModalService,
         private store: Store<AppState>,
         public loadingService: LoadingService,
-        private router: Router
+        private router: Router,
+        private cookiesService: CookiesService
     ) {
         this.isLoading$ = this.loadingService.isLoading$;
         this.router.events.pipe(filter((val) => val instanceof NavigationEnd)).subscribe(() => {
@@ -34,7 +36,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const id = Cookies.getCookie('id');
+        const id = this.cookiesService.getUserID();
         if (id) this.store.dispatch(loadUser({ id }));
         this.themeService.initTheme();
     }

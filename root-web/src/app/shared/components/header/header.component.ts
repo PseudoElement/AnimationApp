@@ -11,6 +11,7 @@ import { AppState } from 'src/app/core/store/store';
 import { selectUser, UserActions } from 'src/app/core/store/user';
 import { opacityAnimation } from '../../animations';
 import { Router } from '@angular/router';
+import { CookiesService } from 'src/app/core/services/cookies.service';
 
 @Component({
     selector: 'app-header',
@@ -35,7 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private alertService: AlertService,
         private headerService: HeaderService,
         public screenSizeService: ScreenSizeService,
-        private router: Router
+        private router: Router,
+        private cookiesService: CookiesService
     ) {
         this.user$ = this.store.select(selectUser);
         this.isVisibleHeader$ = this.headerService.isVisible$;
@@ -88,10 +90,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public onLogout() {
         this.alertService.isOpen$.next(true);
         this.alertService.message$.next(alerts.logout);
-        // this.store.dispatch(UserActions.unsetUser());
         this.store.dispatch(UserActions.logoutUser());
-        Cookies.deleteCookie('id');
-        Cookies.deleteCookie('token');
+        this.cookiesService.onUserLogout();
     }
 
     public openModal() {

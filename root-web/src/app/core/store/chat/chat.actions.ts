@@ -4,4 +4,5 @@ import { IMessageInStore } from '../../model';
 export const loadMessagesFromDB = createAction('CHAT loadMessagesFromDB', props<{ messages: IMessageInStore[] }>());
 export const addMessage = createAction('[CHAT] addMessage', props<IMessageInStore>());
 export const deleteMessage = createAction('[CHAT] deleteMessage', props<{ id: string }>());
+export const deleteOldestMessage = createAction('[CHAT] deleteMessage');
 export const openChat = createAction('[CHAT] openChat');

@@ -56,7 +56,6 @@ export class ChatComponent implements OnDestroy, OnInit {
         this.chatService.sendMessage({
             authorEmail: this.authorEmail,
             createdAt: new Date(),
-            id: crypto.randomUUID(),
             text: this.inputText,
         });
         this.inputText = '';

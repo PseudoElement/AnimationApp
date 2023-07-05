@@ -1,10 +1,10 @@
-import { Observable, map, tap, filter } from 'rxjs';
+import { map, filter } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Socket, io } from 'socket.io-client';
-import { IMessage, IMessageFromServer } from '../model';
+import { IMessage, IMessageWithoutID } from '../model';
 import { AppState } from '../store/store';
 import { Store } from '@ngrx/store';
-import { selectUserEmail, selectUserName } from '../store/user';
+import { selectUserEmail } from '../store/user';
 import { baseURL, endpoints } from '../api';
 import { ChatActions } from '../store/chat';
 import { getNameByEmail } from '../utils';
@@ -21,6 +21,7 @@ export class ChatService {
         this.socket = io(baseURL);
         this.store.select(selectUserEmail).subscribe((email) => (this.userEmail = email as string));
         this._handleMessageFromServer();
+        this._handleDeleteOldestMessage();
     }
 
     public getAllMessagesFromDB(): void {
@@ -41,18 +42,24 @@ export class ChatService {
             });
     }
 
-    public sendMessage(body: IMessage) {
+    public sendMessage(body: IMessageWithoutID) {
         this.socket.emit('messageFromClient', body);
     }
 
     private _handleMessageFromServer() {
-        this.socket.on('messageFromServer', (message: IMessageFromServer) => {
+        this.socket.on('messageFromServer', (message: IMessage) => {
             const fullDataMessage = {
-                ...message.body,
-                name: getNameByEmail(message.body.authorEmail),
-                isMine: message.body.authorEmail === this.userEmail,
+                ...message,
+                name: getNameByEmail(message.authorEmail),
+                isMine: message.authorEmail === this.userEmail,
             };
             this.store.dispatch(ChatActions.addMessage(fullDataMessage));
+        });
+    }
+
+    private _handleDeleteOldestMessage() {
+        this.socket.on('deleteOldestMessage', () => {
+            this.store.dispatch(ChatActions.deleteOldestMessage());
         });
     }
 }

@@ -1,9 +1,9 @@
 export interface IApplicationCard {
-    authorPhotoSrcData: string;
+    appPhotoSrcData: string;
     authorLink: string;
     title: string;
     description: string;
     url: string;
 }
 
-export interface IGameCard {}
+export interface IGameCard extends IApplicationCard {}

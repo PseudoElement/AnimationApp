@@ -7,27 +7,9 @@
             [isActive]="activeSlide === 'left'"
         >
             <div class="web-wrapper">
-                <div class="main">
-                    <app-info-card
-                        @zoomInOnEnter
-                        *ngFor="let app of loadedWebCards"
-                        [type]="'app'"
-                        [appData]="app"
-                    ></app-info-card>
-                </div>
-                <div class="footer">
-                    <app-select
-                        [selectedValue]="limit"
-                        [options]="pageSizeOptions"
-                        [label]="'Page size'"
-                        (onChange)="onPageSizeChange($event)"
-                    ></app-select>
-                    <app-pagination
-                        [pageSize]="limit"
-                        [totalCount]="webTotalCount"
-                        (currentPageChange)="onPagination($event)"
-                    ></app-pagination>
-                </div>
+                <ng-container
+                    *ngTemplateOutlet="slideContent; context: { data: loadedWebCards, slide: 'apps' }"
+                ></ng-container>
             </div>
         </app-full-screen-slide>
         <app-full-screen-slide
@@ -36,7 +18,30 @@
             [side]="'right'"
             [isActive]="activeSlide === 'right'"
         >
-            <div class="games-wrapper">SOON...</div>
+            <div class="games-wrapper">
+                <ng-container
+                    *ngTemplateOutlet="slideContent; context: { data: loadedGamesCard, slide: 'games' }"
+                ></ng-container>
+            </div>
         </app-full-screen-slide>
     </app-full-screen-two-slides-slider>
 </div>
+
+<ng-template #slideContent let-data="data" let-slide="slide">
+    <div class="main">
+        <app-info-card @zoomInOnEnter *ngFor="let app of data" [type]="'app'" [appData]="app"></app-info-card>
+    </div>
+    <div class="footer">
+        <app-select
+            [selectedValue]="slide === 'apps' ? limitApps : limitGames"
+            [options]="pageSizeOptions"
+            [label]="'Page size'"
+            (onChange)="onPageSizeChange($event, slide)"
+        ></app-select>
+        <app-pagination
+            [pageSize]="slide === 'apps' ? limitApps : limitGames"
+            [totalCount]="slide === 'apps' ? webTotalCount : gamesTotalCount"
+            (currentPageChange)="onPagination($event, slide)"
+        ></app-pagination>
+    </div>
+</ng-template>

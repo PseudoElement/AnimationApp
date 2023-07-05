@@ -20,5 +20,9 @@ export const chatReducer = createReducer(
         const filteredMessages = state.messages.filter((message) => message.id !== action.id);
         return { ...state, messages: filteredMessages };
     }),
+    on(ChatActions.deleteOldestMessage, (state, action) => {
+        const filteredMessages = state.messages.filter((message, index) => index !== 0);
+        return { ...state, messages: filteredMessages };
+    }),
     on(ChatActions.openChat, (state) => ({ ...state, isOpenChat: true }))
 );

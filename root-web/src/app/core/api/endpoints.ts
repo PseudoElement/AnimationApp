@@ -8,6 +8,7 @@ export const endpoints: Endpoints = {
     getUser: (id: string) => `${baseURL}/users/${id}`,
     registerUser: `${baseURL}/auth/register`,
     loginUser: `${baseURL}/auth/login`,
+    refreshAccessToken: `${baseURL}/auth/refresh-token`,
     getDeveloper: (id: string) => `${baseURL}/developers/${id}`,
     getAbout: `${baseURL}/about/developer-cards`,
     getWebApplications: `${baseURL}/products/apps`,

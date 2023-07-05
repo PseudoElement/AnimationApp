@@ -9,6 +9,7 @@ import { selectUser, UserActions } from 'src/app/core/store/user';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { status } from 'src/app/core/api';
+import { CookiesService } from 'src/app/core/services/cookies.service';
 
 @Component({
     selector: 'app-register-form',
@@ -22,7 +23,8 @@ export class RegisterFormComponent {
         private authService: AuthService,
         private store: Store<AppState>,
         private alertService: AlertService,
-        private modalService: ModalService
+        private modalService: ModalService,
+        private cookiesService: CookiesService
     ) {
         this.user$ = this.store.select(selectUser);
         this.user$.subscribe((val) => console.log('USER Object', val));
@@ -54,8 +56,11 @@ export class RegisterFormComponent {
             const user = response.body as IUser;
             const userWithName = { ...user, name: getNameByEmail(user.email) };
             this.store.dispatch(UserActions.setUser(userWithName));
-            Cookies.setCookie('token', JSON.stringify(user.access_token));
-            Cookies.setCookie('id', JSON.stringify(user.id));
+            this.cookiesService.onUserAuth({
+                access_token: user.access_token,
+                id: user.id,
+                refresh_token: user.refresh_token,
+            });
             this.registerForm.reset();
             this.modalService.toggleVisibility('auth');
             this.alertService.isOpen$.next(true);

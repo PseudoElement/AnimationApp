@@ -3,9 +3,9 @@ import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { Cookies, IUser, alerts, getNameByEmail } from 'src/app/core';
-import { status } from 'src/app/core/api';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CookiesService } from 'src/app/core/services/cookies.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { AppState } from 'src/app/core/store/store';
 import { UserActions } from 'src/app/core/store/user';
@@ -21,7 +21,8 @@ export class LoginFormComponent {
         private authService: AuthService,
         private store: Store<AppState>,
         private modalService: ModalService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private cookiesService: CookiesService
     ) {}
     loginForm = this.formBuilder.nonNullable.group({
         email: [''],
@@ -38,8 +39,11 @@ export class LoginFormComponent {
             const user = response.body as IUser;
             const userWithName = { ...user, name: getNameByEmail(user.email) };
             this.store.dispatch(UserActions.setUser(userWithName));
-            Cookies.setCookie('token', JSON.stringify(user.access_token));
-            Cookies.setCookie('id', JSON.stringify(user.id));
+            this.cookiesService.onUserAuth({
+                access_token: user.access_token,
+                id: user.id,
+                refresh_token: user.refresh_token,
+            });
             this.alertService.message$.next(alerts.successLogin);
             this.alertService.isOpen$.next(true);
             this.modalService.toggleVisibility('auth');

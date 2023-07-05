@@ -21,7 +21,15 @@ export class ProductsService {
             },
         });
     }
-    public getGames(): Observable<IGameCard[]> {
+    public getPortionOfGames(pageIndex: number, limit: number): Observable<IGameCard[]> {
+        return this.http.get<IGameCard[]>(endpoints.getGames as string, {
+            params: {
+                _page: pageIndex,
+                _limit: limit,
+            },
+        });
+    }
+    public getAllGames(): Observable<IGameCard[]> {
         return this.http.get<IGameCard[]>(endpoints.getGames as string);
     }
 }

@@ -2,7 +2,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { endpoints } from '../api/endpoints';
-import { ILoginData, IRegisterData, IUser, IUserWithoutAccessToken } from '../model';
+import { ILoginData, IRegisterData, IUser, IUserWithoutTokens } from '../model';
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +24,7 @@ export class AuthService {
         return this.http.post<IUser>(endpoints.loginUser as string, data, { observe: 'response' });
     }
 
-    public getUser(id: string): Observable<IUserWithoutAccessToken> {
-        return this.http.get<IUserWithoutAccessToken>((endpoints.getUser as (id: string) => string)(id));
+    public getUser(id: string): Observable<IUserWithoutTokens> {
+        return this.http.get<IUserWithoutTokens>((endpoints.getUser as (id: string) => string)(id));
     }
 }

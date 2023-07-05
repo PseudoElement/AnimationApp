@@ -5,6 +5,8 @@ export interface IMessage {
     createdAt: Date;
 }
 
+export type IMessageWithoutID = Omit<IMessage, 'id'>;
+
 export interface IMessageFromServer {
     body: IMessage;
 }

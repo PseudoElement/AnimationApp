@@ -1,15 +1,7 @@
 import { Subscription } from 'rxjs';
 import { footerSvgNames } from './../../core/constants/homepage';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import {
-    IHomePageData,
-    MAX_LAPTOP_WIDTH,
-    MAX_MOBILE_WIDTH,
-    MAX_TABLET_WIDTH,
-    homepageData,
-    randomPhotos,
-    scrollToStart,
-} from 'src/app/core';
+import { IHomePageData, MAX_LAPTOP_WIDTH, MAX_MOBILE_WIDTH, homepageData, scrollToStart } from 'src/app/core';
 import { HomepageService } from 'src/app/core/services/homepage.service';
 import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
 import { SvgNames } from 'src/app/shared/components/svg/model';
@@ -20,7 +12,6 @@ import { SvgNames } from 'src/app/shared/components/svg/model';
     styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements AfterViewInit, OnDestroy {
-    images = randomPhotos;
     data: IHomePageData = homepageData;
     footerSvgNames: SvgNames[] = footerSvgNames;
     sizeSub: Subscription;
