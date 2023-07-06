@@ -1,4 +1,4 @@
-import { Component, ViewChild, HostListener, ViewChildren, QueryList } from '@angular/core';
+import { Component, HostListener, ViewChildren, QueryList } from '@angular/core';
 import { zoomInOnEnterAnimation } from 'angular-animations';
 import { AnimationTypes, IApplicationCard, IGameCard, IOption, SidesX, pageSizeOptions } from 'src/app/core';
 import { ProductsService } from 'src/app/core/services/products.service';

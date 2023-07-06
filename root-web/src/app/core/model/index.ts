@@ -16,3 +16,4 @@ export * from './pipes';
 export * from './homepage';
 export * from './auth';
 export * from './chat-page';
+export * from './tokenService';

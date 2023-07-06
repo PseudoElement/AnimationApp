@@ -18,7 +18,7 @@ export class CookiesService {
     }
 
     public onUserAuth({ access_token, refresh_token, id }: IOnUserAuth) {
-        this._setAccessToken(access_token);
+        this.setAccessToken(access_token);
         this._setRefreshToken(refresh_token);
         this._setUserID(id);
     }
@@ -35,7 +35,7 @@ export class CookiesService {
         return Cookies.getCookie('id') ?? null;
     }
 
-    private _setAccessToken(value: string): void {
+    public setAccessToken(value: string): void {
         Cookies.setCookie('access_token', value, this.accesTokenExpiration_1hr);
     }
 

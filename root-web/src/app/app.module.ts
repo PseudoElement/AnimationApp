@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { chatReducer } from './core/store/chat';
 import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
+import { TokenHandlerInterceptor } from './core/interceptors/token-handler.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
             useClass: ErrorHandlerInterceptor,
             multi: true,
         },
+        { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi: true },
     ],
     bootstrap: [AppComponent],
 })
