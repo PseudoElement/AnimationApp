@@ -1,7 +1,11 @@
+import { IErrorInnerInHttpErrorResponse } from './../model/interceptors';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { AlertService } from '../services/alert.service';
+import { status } from '../api';
+import { alerts } from '../constants';
+import { IExtendedHttpErrorResponse } from '../model';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
@@ -9,13 +13,18 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         return next.handle(request).pipe(
-            catchError((err) => {
-                const httpErrorRes = err as HttpErrorResponse;
-                console.log('ERROR_HANDLER_INTERCEPTOR', httpErrorRes);
+            catchError((err: IExtendedHttpErrorResponse) => {
                 this.alertService.isOpen$.next(true);
-                this.alertService.message$.next(httpErrorRes.message);
+                if (err.status === status.notFound) this.alertService.message$.next(alerts.pageNotFound);
+                else this.alertService.message$.next(this._getErrorMessage(err));
                 return throwError(() => err);
             })
         );
+    }
+
+    private _getErrorMessage(errorBody: IExtendedHttpErrorResponse): string {
+        if (typeof errorBody.error !== 'string') {
+            return errorBody.error.message.join('. ');
+        } else return errorBody.error;
     }
 }

@@ -41,6 +41,8 @@ import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.co
 import { ChatComponent } from './components/chat/chat.component';
 import { ListenKeyClickDirective } from './directives/submit-on-enter.directive';
 import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
+import { CapitalCasePipe } from './pipes/capital-case.pipe';
+import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
 
 @NgModule({
     declarations: [
@@ -81,6 +83,8 @@ import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
         ChatComponent,
         ListenKeyClickDirective,
         CursorBgComponent,
+        CapitalCasePipe,
+        AddSignInEndPipe,
     ],
     imports: [
         CommonModule,
@@ -128,6 +132,8 @@ import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
         ChatComponent,
         ListenKeyClickDirective,
         CursorBgComponent,
+        CapitalCasePipe,
+        AddSignInEndPipe,
     ],
 })
 export class SharedModule {}

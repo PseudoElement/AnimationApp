@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { chatReducer } from './core/store/chat';
 import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
 import { TokenHandlerInterceptor } from './core/interceptors/token-handler.interceptor';
+import { RetryRequestInterceptor } from './core/interceptors/retry-request.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -38,6 +39,7 @@ import { TokenHandlerInterceptor } from './core/interceptors/token-handler.inter
             useClass: ErrorHandlerInterceptor,
             multi: true,
         },
+        { provide: HTTP_INTERCEPTORS, useClass: RetryRequestInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi: true },
     ],
     bootstrap: [AppComponent],

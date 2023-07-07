@@ -6,3 +6,5 @@ export interface IErrors {
     pattern: string;
     passwordMismatch: string;
 }
+
+export type SignTypes = 'dot' | 'exclamation' | 'question';

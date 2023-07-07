@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable, catchError, switchMap, take, throwError } from 'rxjs';
 import { CookiesService } from '../services/cookies.service';
 import { TokenService } from '../services/token.service';
-import { status } from '../api';
+import { endpoints, status } from '../api';
 
 @Injectable()
 export class TokenHandlerInterceptor implements HttpInterceptor {
@@ -17,9 +17,12 @@ export class TokenHandlerInterceptor implements HttpInterceptor {
         });
 
         return next.handle(newReq).pipe(
-            catchError((err) => {
-                const httpErrorRes = err as HttpErrorResponse;
-                if (httpErrorRes.status === status.unauthorized) {
+            catchError((err: HttpErrorResponse) => {
+                if (
+                    err.status === status.unauthorized &&
+                    err.url !== endpoints.registerUser &&
+                    err.url !== endpoints.loginUser
+                ) {
                     return this.tokenService.refreshAccessToken().pipe(
                         take(1),
                         switchMap((res) => {

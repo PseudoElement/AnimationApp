@@ -17,3 +17,4 @@ export * from './homepage';
 export * from './auth';
 export * from './chat-page';
 export * from './tokenService';
+export * from './interceptors';

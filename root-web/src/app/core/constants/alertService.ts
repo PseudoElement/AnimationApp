@@ -8,4 +8,5 @@ export const alerts = {
     incorrectPassword: 'Incorrect password',
     needAuth: 'Login is necessary to visit this route',
     serverError: 'Server error!',
+    pageNotFound: 'Page data not found :(',
 } as const;
