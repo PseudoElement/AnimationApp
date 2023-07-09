@@ -5,3 +5,4 @@ export * from './products';
 export * from './pipes';
 export * from './breakpoints';
 export * from './temporary/index';
+export * from './other-page';

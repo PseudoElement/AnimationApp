@@ -14,6 +14,7 @@ export const links: HeaderLink[] = [
         text: 'Products',
     },
     { path: '/chat', text: 'Chat' },
+    { path: '/other', text: 'Other' },
 ];
 
 export const scrollPoints: ScrollPoints = {

@@ -1,0 +1,43 @@
+@use '../../../../styles.scss' as *;
+
+.random-wheel-wrapper {
+    z-index: -2;
+    position: relative;
+    @include flex-column-center;
+    border-radius: 50%;
+}
+.segments {
+    overflow: hidden;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.arrow {
+    position: absolute;
+    z-index: 1000000;
+    top: -65px;
+    left: 50%;
+    width: 65px;
+    height: 65px;
+    transform: translateX(-50%);
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.animated-arrow {
+    animation: animate-arrow;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-iteration-count: infinite;
+}
+@keyframes animate-arrow {
+    0% {
+        top: -65px;
+    }
+    100% {
+        top: -55px;
+    }
+}

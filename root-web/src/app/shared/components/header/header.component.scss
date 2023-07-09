@@ -3,7 +3,7 @@
 header {
     position: fixed;
     z-index: 500;
-    padding: 0 10%;
+    padding: 0 50px;
     width: 100vw;
     height: 100px;
     left: 0;
@@ -13,7 +13,7 @@ header {
     @include flex-row-start;
     background: none;
     font-family: $ff-Atyp;
-    font-size: $fs-32;
+    font-size: $fs-24;
     @include laptop {
         padding: 0 50px;
     }
@@ -48,7 +48,7 @@ header {
 }
 .theme-button-wrapper {
     position: absolute;
-    right: 300px;
+    right: 270px;
     @include tablet {
         right: 230px;
     }
@@ -56,6 +56,7 @@ header {
 .auth-button-wrapper {
     position: absolute;
     right: 50px;
+    font-size: $fs-24 !important;
 }
 .menu-list-wrapper {
     background: $vinous-blue-bg-color;

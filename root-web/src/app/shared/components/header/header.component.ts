@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isVisibleHeader$: BehaviorSubject<boolean>;
     user$: Observable<IUser | null>;
     logoSize: number = 85;
-    isMobile: boolean = false;
+    isTabletOrMobile: boolean = false;
     isOpenMobileMenu: boolean = false;
 
     constructor(
@@ -48,11 +48,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
             .subscribe((size) => {
                 if (size.width > MAX_TABLET_WIDTH) {
                     this.logoSize = 85;
-                    this.isMobile = false;
+                    this.isTabletOrMobile = false;
                 } else if (size.width > MAX_MOBILE_WIDTH) {
-                    this.isMobile = false;
+                    this.isTabletOrMobile = true;
                 } else {
-                    this.isMobile = true;
+                    this.isTabletOrMobile = true;
                     this.logoSize = 70;
                 }
             });

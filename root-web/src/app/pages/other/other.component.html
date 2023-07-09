@@ -1,0 +1,11 @@
+<div class="other-page-wrapper">
+    <h1>OTHER PAGE</h1>
+    <div class="main">
+        <app-random-wheel #wheel [rotationCount]="10" [segments]="segments"></app-random-wheel>
+        <div class="btn-wrapper">
+            <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
+                wheel.isPlaying ? 'Spinning...' : 'Play'
+            }}</app-button>
+        </div>
+    </div>
+</div>

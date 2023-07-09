@@ -43,6 +43,7 @@ import { ListenKeyClickDirective } from './directives/submit-on-enter.directive'
 import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
 import { CapitalCasePipe } from './pipes/capital-case.pipe';
 import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
+import { RandomWheelComponent } from './components/random-wheel/random-wheel.component';
 
 @NgModule({
     declarations: [
@@ -85,6 +86,7 @@ import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
         CursorBgComponent,
         CapitalCasePipe,
         AddSignInEndPipe,
+        RandomWheelComponent,
     ],
     imports: [
         CommonModule,
@@ -134,6 +136,7 @@ import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
         CursorBgComponent,
         CapitalCasePipe,
         AddSignInEndPipe,
+        RandomWheelComponent,
     ],
 })
 export class SharedModule {}

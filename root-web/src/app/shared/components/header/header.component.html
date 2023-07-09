@@ -1,7 +1,11 @@
 <header
-    [ngClass]="{ activeHeader: isScrolled$ | async, hiddenHeader: !(isVisibleHeader$ | async), mobileHeader: isMobile }"
+    [ngClass]="{
+        activeHeader: isScrolled$ | async,
+        hiddenHeader: !(isVisibleHeader$ | async),
+        mobileHeader: isTabletOrMobile
+    }"
 >
-    <ng-container *ngIf="!isMobile; else mobileHeader">
+    <ng-container *ngIf="!isTabletOrMobile; else mobileHeader">
         <a [routerLink]="'/'">
             <app-logo [logoSize]="logoSize"></app-logo>
         </a>
@@ -40,14 +44,10 @@
         </div>
     </ng-template>
 </header>
-<div @opacityAnimation *ngIf="isMobile && isOpenMobileMenu" (click)="onMenuClick()" class="menu-list-wrapper">
+<div @opacityAnimation *ngIf="isTabletOrMobile && isOpenMobileMenu" (click)="onMenuClick()" class="menu-list-wrapper">
     <app-menu-list>
-        <app-menu-item (click)="onNavigationClick('/')">Home</app-menu-item>
-        <app-menu-item (click)="onNavigationClick('/about')">About</app-menu-item>
-        <app-menu-item (click)="onNavigationClick('/products')">Products</app-menu-item>
-        <ng-container *ngIf="!(user$ | async); else logoutItem">
-            <app-menu-item (click)="openModal()">Login / Register</app-menu-item>
-        </ng-container>
+        <app-menu-item *ngFor="let link of links" (click)="onNavigationClick(link.path)">{{ link.text }}</app-menu-item>
+        <app-menu-item *ngIf="!(user$ | async); else logoutItem" (click)="openModal()">Login / Register</app-menu-item>
         <ng-template #logoutItem>
             <app-menu-item (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-menu-item>
         </ng-template>

@@ -7,7 +7,7 @@ button {
     height: 100%;
     color: $primary-text-color;
     @include flex-row-center;
-    font-size: $fs-32;
+    font-size: $fs-28;
     font-weight: $fw-regular;
     background: $c-green;
     border-radius: 10px;

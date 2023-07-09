@@ -6,6 +6,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { authGuard, beforeChatLeavingGuard } from './core';
+import { OtherComponent } from './pages/other/other.component';
 
 const routes: Routes = [
     { path: '', component: HomepageComponent, title: 'Home' },
@@ -18,6 +19,7 @@ const routes: Routes = [
         canActivate: [authGuard],
         canDeactivate: [beforeChatLeavingGuard],
     },
+    { path: 'other', component: OtherComponent, title: 'Other' },
     {
         path: 'developer',
         children: [

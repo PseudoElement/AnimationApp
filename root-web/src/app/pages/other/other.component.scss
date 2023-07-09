@@ -1,0 +1,20 @@
+@use '../../../styles.scss' as *;
+
+.other-page-wrapper {
+    @include flex-column-center;
+    padding: 100px 0;
+    width: 100vw;
+    @include mobile {
+        padding: 70px 0;
+    }
+}
+
+.main {
+    margin-top: 100px;
+    @include flex-column-center;
+}
+
+.btn-wrapper {
+    margin-top: 50px;
+    width: 150px;
+}
