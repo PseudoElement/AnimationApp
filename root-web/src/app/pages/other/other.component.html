@@ -4,7 +4,7 @@
         <app-random-wheel #wheel [rotationCount]="10" [segments]="segments"></app-random-wheel>
         <div class="btn-wrapper">
             <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
-                wheel.isPlaying ? 'Spinning...' : 'Play'
+                wheel.isPlaying ? 'Playing...' : 'Play'
             }}</app-button>
         </div>
     </div>
