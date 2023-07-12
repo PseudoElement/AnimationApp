@@ -1,16 +1,22 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
-import { IRandomWheelSegment, ISegmentWithFullData } from 'src/app/core';
+import { Component, Input, ViewChild, ElementRef, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import { IRandomWheelSegment, ISegmentWithFullData, IWinResult } from 'src/app/core';
+import { RandomWheelActions, selectResults } from 'src/app/core/store/random-wheel';
+import { AppState } from 'src/app/core/store/store';
+import { selectUserName } from 'src/app/core/store/user';
 
 @Component({
     selector: 'app-random-wheel',
     templateUrl: './random-wheel.component.html',
     styleUrls: ['./random-wheel.component.scss'],
 })
-export class RandomWheelComponent {
+export class RandomWheelComponent implements OnDestroy {
     @Input() segments: IRandomWheelSegment[] = [];
     @Input() rotationCount: number = 5;
     @Input() size: number = 350;
     @Input() rotationTimeMS: number = 4000;
+    @Output() winnerValue: EventEmitter<IWinResult> = new EventEmitter<IWinResult>();
     segmentsCount!: number;
     segmentHeight!: number;
     segmentWidth!: number;
@@ -20,8 +26,14 @@ export class RandomWheelComponent {
     wheel!: HTMLElement;
     isPlaying: boolean = false;
     isSpinEnd: boolean = false;
+    isDestroyed$: Subject<boolean> = new Subject();
+    username?: string;
 
-    constructor() {}
+    constructor(private store: Store<AppState>) {
+        this.store
+            .pipe(select(selectUserName), takeUntil(this.isDestroyed$))
+            .subscribe((name) => (this.username = name));
+    }
 
     ngOnInit() {
         this.segmentsCount = this.segments.length;
@@ -35,6 +47,10 @@ export class RandomWheelComponent {
         this._createAllSegments();
     }
 
+    ngOnDestroy(): void {
+        this.isDestroyed$.next(true);
+    }
+
     public play() {
         console.log('Playing...');
         this.isPlaying = true;
@@ -45,8 +61,12 @@ export class RandomWheelComponent {
             const winnerSegment = this.segmentsWithFullData.find(
                 (segment) => segment.angleStart <= winnerAngle && segment.angleEnd >= winnerAngle
             );
+            this.winnerValue.emit({
+                username: this.username ?? 'anonim',
+                createdAt: new Date(),
+                value: winnerSegment?.value as string,
+            });
             this._triggerSpinEndAnimation();
-            console.log(winnerSegment?.value);
             setTimeout(() => this._setWheelToStart(), 5000);
             setTimeout(() => this._changeTransition('time'), 5100);
         }, this.rotationTimeMS);

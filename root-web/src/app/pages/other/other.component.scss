@@ -2,19 +2,32 @@
 
 .other-page-wrapper {
     @include flex-column-center;
-    padding: 100px 0;
-    width: 100vw;
+    padding: 100px;
     @include mobile {
-        padding: 70px 0;
+        padding: 70px 25px;
     }
 }
 
 .main {
     margin-top: 100px;
-    @include flex-column-center;
-}
-
-.btn-wrapper {
-    margin-top: 50px;
-    width: 150px;
+    width: 100%;
+    @include flex-row-space-around {
+        align-items: flex-start;
+    }
+    .left-part,
+    .right-part {
+        @include flex-column-center;
+    }
+    .left-part {
+        .btn-wrapper {
+            margin-top: 50px;
+            width: 150px;
+        }
+        .title {
+            margin-bottom: 75px;
+        }
+    }
+    .right-part {
+        margin-bottom: 35px;
+    }
 }

@@ -15,4 +15,5 @@ export const endpoints: Endpoints = {
     getGames: `${baseURL}/products/games`,
     getHomepage: `${baseURL}/home-page`,
     getAllMessagesFromDB: `${baseURL}/chat/messages`,
+    getRandomWheelResults: `${baseURL}/other/results`,
 };

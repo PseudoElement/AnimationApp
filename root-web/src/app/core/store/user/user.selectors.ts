@@ -2,7 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { AppState } from '../store';
 import { UserState } from './user.reducer';
 
-export const selectUserFeature = (state: AppState) => state.user;
+const selectUserFeature = (state: AppState) => state.user;
 
 export const selectUser = createSelector(selectUserFeature, (state: UserState) => state.user);
 export const selectUserEmail = createSelector(selectUserFeature, (state: UserState) => state.user?.email);

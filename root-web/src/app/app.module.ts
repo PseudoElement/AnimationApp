@@ -14,6 +14,8 @@ import { chatReducer } from './core/store/chat';
 import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
 import { TokenHandlerInterceptor } from './core/interceptors/token-handler.interceptor';
 import { RetryRequestInterceptor } from './core/interceptors/retry-request.interceptor';
+import { randomWheelReducer } from './core/store/random-wheel';
+import { RandomWheelEffects } from './core/store/random-wheel/random-wheel.effects';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,8 +26,8 @@ import { RetryRequestInterceptor } from './core/interceptors/retry-request.inter
         PagesModule,
         RouterModule,
         HttpClientModule,
-        StoreModule.forRoot({ user: userReducer, chat: chatReducer }),
-        EffectsModule.forRoot([UserEffects]),
+        StoreModule.forRoot({ user: userReducer, chat: chatReducer, randomWheel: randomWheelReducer }),
+        EffectsModule.forRoot([UserEffects, RandomWheelEffects]),
         BrowserAnimationsModule,
     ],
     providers: [

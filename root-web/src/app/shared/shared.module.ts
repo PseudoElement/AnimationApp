@@ -44,6 +44,7 @@ import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
 import { CapitalCasePipe } from './pipes/capital-case.pipe';
 import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
 import { RandomWheelComponent } from './components/random-wheel/random-wheel.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
     declarations: [
@@ -87,6 +88,7 @@ import { RandomWheelComponent } from './components/random-wheel/random-wheel.com
         CapitalCasePipe,
         AddSignInEndPipe,
         RandomWheelComponent,
+        TableComponent,
     ],
     imports: [
         CommonModule,
@@ -137,6 +139,7 @@ import { RandomWheelComponent } from './components/random-wheel/random-wheel.com
         CapitalCasePipe,
         AddSignInEndPipe,
         RandomWheelComponent,
+        TableComponent,
     ],
 })
 export class SharedModule {}

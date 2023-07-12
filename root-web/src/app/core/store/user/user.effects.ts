@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserActions } from '.';
-import { mergeMap, catchError, map, of, tap } from 'rxjs';
+import { mergeMap, catchError, map, tap, throwError } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { Cookies, getNameByEmail } from '../../utils';
-import { AlertService } from '../../services/alert.service';
-import { alerts } from '../../constants';
+import { getNameByEmail } from '../../utils';
 import { Router } from '@angular/router';
 import { CookiesService } from '../../services/cookies.service';
 
@@ -14,7 +12,6 @@ export class UserEffects {
     constructor(
         private actions$: Actions,
         private authService: AuthService,
-        private alertService: AlertService,
         private router: Router,
         private cookiesService: CookiesService
     ) {}
@@ -38,11 +35,7 @@ export class UserEffects {
                 name: getNameByEmail(user.user.email),
             })),
             map((user) => UserActions.setUser(user)),
-            catchError((err) => {
-                this.alertService.isOpen$.next(true);
-                this.alertService.message$.next(alerts.requestError);
-                return of(err);
-            })
+            catchError((err) => throwError(() => err))
         )
     );
 

@@ -1,11 +1,23 @@
 <div class="other-page-wrapper">
     <h1>OTHER PAGE</h1>
     <div class="main">
-        <app-random-wheel #wheel [rotationCount]="10" [segments]="segments"></app-random-wheel>
-        <div class="btn-wrapper">
-            <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
-                wheel.isPlaying ? 'Playing...' : 'Play'
-            }}</app-button>
+        <div class="left-part">
+            <h1 class="title">Random Wheel</h1>
+            <app-random-wheel
+                #wheel
+                [rotationCount]="10"
+                [segments]="segments"
+                (winnerValue)="onWheelStop($event)"
+            ></app-random-wheel>
+            <div class="btn-wrapper">
+                <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
+                    wheel.isPlaying ? 'Playing...' : 'Play'
+                }}</app-button>
+            </div>
+        </div>
+        <div class="right-part">
+            <h1 class="title">Results</h1>
+            <app-table [tableHeaders]="['User', 'Win', 'Time']" [data]="getResultsAsArrays()"></app-table>
         </div>
     </div>
 </div>
