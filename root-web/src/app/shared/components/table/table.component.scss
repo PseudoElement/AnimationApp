@@ -1,4 +1,12 @@
+@use '../../../../styles.scss' as *;
+
 table {
+}
+table,
+th,
+td {
+    border: 1px solid $primary-text-color;
+    border-collapse: collapse;
 }
 
 th,
@@ -6,7 +14,6 @@ td {
     max-width: 200px;
 }
 td {
-    border: 1px solid white;
-    padding: 0px;
+    padding: 5px;
     text-align: center;
 }

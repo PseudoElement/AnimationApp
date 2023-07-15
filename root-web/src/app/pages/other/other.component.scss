@@ -14,6 +14,9 @@
     @include flex-row-space-around {
         align-items: flex-start;
     }
+    @include tablet {
+        @include flex-column-center;
+    }
     .left-part,
     .right-part {
         @include flex-column-center;
@@ -25,9 +28,20 @@
         }
         .title {
             margin-bottom: 75px;
+            text-align: center;
+        }
+        @include tablet {
+            margin-bottom: 40px;
         }
     }
     .right-part {
         margin-bottom: 35px;
     }
+}
+.slide {
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 20px;
 }

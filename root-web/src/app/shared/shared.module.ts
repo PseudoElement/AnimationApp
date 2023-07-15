@@ -46,6 +46,7 @@ import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
 import { RandomWheelComponent } from './components/random-wheel/random-wheel.component';
 import { TableComponent } from './components/table/table.component';
 import { OnInitDirective } from './directives/on-init.directive';
+import { SwiperComponent } from './components/swiper/swiper.component';
 
 @NgModule({
     declarations: [
@@ -91,6 +92,7 @@ import { OnInitDirective } from './directives/on-init.directive';
         RandomWheelComponent,
         TableComponent,
         OnInitDirective,
+        SwiperComponent,
     ],
     imports: [
         CommonModule,
@@ -143,6 +145,7 @@ import { OnInitDirective } from './directives/on-init.directive';
         RandomWheelComponent,
         TableComponent,
         OnInitDirective,
+        SwiperComponent,
     ],
 })
 export class SharedModule {

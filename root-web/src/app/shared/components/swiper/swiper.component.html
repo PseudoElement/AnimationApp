@@ -1,0 +1,19 @@
+<div class="swiper-wrapper" [ngClass]="{ draggable: isDraggable }">
+    <div class="swiper" #swiperRef>
+        <ng-content></ng-content>
+    </div>
+    <span *ngIf="hasNavigation" (click)="prevSlide()" class="material-symbols-outlined btn-prev"> arrow_back_ios </span>
+    <span *ngIf="hasNavigation" (click)="nextSlide()" class="material-symbols-outlined btn-next">
+        arrow_forward_ios
+    </span>
+    <div *ngIf="hasPagination" class="pagination">
+        <div
+            *ngFor="let dot of slides"
+            class="btn-pagination"
+            [ngClass]="{ 'btn-pagination-active': dot.count === (activeSlide$ | async) }"
+            (click)="setActiveSlide(dot.count)"
+        >
+            •
+        </div>
+    </div>
+</div>

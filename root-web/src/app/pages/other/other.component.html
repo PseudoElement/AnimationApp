@@ -17,6 +17,32 @@
         </div>
         <div class="right-part">
             <h1 class="title">Last 20 Wins</h1>
+            <app-swiper>
+                <div class="slide">
+                    <app-table
+                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(0)"
+                    ></app-table>
+                </div>
+                <div class="slide">
+                    <app-table
+                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(1)"
+                    ></app-table>
+                </div>
+                <div class="slide">
+                    <app-table
+                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(2)"
+                    ></app-table>
+                </div>
+                <div class="slide">
+                    <app-table
+                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(3)"
+                    ></app-table>
+                </div>
+            </app-swiper>
         </div>
     </div>
 </div>
