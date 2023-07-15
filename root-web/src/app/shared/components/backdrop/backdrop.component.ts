@@ -6,7 +6,7 @@ import { BackdropSizes } from './model';
     selector: 'app-backdrop',
     templateUrl: './backdrop.component.html',
     styleUrls: ['./backdrop.component.scss'],
-    animations: [opacityAnimation],
+    animations: [opacityAnimation()],
 })
 export class BackdropComponent {
     @Input() isOpen: boolean = false;

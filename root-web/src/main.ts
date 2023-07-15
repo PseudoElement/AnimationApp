@@ -7,7 +7,6 @@ import 'zone.js';
 if (environment.production) {
     enableProdMode();
 }
-
 platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .catch((err) => console.error(err));

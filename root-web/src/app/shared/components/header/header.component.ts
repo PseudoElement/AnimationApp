@@ -17,7 +17,7 @@ import { CookiesService } from 'src/app/core/services/cookies.service';
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    animations: [opacityAnimation],
+    animations: [opacityAnimation()],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     links = links;

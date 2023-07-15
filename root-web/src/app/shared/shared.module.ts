@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NavComponent } from './components/nav/nav.component';
@@ -39,12 +39,13 @@ import { RotateZDirective } from './directives/rotate-z.directive';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { ListenKeyClickDirective } from './directives/submit-on-enter.directive';
+import { ListenKeyClickDirective } from './directives/listen-key-click';
 import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
 import { CapitalCasePipe } from './pipes/capital-case.pipe';
 import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
 import { RandomWheelComponent } from './components/random-wheel/random-wheel.component';
 import { TableComponent } from './components/table/table.component';
+import { OnInitDirective } from './directives/on-init.directive';
 
 @NgModule({
     declarations: [
@@ -89,6 +90,7 @@ import { TableComponent } from './components/table/table.component';
         AddSignInEndPipe,
         RandomWheelComponent,
         TableComponent,
+        OnInitDirective,
     ],
     imports: [
         CommonModule,
@@ -140,6 +142,9 @@ import { TableComponent } from './components/table/table.component';
         AddSignInEndPipe,
         RandomWheelComponent,
         TableComponent,
+        OnInitDirective,
     ],
 })
-export class SharedModule {}
+export class SharedModule {
+    constructor(private injector: Injector) {}
+}

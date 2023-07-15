@@ -2,7 +2,7 @@
     <tr class="header">
         <th *ngFor="let header of tableHeaders">{{ header }}</th>
     </tr>
-    <tr class="main" *ngFor="let row of data">
+    <tr class="main" *ngFor="let row of rowsWithCellsArrayPerEachRow">
         <td *ngFor="let cell of row">{{ cell }}</td>
     </tr>
 </table>

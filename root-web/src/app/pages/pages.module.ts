@@ -9,8 +9,22 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
 import { OtherComponent } from './other/other.component';
 
 @NgModule({
-    declarations: [HomepageComponent, AboutComponent, ProductsComponent, DeveloperComponent, ChatPageComponent, OtherComponent],
+    declarations: [
+        HomepageComponent,
+        AboutComponent,
+        ProductsComponent,
+        DeveloperComponent,
+        ChatPageComponent,
+        OtherComponent,
+    ],
     imports: [CommonModule, SharedModule],
-    exports: [HomepageComponent, AboutComponent, ProductsComponent, DeveloperComponent, ChatPageComponent, OtherComponent],
+    exports: [
+        HomepageComponent,
+        AboutComponent,
+        ProductsComponent,
+        DeveloperComponent,
+        ChatPageComponent,
+        OtherComponent,
+    ],
 })
 export class PagesModule {}

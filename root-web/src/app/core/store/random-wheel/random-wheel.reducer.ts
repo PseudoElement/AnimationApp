@@ -15,7 +15,7 @@ export const randomWheelReducer = createReducer(
     initialState,
     on(RandomWheelActions.addWinResult, (state: RandomWheelState, action) => ({
         ...state,
-        results: [...state.results, omitObjectProp('type', action)],
+        results: [omitObjectProp('type', action), ...state.results],
     })),
     on(RandomWheelActions.setResultsArray, (state: RandomWheelState, action: { results: IWinResult[] }) => ({
         ...state,

@@ -13,3 +13,5 @@ export interface IWinResult {
     createdAt: Date;
     username: string;
 }
+
+export type RandomWheelTimeOptions = 2000 | 4000 | 10000;

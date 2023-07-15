@@ -1,4 +1,4 @@
-import { Observable, takeUntil, Subject } from 'rxjs';
+import { takeUntil, Subject } from 'rxjs';
 import { Component, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { IWinResult, segments } from 'src/app/core';
@@ -14,23 +14,22 @@ import { AppState } from 'src/app/core/store/store';
 export class OtherComponent implements OnDestroy {
     segments = segments;
     wheelResults: IWinResult[] = [];
+    resultsWithFormattedDate: Array<string[]> = [];
     isDestroyed$: Subject<boolean> = new Subject();
     constructor(private otherPageService: OtherPageService, private store: Store<AppState>) {
         this.otherPageService.openSocket();
         this.store.dispatch(RandomWheelActions.loadAllResultsFromDB());
-        this.store
-            .pipe(select(selectResults), takeUntil(this.isDestroyed$))
-            .subscribe((results) => (this.wheelResults = results));
+        this.store.pipe(select(selectResults), takeUntil(this.isDestroyed$)).subscribe((results) => {
+            this.resultsWithFormattedDate = this.getResultsWithFormattedDate(results);
+        });
     }
 
     public onWheelStop(newResult: IWinResult) {
         this.otherPageService.sendNewResult(newResult);
     }
 
-    public getResultsAsArrays(): Array<any[]> {
-        // if (!this.wheelResults.length) return [];
-
-        return this.wheelResults.map((item) => {
+    public getResultsWithFormattedDate(results: IWinResult[]): Array<string[]> {
+        return results.map((item) => {
             const date = `${new Date(item.createdAt).toLocaleTimeString()}, ${new Date(
                 item.createdAt
             ).toLocaleDateString()}`;

@@ -1,8 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { IRandomWheelSegment, ISegmentWithFullData, IWinResult } from 'src/app/core';
-import { RandomWheelActions, selectResults } from 'src/app/core/store/random-wheel';
+import { IRandomWheelSegment, ISegmentWithFullData, IWinResult, RandomWheelTimeOptions } from 'src/app/core';
 import { AppState } from 'src/app/core/store/store';
 import { selectUserName } from 'src/app/core/store/user';
 
@@ -15,7 +14,7 @@ export class RandomWheelComponent implements OnDestroy {
     @Input() segments: IRandomWheelSegment[] = [];
     @Input() rotationCount: number = 5;
     @Input() size: number = 350;
-    @Input() rotationTimeMS: number = 4000;
+    @Input() rotationTimeMS: RandomWheelTimeOptions = 2000;
     @Output() winnerValue: EventEmitter<IWinResult> = new EventEmitter<IWinResult>();
     segmentsCount!: number;
     segmentHeight!: number;
@@ -54,10 +53,12 @@ export class RandomWheelComponent implements OnDestroy {
     public play() {
         console.log('Playing...');
         this.isPlaying = true;
+        const audio = this._playSoundOnRotation();
         const rotationAngle = Math.floor(Math.random() * 360) + this.rotationCount * 360;
         this.wheel.style.transform = `rotate(-${rotationAngle - 22}deg)`;
         const winnerAngle = Math.abs(rotationAngle - 360 * this.rotationCount);
         setTimeout(() => {
+            audio.pause();
             const winnerSegment = this.segmentsWithFullData.find(
                 (segment) => segment.angleStart <= winnerAngle && segment.angleEnd >= winnerAngle
             );
@@ -101,6 +102,14 @@ export class RandomWheelComponent implements OnDestroy {
             const angleEnd = index * this.angleRangePerSegment + this.angleRangePerSegment - 1;
             return { ...data, angleStart, angleEnd };
         });
+    }
+
+    private _playSoundOnRotation(): HTMLAudioElement {
+        let audio: HTMLAudioElement;
+        if (this.rotationTimeMS === 2000) audio = new Audio('../../`../../assets/audio/rotation.mp3');
+        else audio = new Audio('../../../../assets/audio/rotation-5sec.m4a');
+        audio.play();
+        return audio;
     }
 
     //CREATE ALL SEGMENTS

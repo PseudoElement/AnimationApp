@@ -6,7 +6,7 @@ import { opacityAnimation, showHideAnimation } from '../../animations';
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    animations: [opacityAnimation, showHideAnimation(120)],
+    animations: [opacityAnimation(), showHideAnimation(120)],
 })
 export class SelectComponent implements AfterContentInit {
     @Input() selectedValue: string | number = '';

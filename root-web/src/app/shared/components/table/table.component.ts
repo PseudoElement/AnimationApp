@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TableComponent {
     @Input() tableHeaders: string[] = [];
-    @Input() data: Array<string[]> = [];
+    @Input() rowsWithCellsArrayPerEachRow: Array<string[]> = [];
 }
