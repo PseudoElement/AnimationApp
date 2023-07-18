@@ -10,7 +10,7 @@ export class RetryRequestInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         return next.handle(request).pipe(
             retry({
-                count: 2,
+                count: 0,
                 delay(error: HttpErrorResponse, retryCount) {
                     if (error.status !== status.unauthorized && error.status !== status.conflict) {
                         return timer(1000);

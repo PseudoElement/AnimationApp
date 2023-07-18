@@ -23,6 +23,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     }
 
     private _getErrorMessage(errorBody: IExtendedHttpErrorResponse): string {
+        if (errorBody.message) return errorBody.message;
+        if (!errorBody.error) return 'Unknown error.';
         if (typeof errorBody.error !== 'string') {
             return errorBody.error.message.join('. ');
         } else return errorBody.error;

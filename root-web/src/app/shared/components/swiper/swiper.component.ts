@@ -1,5 +1,16 @@
-import { BehaviorSubject, Subject, takeUntil, Subscription } from 'rxjs';
-import { Component, ElementRef, Input, AfterViewInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
+import { BehaviorSubject, Subject, takeUntil, Subscription, interval } from 'rxjs';
+import {
+    Component,
+    ElementRef,
+    Input,
+    AfterViewInit,
+    OnDestroy,
+    ViewChild,
+    HostListener,
+    ChangeDetectorRef,
+    Output,
+    EventEmitter,
+} from '@angular/core';
 import { IAutoPlay, ISlide } from './model';
 
 @Component({
@@ -12,8 +23,7 @@ export class SwiperComponent implements AfterViewInit, OnDestroy {
     @Input() hasPagination: boolean = true;
     @Input() loop: boolean = true;
     @Input() isDraggable: boolean = true;
-    // @Input() auto: IAutoPlay = { delay: 2000, disableOnInteraction: false, stopOnHover: true };
-    @Input() auto: IAutoPlay = false;
+    @Input() auto: IAutoPlay = { delay: 2000, disableOnInteraction: false, stopOnHover: true };
     slides: ISlide[] = [];
     activeSlide$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
     isDestroyed$: Subject<boolean> = new Subject();
@@ -46,11 +56,20 @@ export class SwiperComponent implements AfterViewInit, OnDestroy {
         else this.prevSlide();
     }
 
-    constructor() {}
+    @HostListener('touchstart', ['$event']) onTouchStart(event: TouchEvent): void {
+        this.clientXOnActionStart = event.changedTouches.item(0)?.clientX ?? 0;
+    }
+    @HostListener('touchend', ['$event']) onTouchEnd(event: TouchEvent): void {
+        if (this.clientXOnActionStart > event.changedTouches.item(0)!.clientX) this.nextSlide();
+        else this.prevSlide();
+    }
+
+    constructor(private cd: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         this.swiper = this.swiperRef.nativeElement;
-        this._setSlidesOnInit();
+        this._setSlidesArray();
+        this.cd.detectChanges();
         this._initObservableOnSlideChange();
         if (this.auto) {
             this._autoplay(this.auto.delay);
@@ -78,17 +97,10 @@ export class SwiperComponent implements AfterViewInit, OnDestroy {
         this.activeSlide$.next(count);
     }
 
-    private _handleInfiniteLoop(type: 'next' | 'prev') {
-        type === 'next' && this.swiper.insertAdjacentElement('beforeend', this.slides[0].node);
-        type === 'prev' && this.swiper.insertAdjacentElement('afterbegin', this.slides[this.slides.length - 1].node);
-        this._changeSlideOrder(type);
-    }
-
     private _initObservableOnSlideChange(): Subscription {
         return this.activeSlide$.pipe(takeUntil(this.isDestroyed$)).subscribe((count) => {
             const slide = this._findSlideToScroll(count);
             if (!slide) return;
-            console.log('SLIDE', slide);
             this.isSliding = true;
             this.swiper.scroll({ behavior: 'smooth', left: slide.offsetLeft });
             setTimeout(() => (this.isSliding = false), 500);
@@ -103,28 +115,9 @@ export class SwiperComponent implements AfterViewInit, OnDestroy {
         return this.slides.find((slide) => slide.count === count) ?? this.slides[0];
     }
 
-    private _setSlidesOnInit(): void {
+    private _setSlidesArray(): HTMLElement[] {
         const nodesArray = Array.from(this.swiper.querySelectorAll('.slide')) as HTMLElement[];
-        console.log(nodesArray);
-        this.slides = nodesArray.map((el, index) => ({
-            count: index + 1,
-            offsetLeft: el.offsetLeft,
-            node: el,
-        }));
-        console.log(this.slides);
-    }
-
-    private _changeSlideOrder(type: 'next' | 'prev') {
-        const nodesArray = Array.from(this.swiper.querySelectorAll('.slide')) as HTMLElement[];
-        if (type === 'next') {
-            const firstSlide = this.slides.shift() as ISlide;
-            this.slides.push(firstSlide);
-        }
-        if (type === 'prev') {
-            const lastSlide = this.slides.pop() as ISlide;
-            this.slides.unshift(lastSlide);
-        }
-        this.slides = this.slides.map((slide, index) => ({ ...slide, offsetLeft: nodesArray[index].offsetLeft }));
-        console.log(this.slides);
+        this.slides = nodesArray.map((el, index) => ({ count: index + 1, node: el, offsetLeft: el.offsetLeft }));
+        return nodesArray;
     }
 }

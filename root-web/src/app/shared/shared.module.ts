@@ -39,7 +39,7 @@ import { RotateZDirective } from './directives/rotate-z.directive';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-list/menu-item/menu-item.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { ListenKeyClickDirective } from './directives/listen-key-click';
+import { ListenKeyClickDirective } from './directives/listen-key-click.directive';
 import { CursorBgComponent } from './components/cursor-bg/cursor-bg.component';
 import { CapitalCasePipe } from './pipes/capital-case.pipe';
 import { AddSignInEndPipe } from './pipes/add-sign-in-end.pipe';
@@ -47,6 +47,7 @@ import { RandomWheelComponent } from './components/random-wheel/random-wheel.com
 import { TableComponent } from './components/table/table.component';
 import { OnInitDirective } from './directives/on-init.directive';
 import { SwiperComponent } from './components/swiper/swiper.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
     declarations: [
@@ -93,6 +94,7 @@ import { SwiperComponent } from './components/swiper/swiper.component';
         TableComponent,
         OnInitDirective,
         SwiperComponent,
+        TooltipDirective,
     ],
     imports: [
         CommonModule,
@@ -146,6 +148,7 @@ import { SwiperComponent } from './components/swiper/swiper.component';
         TableComponent,
         OnInitDirective,
         SwiperComponent,
+        TooltipDirective,
     ],
 })
 export class SharedModule {

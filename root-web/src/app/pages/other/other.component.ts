@@ -1,15 +1,23 @@
 import { takeUntil, Subject } from 'rxjs';
-import { Component, ElementRef, OnDestroy, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { IWinResult, segments } from 'src/app/core';
 import { OtherPageService } from 'src/app/core/services/other-page.service';
 import { RandomWheelActions, selectResults } from 'src/app/core/store/random-wheel';
 import { AppState } from 'src/app/core/store/store';
+import { opacityAnimation } from 'src/app/shared/animations';
+import {
+    fadeInLeftAnimation,
+    fadeInLeftOnEnterAnimation,
+    fadeInRightAnimation,
+    fadeInRightOnEnterAnimation,
+} from 'angular-animations';
 
 @Component({
     selector: 'app-other',
     templateUrl: './other.component.html',
     styleUrls: ['./other.component.scss'],
+    animations: [opacityAnimation(), fadeInLeftAnimation(), fadeInRightAnimation()],
 })
 export class OtherComponent implements OnDestroy {
     private readonly TABLE_ROWS_PER_PAGE = 5;
@@ -17,6 +25,7 @@ export class OtherComponent implements OnDestroy {
     wheelResults: IWinResult[] = [];
     resultsWithFormattedDate: Array<string[]> = [];
     isDestroyed$: Subject<boolean> = new Subject();
+    tableHeaders: string[] = ['User', 'Win', 'Time'];
     constructor(private otherPageService: OtherPageService, private store: Store<AppState>) {
         this.otherPageService.openSocket();
         this.store.dispatch(RandomWheelActions.loadAllResultsFromDB());

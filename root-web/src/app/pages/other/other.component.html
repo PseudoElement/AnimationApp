@@ -1,5 +1,5 @@
 <div class="other-page-wrapper">
-    <h1>OTHER PAGE</h1>
+    <h1 [appTooltip]="'Tooltip'">OTHER PAGE</h1>
     <div class="main">
         <div class="left-part">
             <h1 class="title">Random Wheel</h1>
@@ -20,25 +20,25 @@
             <app-swiper>
                 <div class="slide">
                     <app-table
-                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [tableHeaders]="tableHeaders"
                         [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(0)"
                     ></app-table>
                 </div>
                 <div class="slide">
                     <app-table
-                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [tableHeaders]="tableHeaders"
                         [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(1)"
                     ></app-table>
                 </div>
                 <div class="slide">
                     <app-table
-                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [tableHeaders]="tableHeaders"
                         [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(2)"
                     ></app-table>
                 </div>
                 <div class="slide">
                     <app-table
-                        [tableHeaders]="['User', 'Win', 'Time']"
+                        [tableHeaders]="tableHeaders"
                         [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(3)"
                     ></app-table>
                 </div>
