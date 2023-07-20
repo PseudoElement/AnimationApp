@@ -17,12 +17,17 @@
                 </span>
             </app-button>
         </div>
-        <div *ngIf="!(user$ | async); else logout" class="auth-button-wrapper">
+        <div *ngIf="!(user$ | async); else logout" class="right-part-wrapper">
             <app-button (click)="openModal()"> Login / Register </app-button>
         </div>
         <ng-template #logout>
-            <div class="auth-button-wrapper">
-                <app-button (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-button>
+            <div class="right-part-wrapper">
+                <app-link-to-my-account></app-link-to-my-account>
+                <div class="auth-button-wrapper">
+                    <app-button (click)="onLogout()"
+                        ><span class="material-symbols-outlined"> logout </span></app-button
+                    >
+                </div>
             </div>
         </ng-template>
     </ng-container>
@@ -49,6 +54,7 @@
         <app-menu-item *ngFor="let link of links" (click)="onNavigationClick(link.path)">{{ link.text }}</app-menu-item>
         <app-menu-item *ngIf="!(user$ | async); else logoutItem" (click)="openModal()">Login / Register</app-menu-item>
         <ng-template #logoutItem>
+            <app-menu-item (click)="onNavigationClick('/my-account')">Profile</app-menu-item>
             <app-menu-item (click)="onLogout()"><span class="material-symbols-outlined"> logout </span></app-menu-item>
         </ng-template>
     </app-menu-list>

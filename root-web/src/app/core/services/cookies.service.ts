@@ -43,7 +43,7 @@ export class CookiesService {
         Cookies.setCookie('refresh_token', value, this.refreshTokenExpiration_7days);
     }
 
-    private _setUserID(value: string): void {
+    private _setUserID(value: number | string): void {
         Cookies.setCookie('id', value);
     }
 

@@ -48,6 +48,7 @@ import { TableComponent } from './components/table/table.component';
 import { OnInitDirective } from './directives/on-init.directive';
 import { SwiperComponent } from './components/swiper/swiper.component';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { LinkToMyAccountComponent } from './components/link-to-my-account/link-to-my-account.component';
 
 @NgModule({
     declarations: [
@@ -95,6 +96,7 @@ import { TooltipDirective } from './directives/tooltip.directive';
         OnInitDirective,
         SwiperComponent,
         TooltipDirective,
+        LinkToMyAccountComponent,
     ],
     imports: [
         CommonModule,
@@ -149,6 +151,7 @@ import { TooltipDirective } from './directives/tooltip.directive';
         OnInitDirective,
         SwiperComponent,
         TooltipDirective,
+        LinkToMyAccountComponent,
     ],
 })
 export class SharedModule {

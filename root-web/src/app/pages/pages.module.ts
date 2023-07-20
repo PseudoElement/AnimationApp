@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DeveloperComponent } from './developer/developer.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { OtherComponent } from './other/other.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { OtherComponent } from './other/other.component';
         DeveloperComponent,
         ChatPageComponent,
         OtherComponent,
+        MyAccountComponent,
     ],
     imports: [CommonModule, SharedModule],
     exports: [
@@ -25,6 +27,7 @@ import { OtherComponent } from './other/other.component';
         DeveloperComponent,
         ChatPageComponent,
         OtherComponent,
+        MyAccountComponent,
     ],
 })
 export class PagesModule {}

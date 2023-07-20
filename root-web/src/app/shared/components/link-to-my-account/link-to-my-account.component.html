@@ -1,0 +1,7 @@
+<a [appTooltip]="'Go to profile'" [hideOnTooltipHover]="true" [routerLink]="'/my-account'" class="link-to-my-account">
+    <img *ngIf="userPhoto$ | async; else unloadedPhoto" class="photo" [src]="userPhoto$ | async" alt="user-photo" />
+    <ng-template #unloadedPhoto>
+        <p class="photo">?</p>
+    </ng-template>
+    <h3>{{ username$ | async }}</h3>
+</a>

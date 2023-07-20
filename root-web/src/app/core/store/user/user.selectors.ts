@@ -9,3 +9,4 @@ export const selectUserEmail = createSelector(selectUserFeature, (state: UserSta
 export const selectUserName = createSelector(selectUserFeature, (state: UserState) => state.user?.name);
 export const selectUserToken = createSelector(selectUserFeature, (state: UserState) => state.user?.access_token);
 export const selectUserID = createSelector(selectUserFeature, (state: UserState) => state.user?.id);
+export const selectUserPhoto = createSelector(selectUserFeature, (state: UserState) => state.user?.photo);

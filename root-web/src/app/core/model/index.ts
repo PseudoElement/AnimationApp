@@ -20,3 +20,4 @@ export * from './tokenService';
 export * from './interceptors';
 export * from './other-page';
 export * from './swiper';
+export * from './my-account';

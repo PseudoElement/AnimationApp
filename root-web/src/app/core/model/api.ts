@@ -11,5 +11,6 @@ const endpointsKeys = [
     'getAllMessagesFromDB',
     'refreshAccessToken',
     'getRandomWheelResults',
+    'updateUserPhoto',
 ] as const;
 export type Endpoints = Record<(typeof endpointsKeys)[number], string | ((id: string) => string)>;

@@ -21,7 +21,7 @@ header {
         height: 70px;
     }
 }
-.auth-button-wrapper,
+.right-part-wrapper,
 .theme-button-wrapper,
 .menu-btn-wrapper {
     top: 50%;
@@ -53,10 +53,16 @@ header {
         right: 230px;
     }
 }
-.auth-button-wrapper {
+.right-part-wrapper {
+    @include flex-row-space-between {
+        align-items: center;
+    }
     position: absolute;
     right: 50px;
-    font-size: $fs-24 !important;
+    .auth-button-wrapper {
+        font-size: $fs-24 !important;
+        margin-left: 10px;
+    }
 }
 .menu-list-wrapper {
     background: $vinous-blue-bg-color;

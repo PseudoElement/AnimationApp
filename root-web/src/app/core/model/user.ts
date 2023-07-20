@@ -1,9 +1,10 @@
 export interface IUser {
     email: string;
-    id: string;
+    id: number | string;
     access_token: string;
     refresh_token: string;
     created_at: Date;
+    photo?: string;
 }
 
 export interface IUserWithoutTokens {

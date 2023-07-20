@@ -1,6 +1,10 @@
 import { CookiesKeys } from './../model/cookies';
 
-export function setCookie(name: CookiesKeys, value: string, expiration: Date = new Date(Date.now() + 6.048e8)): void {
+export function setCookie(
+    name: CookiesKeys,
+    value: string | number,
+    expiration: Date = new Date(Date.now() + 6.048e8)
+): void {
     document.cookie = `${name}=${value}; expires=${expiration}; path=/`;
 }
 export function getCookie(name: CookiesKeys): string | null {
