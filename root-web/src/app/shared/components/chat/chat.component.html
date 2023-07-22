@@ -13,7 +13,7 @@
     <div class="send-message-wrapper">
         <app-input
             (appListenKeyClick)="inputText.trim() && onSubmit()"
-            [(ngModelValue)]="inputText"
+            [(ngModel)]="inputText"
             [isFormControl]="false"
             [name]="'message'"
             [placeholder]="'Input message...'"

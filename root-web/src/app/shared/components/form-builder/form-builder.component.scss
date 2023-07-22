@@ -1,0 +1,22 @@
+@use '../../../../styles.scss' as *;
+
+.form-builder {
+    margin-bottom: 20px;
+    position: relative;
+}
+.horizontal {
+    @include flex-row-start {
+        align-items: center;
+    }
+}
+.vertical {
+    @include flex-column-start;
+}
+.control-wrapper {
+    margin: 0px 10px;
+}
+.submit-wrapper {
+    position: relative;
+    height: 75px;
+    width: 250px;
+}

@@ -9,6 +9,7 @@ export class TooltipDirective implements OnInit, AfterViewInit {
     @Input() offsetY: number = 0;
     @Input() position: 'top' | 'bottom' = 'bottom';
     @Input() hideOnTooltipHover: boolean = false;
+    @Input() nowrap: boolean = true;
     element!: HTMLElement;
     tooltip!: HTMLElement;
 
@@ -50,18 +51,18 @@ export class TooltipDirective implements OnInit, AfterViewInit {
         this.renderer.setStyle(this.tooltip, 'z-index', '10000');
         this.renderer.setStyle(this.tooltip, 'text-align', 'center');
         this.renderer.setStyle(this.tooltip, 'transition', 'opacity 100ms');
-        this.renderer.setStyle(this.tooltip, 'white-space', 'nowrap');
-        this.renderer.setStyle(this.tooltip, 'cursor', 'pointer');
+        this.renderer.setStyle(this.tooltip, 'white-space', `${this.nowrap ? 'nowrap' : 'normal'}`);
         this.renderer.setStyle(this.tooltip, 'border-radius', '10px');
+        this.renderer.setStyle(this.tooltip, 'min-width', '200px');
         this.tooltip.textContent = this.text;
         this.renderer.addClass(this.tooltip, 'tooltip');
         this.position === 'bottom'
             ? this.renderer.setStyle(this.tooltip, 'top', `${this.element.offsetHeight + this.offsetY}px`)
             : this.renderer.setStyle(this.tooltip, 'top', `-${this.tooltip.offsetHeight + this.offsetY}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${this.element.offsetWidth / 2}px`);
-        this.renderer.setStyle(this.tooltip, 'transform', `translateX(-42%)`);
+        this.renderer.setStyle(this.tooltip, 'transform', `translateX(-50%)`);
         this.renderer.setStyle(this.tooltip, 'padding', '5px');
-        this.renderer.setStyle(this.tooltip, 'background', 'rgb(255, 255, 0)');
+        this.renderer.setStyle(this.tooltip, 'background', 'rgb(255, 0, 0)');
         this.renderer.setStyle(this.tooltip, 'transition', 'all 0.5s');
     }
 }

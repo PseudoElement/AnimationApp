@@ -21,3 +21,5 @@ export * from './interceptors';
 export * from './other-page';
 export * from './swiper';
 export * from './my-account';
+export * from './template-form';
+export * from './forms';

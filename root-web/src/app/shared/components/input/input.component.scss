@@ -6,13 +6,18 @@
     position: relative;
 }
 .field {
-    border: 3px solid $c-black;
+    border: 3px solid $primary-text-color;
+    color: $primary-text-color;
     background: transparent;
     font-size: $fs-32;
     border-radius: 15px;
     padding: 5px 10px;
     transition: all 0.2s;
     width: 100%;
+}
+.field::placeholder {
+    font-style: italic;
+    color: aquamarine;
 }
 .errorField {
     border: 3px solid $c-red;

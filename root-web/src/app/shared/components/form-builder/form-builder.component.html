@@ -1,0 +1,24 @@
+<form
+    [formGroup]="form"
+    class="form-builder"
+    [ngClass]="{ horizontal: direction === 'horizontal', vertical: direction === 'vertical' }"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="control-wrapper">
+        <app-input
+            *ngFor="let control of controls; let i = index"
+            [placeholder]="control.placeholder"
+            [id]="control.id"
+            [disabled]="control.disabled"
+            [label]="control.label ?? ''"
+            [name]="control.name"
+            [type]="control.type"
+            [control]="getControl(control.name)"
+            [validation]="control.validation"
+        ></app-input>
+    </div>
+
+    <div class="submit-wrapper">
+        <app-button>{{ submitButtonText }}</app-button>
+    </div>
+</form>

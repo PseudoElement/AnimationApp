@@ -8,15 +8,12 @@ import { endpoints } from '../api';
     providedIn: 'root',
 })
 export class MyAccountService {
-    private readonly patchRequestOptions = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-
     constructor(private http: HttpClient) {}
 
-    public updateUserPhoto(body: IUpdateUserPhotoRequest): Observable<any> {
-        return this.http.patch<any>(endpoints.updateUserPhoto as string, body, this.patchRequestOptions);
+    public uploadUserPhoto({ id, newPhoto }: IUpdateUserPhotoRequest): Observable<any> {
+        const formData = new FormData();
+        formData.append('newPhoto', newPhoto, newPhoto.name);
+        formData.append('id', id);
+        return this.http.post<any>(endpoints.updateUserPhoto as string, formData);
     }
 }

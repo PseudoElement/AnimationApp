@@ -1,3 +1,32 @@
+@use '../../../styles.scss' as *;
+
 .my-account-page-wrapper {
     padding: 100px 0;
+}
+
+.main {
+    @include flex-row-space-between {
+        align-items: flex-start;
+    }
+    width: 100%;
+    padding: 100px;
+    @include tablet {
+        @include flex-column-center;
+    }
+}
+.left {
+    flex: 1 1 20%;
+    @include flex-column-center;
+    .upload-image-wrapper {
+        position: relative;
+        margin-bottom: 10px;
+    }
+}
+.right {
+    margin-left: 20px;
+    flex: 1 1 80%;
+    .form-wrapper {
+        border-radius: 20px;
+        background: $grad-purple-light;
+    }
 }

@@ -3,24 +3,58 @@
         <label [for]="id">{{ label }}</label>
         <input
             [placeholder]="placeholder"
-            [ngClass]="{ errorField: control.dirty && control.touched && error }"
+            [ngClass]="{ errorField: control.dirty && control.touched && getError(control) }"
             class="field"
             [id]="id"
             [type]="type"
             [formControl]="control"
         />
-        <p *ngIf="control.dirty && control.touched && error" class="error">{{ error | errorTransform }}</p>
+        <p *ngIf="control.dirty && control.touched && getError(control)" class="error">
+            {{
+                getError(control)!
+                    | errorTransform
+                        : {
+                              minlength: validation.minLength,
+                              maxlength: validation.maxLength,
+                              min: validation.min,
+                              max: validation.max
+                          }
+            }}
+        </p>
     </div>
 </ng-container>
 <ng-template #defaultControl>
-    <label *ngIf="label" [for]="id">{{ label }}</label>
-    <input
-        [placeholder]="placeholder"
-        class="field"
-        [id]="id"
-        [type]="type"
-        [name]="name"
-        [(ngModel)]="ngModelValue"
-        (ngModelChange)="onChange($event)"
-    />
+    <div class="input-wrapper">
+        <label *ngIf="label" [for]="id">{{ label }}</label>
+        <input
+            #inputControl="ngModel"
+            class="field"
+            [disabled]="disabled"
+            [placeholder]="placeholder"
+            [id]="id"
+            [type]="type"
+            [name]="name"
+            [(ngModel)]="ngModel"
+            (ngModelChange)="onChange($event)"
+            [minlength]="validation.minLength"
+            [maxlength]="validation.maxLength"
+            [min]="validation.min"
+            [max]="validation.max"
+            [pattern]="validation.pattern"
+            [required]="validation.required"
+            [email]="validation.email"
+        />
+        <p *ngIf="inputControl.dirty && inputControl.touched && getError(inputControl)" class="error">
+            {{
+                getError(inputControl)!
+                    | errorTransform
+                        : {
+                              minlength: validation.minLength,
+                              maxlength: validation.maxLength,
+                              min: validation.min,
+                              max: validation.max
+                          }
+            }}
+        </p>
+    </div>
 </ng-template>

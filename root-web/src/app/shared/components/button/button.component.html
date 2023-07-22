@@ -1,4 +1,4 @@
-<button [ngClass]="[className, disabled === true ? 'disabled' : '']" [disabled]="disabled">
+<button [ngClass]="[className, disabled === true ? 'disabled' : '']" [disabled]="disabled" [type]="type">
     <ng-content></ng-content>
     <div *ngIf="withArrow" class="arrow-wrapper">
         <app-arrow [isVisible]="isHover" [symbolName]="symbolName!"></app-arrow>

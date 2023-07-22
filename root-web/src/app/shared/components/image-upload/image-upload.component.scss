@@ -1,0 +1,44 @@
+@use '../../../../styles.scss' as *;
+.image-upload-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: $rgb-indigo;
+    border-radius: 50%;
+    overflow: hidden;
+    &:hover {
+        .camera-icon {
+            opacity: 1;
+        }
+    }
+    .label-with-image {
+        width: 100%;
+        height: 100%;
+    }
+}
+#file-input {
+    z-index: 999;
+    margin-top: -100px;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+.test {
+    margin: 100px;
+}
+.camera-icon,
+.file-loaded-text {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.camera-icon {
+    opacity: 0;
+    font-size: 50px;
+    transition: opacity 0.1s;
+}
+.camera-icon-visible {
+    opacity: 1;
+}

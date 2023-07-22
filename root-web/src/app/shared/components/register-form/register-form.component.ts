@@ -1,6 +1,14 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { Cookies, IUser, alerts, confirmPasswords, getNameByEmail, omitObjectProp } from 'src/app/core';
+import {
+    Cookies,
+    IUser,
+    PASSWORD_PATTERN,
+    alerts,
+    confirmPasswords,
+    getNameByEmail,
+    omitObjectProp,
+} from 'src/app/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable, catchError, firstValueFrom, lastValueFrom, of } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -38,7 +46,7 @@ export class RegisterFormComponent {
                     Validators.required,
                     Validators.minLength(8),
                     Validators.maxLength(20),
-                    Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+                    Validators.pattern(PASSWORD_PATTERN),
                 ],
             ],
             confirmPassword: [''],
