@@ -18,5 +18,9 @@ export const userReducer = createReducer(
     on(UserActions.setUserName, (state, action) => {
         const newName = action.name;
         return { ...state, user: { ...state.user, name: newName } as IUserWithName };
-    })
+    }),
+    on(UserActions.setUserPhotoSrc, (state, action) => ({
+        ...state,
+        user: { ...state.user, photoSrc: action.photoSrc } as IUserWithName,
+    }))
 );

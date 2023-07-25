@@ -16,10 +16,17 @@
             </div>
         </section>
         <section class="right">
-            <div *ngFor="let form of formData" class="form-wrapper">
+            <div class="form-wrapper">
                 <app-form-builder
-                    [submitButtonText]="form.submitButtonText"
-                    [controls]="form.controls"
+                    [submitButtonText]="formData[0].submitButtonText"
+                    [controls]="formData[0].controls"
+                    (onSubmitForm)="onEmailChange($event)"
+                ></app-form-builder>
+            </div>
+            <div class="form-wrapper">
+                <app-form-builder
+                    [submitButtonText]="formData[1].submitButtonText"
+                    [controls]="formData[1].controls"
                 ></app-form-builder>
             </div>
         </section>

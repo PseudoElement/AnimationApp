@@ -1,6 +1,6 @@
 <div class="image-upload-wrapper">
     <label for="file-input" class="label-with-image">
-        <img *ngIf="imageSrc" [src]="imageSrc" alt="image-upload" />
+        <img *ngIf="imageSrc" [src]="imageSrc" class="photo-img" alt="image-upload" />
     </label>
     <span class="material-symbols-outlined camera-icon" [ngClass]="{ 'camera-icon-visible': !imageSrc }">
         add_a_photo

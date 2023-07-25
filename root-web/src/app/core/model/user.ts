@@ -4,7 +4,7 @@ export interface IUser {
     access_token: string;
     refresh_token: string;
     created_at: Date;
-    photo?: string;
+    photoSrc?: string | null;
 }
 
 export interface IUserWithoutTokens {

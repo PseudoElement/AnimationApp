@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export interface IErrorInnerInHttpErrorResponse {
     error: string;
-    message: string[];
+    message: string[] | string;
     statusCode: number;
 }
 

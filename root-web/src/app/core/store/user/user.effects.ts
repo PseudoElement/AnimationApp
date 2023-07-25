@@ -33,6 +33,7 @@ export class UserEffects {
                 access_token: this._getAccessToken(),
                 refresh_token: this._getRefreshToken(),
                 name: getNameByEmail(user.user.email),
+                photoSrc: user.user.photoSrc ?? null,
             })),
             map((user) => UserActions.setUser(user)),
             catchError((err) => throwError(() => err))

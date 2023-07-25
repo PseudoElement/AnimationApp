@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Directions, IControl, IValidator } from 'src/app/core';
+import { IFormBuilderData } from './model';
 
 @Component({
     selector: 'app-form-builder',
@@ -11,6 +12,7 @@ export class FormBuilderComponent implements OnInit {
     @Input() submitButtonText: string = 'Submit';
     @Input() controls: IControl[] = [];
     @Input() direction: Directions = 'horizontal';
+    @Output() onSubmitForm: EventEmitter<FormGroup> = new EventEmitter();
     form!: FormGroup;
     constructor(private fb: FormBuilder) {}
 
@@ -45,10 +47,7 @@ export class FormBuilderComponent implements OnInit {
     }
 
     public onSubmit() {
-        console.log('THIS FORM', this.form);
         if (this.form.invalid) return;
-        else {
-            console.log('Submit');
-        }
+        this.onSubmitForm.emit(this.form);
     }
 }

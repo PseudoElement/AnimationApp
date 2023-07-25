@@ -11,7 +11,7 @@ import { selectUserName, selectUserPhoto } from 'src/app/core/store/user';
 })
 export class LinkToMyAccountComponent {
     username$: Observable<string | undefined>;
-    userPhoto$: Observable<string | undefined>;
+    userPhoto$: Observable<string | undefined | null>;
 
     constructor(private store: Store<AppState>) {
         this.username$ = this.store.select(selectUserName);

@@ -21,7 +21,7 @@ const routes: Routes = [
         canDeactivate: [beforeChatLeavingGuard],
     },
     { path: 'other', component: OtherComponent, title: 'Other' },
-    { path: 'my-account', component: MyAccountComponent },
+    { path: 'my-account', component: MyAccountComponent, canActivate: [authGuard] },
     {
         path: 'developer',
         children: [
