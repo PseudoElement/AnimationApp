@@ -50,7 +50,13 @@ export class MyAccountComponent implements OnInit {
         const id = this.cookieService.getUserID() ?? '';
         const email = form.controls.email.value;
         this.myAccountService.updateUserEmail({ id: id, email });
+        form.reset();
     }
 
-    public onPasswordChange(isValid: boolean) {}
+    public onPasswordChange(form: FormGroup): void {
+        const oldPassword = form.controls['old-password'].value;
+        const newPassword = form.controls['new-password'].value;
+        this.myAccountService.updateUserPassword({ newPassword, oldPassword });
+        form.reset();
+    }
 }

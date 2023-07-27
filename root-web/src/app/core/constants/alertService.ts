@@ -9,4 +9,7 @@ export const alerts = {
     needAuth: 'Login is necessary to visit this route',
     serverError: 'Server error!',
     pageNotFound: 'Page data not found :(',
+    successUpdatePassword: 'Password successfully updated!',
+    successUpdateEmail: 'Email successfully updated!',
+    successUpdatePhoto: 'Photo successfully updated!',
 } as const;

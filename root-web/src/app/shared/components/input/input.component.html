@@ -36,25 +36,6 @@
             [name]="name"
             [(ngModel)]="ngModel"
             (ngModelChange)="onChange($event)"
-            [minlength]="validation.minLength"
-            [maxlength]="validation.maxLength"
-            [min]="validation.min"
-            [max]="validation.max"
-            [pattern]="validation.pattern"
-            [required]="validation.required"
-            [email]="validation.email"
         />
-        <p *ngIf="inputControl.dirty && inputControl.touched && getError(inputControl)" class="error">
-            {{
-                getError(inputControl)!
-                    | errorTransform
-                        : {
-                              minlength: validation.minLength,
-                              maxlength: validation.maxLength,
-                              min: validation.min,
-                              max: validation.max
-                          }
-            }}
-        </p>
     </div>
 </ng-template>

@@ -7,3 +7,4 @@ export * from './temporary/index';
 export * from './other-page';
 export * from './my-account-page';
 export * from './regExp';
+export * from './common';

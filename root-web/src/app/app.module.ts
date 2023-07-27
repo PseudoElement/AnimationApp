@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -11,9 +11,7 @@ import { UserEffects, userReducer } from './core/store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { chatReducer } from './core/store/chat';
-import { ErrorHandlerInterceptor, LoadingHandlerInterceptor } from './core';
-import { TokenHandlerInterceptor } from './core/interceptors/token-handler.interceptor';
-import { RetryRequestInterceptor } from './core/interceptors/retry-request.interceptor';
+import { interceptorsProviders } from './core';
 import { randomWheelReducer } from './core/store/random-wheel';
 import { RandomWheelEffects } from './core/store/random-wheel/random-wheel.effects';
 
@@ -30,20 +28,7 @@ import { RandomWheelEffects } from './core/store/random-wheel/random-wheel.effec
         EffectsModule.forRoot([UserEffects, RandomWheelEffects]),
         BrowserAnimationsModule,
     ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: LoadingHandlerInterceptor,
-            multi: true,
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorHandlerInterceptor,
-            multi: true,
-        },
-        { provide: HTTP_INTERCEPTORS, useClass: RetryRequestInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi: true },
-    ],
+    providers: [interceptorsProviders],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

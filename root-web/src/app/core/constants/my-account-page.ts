@@ -30,11 +30,11 @@ export const formData: IFormBuilderData[] = [
         controls: [
             {
                 disabled: false,
-                id: 'confirm-password',
-                name: 'confirm-password',
-                type: 'text',
+                id: 'old-password',
+                name: 'old-password',
+                type: 'password',
                 value: '',
-                label: 'Confirm old password',
+                label: 'Old password',
                 placeholder: 'Input old password',
                 validation: {
                     required: true,
@@ -48,9 +48,9 @@ export const formData: IFormBuilderData[] = [
             },
             {
                 disabled: false,
-                id: 'password',
-                name: 'password',
-                type: 'text',
+                id: 'new-password',
+                name: 'new-password',
+                type: 'password',
                 value: '',
                 label: 'New password',
                 placeholder: 'Input new password',

@@ -3,9 +3,11 @@
     position: relative;
     width: 200px;
     height: 200px;
-    // background: $rgb-indigo;
+    background: $rgb-indigo;
     border-radius: 50%;
-    border: 2px solid red;
+    border: 5px solid red;
+    outline: 3px solid $primary-text-color;
+    outline-offset: 10px;
     overflow: hidden;
     &:hover {
         .camera-icon {

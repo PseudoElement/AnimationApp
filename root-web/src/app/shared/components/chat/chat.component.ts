@@ -25,11 +25,11 @@ export class ChatComponent implements OnDestroy, OnInit {
     isOpenChat$: Observable<boolean>;
 
     constructor(private chatService: ChatService, private store: Store<AppState>) {
-        this.chatService.getAllMessagesFromDB();
         this.isOpenChat$ = this.store.select(selectIsOpenChat);
-        this.store
-            .pipe(select(selectUserEmail), takeUntil(this.isDestroyed$))
-            .subscribe((email) => (this.authorEmail = email as string));
+        this.store.pipe(select(selectUserEmail), takeUntil(this.isDestroyed$)).subscribe((email) => {
+            this.authorEmail = email as string;
+            this.chatService.getAllMessagesFromDB();
+        });
         this.store
             .pipe(
                 select(selectMessages),

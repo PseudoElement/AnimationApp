@@ -1,22 +1,28 @@
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { IUpdateUserEmailRequest, IUpdateUserPhotoRequest, IUpdateUserPhotoRes, IUser, IUserWithName } from '../model';
+import {
+    IUpdateUserEmailRequest,
+    IUpdateUserPasswordRequest,
+    IUpdateUserPhotoRequest,
+    IUpdateUserPhotoRes,
+    IUser,
+    IUserWithName,
+} from '../model';
 import { endpoints } from '../api';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../store/store';
 import { UserActions, selectUser } from '../store/user';
 import { getNameByEmail } from '../utils';
+import { AlertService } from './alert.service';
+import { alerts } from '../constants';
 
 @Injectable({
     providedIn: 'root',
 })
 export class MyAccountService implements OnDestroy {
-    user!: IUserWithName | null;
     isDestroyed$: Subject<boolean> = new Subject();
-    constructor(private http: HttpClient, private store: Store<AppState>) {
-        this.store.pipe(takeUntil(this.isDestroyed$), select(selectUser)).subscribe((user) => (this.user = user));
-    }
+    constructor(private http: HttpClient, private store: Store<AppState>, private alertService: AlertService) {}
 
     ngOnDestroy(): void {
         this.isDestroyed$.next(true);
@@ -30,6 +36,7 @@ export class MyAccountService implements OnDestroy {
             .patch<IUpdateUserPhotoRes>(endpoints.updateUserPhoto as string, formData)
             .subscribe(({ photoSrc }) => {
                 this.store.dispatch(UserActions.setUserPhotoSrc({ photoSrc }));
+                this._triggerAlert(alerts.successUpdatePhoto);
             });
     }
 
@@ -37,6 +44,18 @@ export class MyAccountService implements OnDestroy {
         this.http.patch<IUser>(endpoints.updateUserEmail as string, body).subscribe((user) => {
             const userWithName = { ...user, name: getNameByEmail(user.email) } as IUserWithName;
             this.store.dispatch(UserActions.setUser(userWithName));
+            this._triggerAlert(alerts.successUpdateEmail);
         });
+    }
+
+    public updateUserPassword(body: IUpdateUserPasswordRequest): void {
+        this.http.patch<IUser>(endpoints.updateUserPassword as string, body).subscribe(() => {
+            this._triggerAlert(alerts.successUpdatePassword);
+        });
+    }
+
+    private _triggerAlert(message: string) {
+        this.alertService.isOpen$.next(true);
+        this.alertService.message$.next(message);
     }
 }

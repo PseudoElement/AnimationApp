@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { getNameByEmail } from '../../utils';
 import { Router } from '@angular/router';
 import { CookiesService } from '../../services/cookies.service';
+import { privateRoutes } from '../../constants';
 
 @Injectable()
 export class UserEffects {
@@ -43,7 +44,6 @@ export class UserEffects {
     logoutUser$ = createEffect(() =>
         this.actions$.pipe(
             ofType(UserActions.logoutUser),
-            tap(() => this.router.url === '/chat' && this.router.navigateByUrl('/')),
             map(() => UserActions.unsetUser())
         )
     );

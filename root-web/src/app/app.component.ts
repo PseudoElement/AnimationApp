@@ -4,12 +4,13 @@ import { ThemeService } from './core/services/theme.service';
 import { ModalService } from './core/services/modal.service';
 import { Store } from '@ngrx/store';
 import { AppState } from './core/store/store';
-import { Cookies } from './core';
+import { Cookies, privateRoutes } from './core';
 import { loadUser } from './core/store/user/user.actions';
 import { LoadingService } from './core/services/loading.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { slideInLeftAnimation } from 'angular-animations';
 import { CookiesService } from './core/services/cookies.service';
+import { selectUser } from './core/store/user';
 
 @Component({
     selector: 'app-root',
@@ -32,6 +33,9 @@ export class AppComponent implements OnInit {
         this.router.events.pipe(filter((val) => val instanceof NavigationEnd)).subscribe(() => {
             this.isChangedRoute = true;
             setTimeout(() => (this.isChangedRoute = false), 400);
+        });
+        this.store.select(selectUser).subscribe((user) => {
+            if (!user && privateRoutes.includes(this.router.url)) this.router.navigateByUrl('/');
         });
     }
 

@@ -7,6 +7,10 @@ export interface IUpdateUserEmailRequest {
     id: string;
     email: string;
 }
+export interface IUpdateUserPasswordRequest {
+    oldPassword: string;
+    newPassword: string;
+}
 
 export interface IUpdateUserEmailRes extends IUser {}
 

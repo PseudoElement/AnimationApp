@@ -27,6 +27,7 @@
                 <app-form-builder
                     [submitButtonText]="formData[1].submitButtonText"
                     [controls]="formData[1].controls"
+                    (onSubmitForm)="onPasswordChange($event)"
                 ></app-form-builder>
             </div>
         </section>

@@ -16,6 +16,7 @@ export const endpoints: Endpoints = {
     getHomepage: `${baseURL}/home-page`,
     getAllMessagesFromDB: `${baseURL}/chat/messages`,
     getRandomWheelResults: `${baseURL}/other/results`,
-    updateUserPhoto: `${baseURL}/account/photo`,
-    updateUserEmail: `${baseURL}/account/email`,
+    updateUserPhoto: `${baseURL}/account/update-photo`,
+    updateUserEmail: `${baseURL}/account/update-email`,
+    updateUserPassword: `${baseURL}/account/update-password`,
 };

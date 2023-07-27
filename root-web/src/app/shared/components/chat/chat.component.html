@@ -12,6 +12,7 @@
     </div>
     <div class="send-message-wrapper">
         <app-input
+            ngDefaultControl
             (appListenKeyClick)="inputText.trim() && onSubmit()"
             [(ngModel)]="inputText"
             [isFormControl]="false"
