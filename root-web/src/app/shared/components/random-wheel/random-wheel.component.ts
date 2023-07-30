@@ -11,7 +11,7 @@ import { selectUserName } from 'src/app/core/store/user';
     styleUrls: ['./random-wheel.component.scss'],
 })
 export class RandomWheelComponent implements OnDestroy {
-    @Input() segments: IRandomWheelSegment[] = [];
+    @Input({ required: true }) segments: IRandomWheelSegment[] = [];
     @Input() rotationCount: number = 5;
     @Input() size: number = 350;
     @Input() rotationTimeMS: RandomWheelTimeOptions = 2000;
@@ -45,6 +45,8 @@ export class RandomWheelComponent implements OnDestroy {
         this._modifySegmentsArray();
         this._createAllSegments();
     }
+
+    ngAfterViewInit() {}
 
     ngOnDestroy(): void {
         this.isDestroyed$.next(true);
@@ -120,12 +122,11 @@ export class RandomWheelComponent implements OnDestroy {
     }
 
     private _createSegment(rotationAngle: number, textContent: string, id: number) {
-        const wheelWrapper = document.querySelector('.segments') as HTMLElement;
         const segment = document.createElement('div');
         segment.className = 'segment';
         segment.textContent = textContent;
         this._addStylesToSegment(segment, rotationAngle, id);
-        wheelWrapper.append(segment);
+        this.wheel.append(segment);
     }
 
     private _addStylesToSegment(el: HTMLElement, rotationAngle: number, id: number) {

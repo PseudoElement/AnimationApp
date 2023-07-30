@@ -23,7 +23,7 @@ export class SwiperComponent implements AfterViewInit, OnDestroy {
     @Input() hasPagination: boolean = true;
     @Input() loop: boolean = true;
     @Input() isDraggable: boolean = true;
-    @Input() auto: IAutoPlay = { delay: 2000, disableOnInteraction: false, stopOnHover: true };
+    @Input() auto: IAutoPlay = { delay: 3000, disableOnInteraction: false, stopOnHover: true };
     slides: ISlide[] = [];
     activeSlide$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
     isDestroyed$: Subject<boolean> = new Subject();

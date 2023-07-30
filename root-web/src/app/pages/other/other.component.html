@@ -1,48 +1,64 @@
 <div class="other-page-wrapper">
-    <h1>OTHER PAGE</h1>
-    <div class="main">
-        <div class="left-part">
-            <h1 class="title">Random Wheel</h1>
-            <app-random-wheel
-                #wheel
-                [rotationCount]="10"
-                [segments]="segments"
-                (winnerValue)="onWheelStop($event)"
-            ></app-random-wheel>
-            <div class="btn-wrapper">
-                <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
-                    wheel.isPlaying ? 'Playing...' : 'Play'
-                }}</app-button>
+    <app-full-screen-two-slides-slider>
+        <app-full-screen-slide
+            (click)="setActiveSlideInTwoSlidesSlider('left')"
+            [title]="'Random wheel'"
+            [side]="'left'"
+            [isActive]="activeSlide === 'left'"
+        >
+            <div class="main-left">
+                <div class="left-part">
+                    <h1 class="title">Random Wheel</h1>
+                    <app-random-wheel
+                        #wheel
+                        [rotationCount]="10"
+                        [segments]="segments"
+                        (winnerValue)="onWheelStop($event)"
+                    ></app-random-wheel>
+                    <div class="btn-wrapper">
+                        <app-button (click)="wheel.play()" [disabled]="wheel.isPlaying">{{
+                            wheel.isPlaying ? 'Playing...' : 'Play'
+                        }}</app-button>
+                    </div>
+                </div>
+                <div class="right-part">
+                    <h1 class="title">Last 20 Wins</h1>
+                    <app-swiper>
+                        <div class="slide">
+                            <app-table
+                                [tableHeaders]="tableHeaders"
+                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(0)"
+                            ></app-table>
+                        </div>
+                        <div class="slide">
+                            <app-table
+                                [tableHeaders]="tableHeaders"
+                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(1)"
+                            ></app-table>
+                        </div>
+                        <div class="slide">
+                            <app-table
+                                [tableHeaders]="tableHeaders"
+                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(2)"
+                            ></app-table>
+                        </div>
+                        <div class="slide">
+                            <app-table
+                                [tableHeaders]="tableHeaders"
+                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(3)"
+                            ></app-table>
+                        </div>
+                    </app-swiper>
+                </div>
             </div>
-        </div>
-        <div class="right-part">
-            <h1 class="title">Last 20 Wins</h1>
-            <app-swiper>
-                <div class="slide">
-                    <app-table
-                        [tableHeaders]="tableHeaders"
-                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(0)"
-                    ></app-table>
-                </div>
-                <div class="slide">
-                    <app-table
-                        [tableHeaders]="tableHeaders"
-                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(1)"
-                    ></app-table>
-                </div>
-                <div class="slide">
-                    <app-table
-                        [tableHeaders]="tableHeaders"
-                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(2)"
-                    ></app-table>
-                </div>
-                <div class="slide">
-                    <app-table
-                        [tableHeaders]="tableHeaders"
-                        [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(3)"
-                    ></app-table>
-                </div>
-            </app-swiper>
-        </div>
-    </div>
+        </app-full-screen-slide>
+        <app-full-screen-slide
+            (click)="setActiveSlideInTwoSlidesSlider('right')"
+            [title]="'Canvas-Paint'"
+            [side]="'right'"
+            [isActive]="activeSlide === 'right'"
+        >
+            <div class="main-right">SOON...</div>
+        </app-full-screen-slide>
+    </app-full-screen-two-slides-slider>
 </div>

@@ -1,14 +1,9 @@
 @use '../../../styles.scss' as *;
 
 .other-page-wrapper {
-    @include flex-column-center;
-    padding: 100px;
-    @include mobile {
-        padding: 70px 25px;
-    }
 }
 
-.main {
+.main-left {
     margin-top: 100px;
     width: 100%;
     @include flex-row-space-around {
@@ -37,14 +32,11 @@
     .right-part {
         margin-bottom: 35px;
     }
-}
-.slide {
-    display: flex;
-    justify-content: center;
-    min-width: 100%;
-    min-height: 100%;
-    padding: 20px;
-}
-.h1 {
-    background-color: pink;
+    .slide {
+        display: flex;
+        justify-content: center;
+        min-width: 100%;
+        min-height: 100%;
+        padding: 20px;
+    }
 }

@@ -1,17 +1,12 @@
 import { takeUntil, Subject } from 'rxjs';
 import { Component, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { IWinResult, segments } from 'src/app/core';
+import { IWinResult, SidesX, segments } from 'src/app/core';
 import { OtherPageService } from 'src/app/core/services/other-page.service';
 import { RandomWheelActions, selectResults } from 'src/app/core/store/random-wheel';
 import { AppState } from 'src/app/core/store/store';
 import { opacityAnimation } from 'src/app/shared/animations';
-import {
-    fadeInLeftAnimation,
-    fadeInLeftOnEnterAnimation,
-    fadeInRightAnimation,
-    fadeInRightOnEnterAnimation,
-} from 'angular-animations';
+import { fadeInLeftAnimation, fadeInRightAnimation } from 'angular-animations';
 
 @Component({
     selector: 'app-other',
@@ -26,6 +21,7 @@ export class OtherComponent implements OnDestroy {
     resultsWithFormattedDate: Array<string[]> = [];
     isDestroyed$: Subject<boolean> = new Subject();
     tableHeaders: string[] = ['User', 'Win', 'Time'];
+    activeSlide: SidesX = 'left';
     constructor(private otherPageService: OtherPageService, private store: Store<AppState>) {
         this.otherPageService.openSocket();
         this.store.dispatch(RandomWheelActions.loadAllResultsFromDB());
@@ -35,6 +31,10 @@ export class OtherComponent implements OnDestroy {
     }
 
     ngAfterViewInit() {}
+    ngOnDestroy(): void {
+        this.otherPageService.closeSocket();
+        this.isDestroyed$.next(true);
+    }
 
     public getArrayToCreateSlidesInNgFor(): number[] {
         const slidesCount = Math.ceil(this.resultsWithFormattedDate.length / this.TABLE_ROWS_PER_PAGE);
@@ -61,8 +61,7 @@ export class OtherComponent implements OnDestroy {
         });
     }
 
-    ngOnDestroy(): void {
-        this.otherPageService.closeSocket();
-        this.isDestroyed$.next(true);
+    public setActiveSlideInTwoSlidesSlider(side: SidesX) {
+        this.activeSlide = side;
     }
 }

@@ -1,7 +1,7 @@
 @use '../../../../styles.scss' as *;
 
 .random-wheel-wrapper {
-    z-index: -2;
+    z-index: 2000;
     position: relative;
     @include flex-column-center;
     border-radius: 50%;
