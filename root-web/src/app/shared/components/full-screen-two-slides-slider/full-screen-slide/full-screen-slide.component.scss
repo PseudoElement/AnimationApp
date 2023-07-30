@@ -47,9 +47,10 @@
 }
 .active-slide {
     .body {
-        background: url(../../../../../assets/img/jpg/Asphalt.jpg);
-        background-attachment: fixed;
         width: calc(100% - 120px);
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
         visibility: visible;
         @include mobile {
             width: calc(100% - 50px);

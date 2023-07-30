@@ -51,6 +51,7 @@ import { TooltipDirective } from './directives/tooltip.directive';
 import { LinkToMyAccountComponent } from './components/link-to-my-account/link-to-my-account.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { FormBuilderComponent } from './components/form-builder/form-builder.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
 
 @NgModule({
     declarations: [
@@ -101,6 +102,7 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
         LinkToMyAccountComponent,
         ImageUploadComponent,
         FormBuilderComponent,
+        CanvasComponent,
     ],
     imports: [
         CommonModule,
@@ -158,6 +160,7 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
         LinkToMyAccountComponent,
         ImageUploadComponent,
         FormBuilderComponent,
+        CanvasComponent,
     ],
 })
 export class SharedModule {

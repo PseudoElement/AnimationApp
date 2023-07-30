@@ -5,6 +5,19 @@
             [title]="'Random wheel'"
             [side]="'left'"
             [isActive]="activeSlide === 'left'"
+            [backgroundURL]="'url(../../../../../assets/img/jpg/Casino-Table.jpg)'"
+        >
+            <div class="main-right">
+                <h1 class="title">Paint</h1>
+                <app-canvas [canvasWidth]="1000" [canvasHeight]="800"></app-canvas>
+            </div>
+        </app-full-screen-slide>
+        <app-full-screen-slide
+            (click)="setActiveSlideInTwoSlidesSlider('right')"
+            [title]="'Canvas-Paint'"
+            [side]="'right'"
+            [isActive]="activeSlide === 'right'"
+            [backgroundURL]="'url(../../../../../assets/img/jpg/Paint.webp)'"
         >
             <div class="main-left">
                 <div class="left-part">
@@ -51,14 +64,6 @@
                     </app-swiper>
                 </div>
             </div>
-        </app-full-screen-slide>
-        <app-full-screen-slide
-            (click)="setActiveSlideInTwoSlidesSlider('right')"
-            [title]="'Canvas-Paint'"
-            [side]="'right'"
-            [isActive]="activeSlide === 'right'"
-        >
-            <div class="main-right">SOON...</div>
         </app-full-screen-slide>
     </app-full-screen-two-slides-slider>
 </div>

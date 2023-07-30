@@ -15,6 +15,9 @@
     .left-part,
     .right-part {
         @include flex-column-center;
+        .title {
+            color: $primary-text-color;
+        }
     }
     .left-part {
         .btn-wrapper {
@@ -38,5 +41,13 @@
         min-width: 100%;
         min-height: 100%;
         padding: 20px;
+    }
+}
+.main-right {
+    position: relative;
+    @include flex-column-center;
+    .title {
+        margin-bottom: 50px;
+        color: $primary-text-color;
     }
 }

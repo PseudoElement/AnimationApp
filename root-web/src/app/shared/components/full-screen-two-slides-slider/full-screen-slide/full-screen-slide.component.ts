@@ -12,9 +12,11 @@ export class FullScreenSlideComponent {
     @Input() title: string = '';
     @Input() isActive: boolean = false;
     @Input() side: SidesX = 'left';
+    @Input() backgroundURL: string = '';
     isHoverToggleBar: boolean = false;
     isFullHeightToggleBar$: BehaviorSubject<boolean>;
     constructor(private headerService: HeaderService) {
         this.isFullHeightToggleBar$ = this.headerService.isScrolled$;
     }
+    file = '';
 }
