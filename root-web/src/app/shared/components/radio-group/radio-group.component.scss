@@ -1,0 +1,8 @@
+@use '../../../../styles.scss' as *;
+
+.radio-group {
+    @include flex-column-start;
+}
+.inputs {
+    @include flex-row-space-around;
+}

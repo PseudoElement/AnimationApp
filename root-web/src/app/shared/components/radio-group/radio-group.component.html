@@ -1,0 +1,17 @@
+<div class="radio-group">
+    <h3 class="title">{{ title }}</h3>
+    <div class="inputs">
+        <app-input-radio
+            *ngFor="let radio of data"
+            ngDefaultControl
+            [id]="radio.id"
+            [label]="radio.label"
+            [name]="radio.name"
+            [value]="radio.value"
+            [checked]="activeValue === radio.value"
+            [activeValue]="activeValue"
+            [(ngModel)]="activeValue"
+            (ngModelChange)="onChange($event)"
+        ></app-input-radio>
+    </div>
+</div>

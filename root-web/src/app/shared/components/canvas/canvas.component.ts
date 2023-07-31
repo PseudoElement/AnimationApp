@@ -19,6 +19,7 @@ export class CanvasComponent implements OnInit, AfterViewInit {
     @Input() canvasWidth: number = 500;
     @Input() canvasHeight: number = 500;
     @Input() borderWidth: number = 10;
+    @Input() strokeLineWidth: number = 2;
     @ViewChild('canvasRef', { static: true }) canvasRef!: ElementRef;
     canvas!: HTMLCanvasElement;
     context!: CanvasRenderingContext2D;
@@ -54,7 +55,7 @@ export class CanvasComponent implements OnInit, AfterViewInit {
 
         this._setCanvasSizes(this.canvasWidth, this.canvasHeight);
         this.setStrokeColor('red');
-        this.setLineWidth(2);
+        this.setLineWidth(this.strokeLineWidth);
     }
 
     ngAfterViewInit(): void {

@@ -2,6 +2,13 @@
 
 .other-page-wrapper {
 }
+.main-left,
+.main-right {
+    position: relative;
+    box-shadow: inset 0 0 200px 10px black;
+    border-radius: 20px;
+    padding: 10px;
+}
 
 .main-left {
     margin-top: 100px;
@@ -44,10 +51,9 @@
     }
 }
 .main-right {
-    position: relative;
     @include flex-column-center;
     .title {
         margin-bottom: 50px;
-        color: $primary-text-color;
+        color: $c-white;
     }
 }

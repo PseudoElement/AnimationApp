@@ -52,6 +52,8 @@ import { LinkToMyAccountComponent } from './components/link-to-my-account/link-t
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { FormBuilderComponent } from './components/form-builder/form-builder.component';
 import { CanvasComponent } from './components/canvas/canvas.component';
+import { InputRadioComponent } from './components/input-radio/input-radio.component';
+import { RadioGroupComponent } from './components/radio-group/radio-group.component';
 
 @NgModule({
     declarations: [
@@ -103,6 +105,8 @@ import { CanvasComponent } from './components/canvas/canvas.component';
         ImageUploadComponent,
         FormBuilderComponent,
         CanvasComponent,
+        InputRadioComponent,
+        RadioGroupComponent,
     ],
     imports: [
         CommonModule,
@@ -161,6 +165,8 @@ import { CanvasComponent } from './components/canvas/canvas.component';
         ImageUploadComponent,
         FormBuilderComponent,
         CanvasComponent,
+        InputRadioComponent,
+        RadioGroupComponent,
     ],
 })
 export class SharedModule {

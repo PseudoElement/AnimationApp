@@ -9,7 +9,16 @@
         >
             <div class="main-right">
                 <h1 class="title">Paint</h1>
-                <app-canvas [canvasWidth]="1000" [canvasHeight]="800"></app-canvas>
+                <div class="paint-wrapper">
+                    <div class="settings">
+                        <app-radio-group
+                            [data]="strokeLineWidthRadioInputs"
+                            [title]="'Set stroke width'"
+                            (changeActiveValue)="canvas.setLineWidth(+$event)"
+                        ></app-radio-group>
+                    </div>
+                    <app-canvas #canvas [canvasWidth]="1000" [canvasHeight]="800"></app-canvas>
+                </div>
             </div>
         </app-full-screen-slide>
         <app-full-screen-slide
@@ -40,25 +49,25 @@
                         <div class="slide">
                             <app-table
                                 [tableHeaders]="tableHeaders"
-                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(0)"
+                                [rowsWithCellsArrayPerEachRow]="tableDataPage1"
                             ></app-table>
                         </div>
                         <div class="slide">
                             <app-table
                                 [tableHeaders]="tableHeaders"
-                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(1)"
+                                [rowsWithCellsArrayPerEachRow]="tableDataPage2"
                             ></app-table>
                         </div>
                         <div class="slide">
                             <app-table
                                 [tableHeaders]="tableHeaders"
-                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(2)"
+                                [rowsWithCellsArrayPerEachRow]="tableDataPage3"
                             ></app-table>
                         </div>
                         <div class="slide">
                             <app-table
                                 [tableHeaders]="tableHeaders"
-                                [rowsWithCellsArrayPerEachRow]="getRowsArrayPerSlide(3)"
+                                [rowsWithCellsArrayPerEachRow]="tableDataPage4"
                             ></app-table>
                         </div>
                     </app-swiper>

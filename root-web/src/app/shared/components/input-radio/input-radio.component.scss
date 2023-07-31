@@ -1,0 +1,13 @@
+@use '../../../../styles.scss' as *;
+
+.input-radio {
+    @include flex-row-center;
+    .input,
+    .label {
+        cursor: pointer;
+    }
+    .input {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}

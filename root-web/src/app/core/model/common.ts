@@ -6,3 +6,10 @@ export interface IOption {
     value: string | number;
     text: string;
 }
+
+export interface IRadioInput {
+    value: string | number;
+    name: string;
+    id: number | string;
+    label: string;
+}
