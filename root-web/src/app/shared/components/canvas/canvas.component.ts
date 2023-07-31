@@ -30,6 +30,7 @@ export class CanvasComponent implements OnInit, AfterViewInit {
     onMouseDown(e: MouseEvent) {
         this.isMouseDown = true;
         const { x, y } = this._getRealCoords(e.clientX, e.clientY);
+        this.context.beginPath();
         this.context.moveTo(x, y);
     }
     @HostListener('mouseup') onMouseUp() {

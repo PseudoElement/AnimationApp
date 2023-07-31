@@ -8,7 +8,4 @@ import { Component, Input } from '@angular/core';
 export class TableComponent {
     @Input() tableHeaders: string[] = [];
     @Input() rowsWithCellsArrayPerEachRow: Array<string[]> = [];
-    ngOnChanges() {
-        console.log(11111, this.rowsWithCellsArrayPerEachRow);
-    }
 }
