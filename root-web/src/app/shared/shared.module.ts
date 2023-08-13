@@ -54,6 +54,7 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
 import { CanvasComponent } from './components/canvas/canvas.component';
 import { InputRadioComponent } from './components/input-radio/input-radio.component';
 import { RadioGroupComponent } from './components/radio-group/radio-group.component';
+import { CursorDirective } from './directives/cursor.directive';
 
 @NgModule({
     declarations: [
@@ -107,6 +108,7 @@ import { RadioGroupComponent } from './components/radio-group/radio-group.compon
         CanvasComponent,
         InputRadioComponent,
         RadioGroupComponent,
+        CursorDirective,
     ],
     imports: [
         CommonModule,
@@ -167,6 +169,7 @@ import { RadioGroupComponent } from './components/radio-group/radio-group.compon
         CanvasComponent,
         InputRadioComponent,
         RadioGroupComponent,
+        CursorDirective,
     ],
 })
 export class SharedModule {
