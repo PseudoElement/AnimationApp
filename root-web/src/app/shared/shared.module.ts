@@ -55,6 +55,7 @@ import { CanvasComponent } from './components/canvas/canvas.component';
 import { InputRadioComponent } from './components/input-radio/input-radio.component';
 import { RadioGroupComponent } from './components/radio-group/radio-group.component';
 import { CursorDirective } from './directives/cursor.directive';
+import { RgbPalleteComponent } from './components/rgb-pallete/rgb-pallete.component';
 
 @NgModule({
     declarations: [
@@ -109,6 +110,7 @@ import { CursorDirective } from './directives/cursor.directive';
         InputRadioComponent,
         RadioGroupComponent,
         CursorDirective,
+        RgbPalleteComponent,
     ],
     imports: [
         CommonModule,
@@ -170,6 +172,7 @@ import { CursorDirective } from './directives/cursor.directive';
         InputRadioComponent,
         RadioGroupComponent,
         CursorDirective,
+        RgbPalleteComponent,
     ],
 })
 export class SharedModule {

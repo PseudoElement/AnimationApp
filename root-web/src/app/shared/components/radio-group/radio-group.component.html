@@ -1,6 +1,6 @@
 <div class="radio-group">
     <h3 class="title">{{ title }}</h3>
-    <div class="inputs">
+    <div class="inputs" [ngClass]="[flexDirection]">
         <app-input-radio
             *ngFor="let radio of data"
             ngDefaultControl

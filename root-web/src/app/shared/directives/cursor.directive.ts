@@ -42,15 +42,8 @@ export class CursorDirective implements AfterViewInit, OnDestroy {
         this.cursor.style.height = '50px';
         this.cursor.style.background = 'url(../../../assets/img/svg/PencilCursor.svg)';
         this.cursor.style.pointerEvents = 'none';
+        this.cursor.style.marginTop = '-50px';
         document.documentElement.append(this.cursor);
-        // this._renderer.setStyle(this.cursor, 'width', '150px');
-        // this._renderer.setStyle(this.cursor, 'height', '150px');
-        // this._renderer.setStyle(this.cursor, 'background', 'url(../../../assets/img/svg/PencilCursor.svg)');
-        // this._renderer.setStyle(this.cursor, 'display', 'none');
-        // this._renderer.setStyle(this.cursor, 'position', 'absolute');
-        // this._renderer.setStyle(this.cursor, 'z-index', '999999');
-        // this._renderer.setStyle(this.cursor, 'pointer-events', 'none');
-        // this._renderer.appendChild(this.host, this.cursor);
     }
 
     private _removeCursor(): void {
@@ -60,23 +53,17 @@ export class CursorDirective implements AfterViewInit, OnDestroy {
     private _changeCursorPosition(x: number, y: number) {
         this.cursor.style.top = `${y}px`;
         this.cursor.style.left = `${x}px`;
-        // this._renderer.setStyle(this.cursor, 'top', `${y}px`);
-        // this._renderer.setStyle(this.cursor, 'left', `${x}px`);
     }
 
     private _showCursor(): void {
-        // this._renderer.setStyle(this.cursor, 'display', 'block');
         this.cursor.style.display = 'block';
         document.documentElement.style.cursor = 'none';
-        // this._renderer.setStyle(document.documentElement, 'cursor', 'none');
         this.isVisibleCursor = true;
     }
 
     private _hideCursor(): void {
-        // this._renderer.setStyle(this.cursor, 'display', 'none');
         this.cursor.style.display = 'none';
         document.documentElement.style.cursor = 'initial';
-        // this._renderer.setStyle(document.documentElement, 'cursor', 'initial');
         this.isVisibleCursor = false;
     }
 }

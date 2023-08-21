@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IRadioInput } from 'src/app/core';
+import { Directions, IRadioInput } from 'src/app/core';
 
 @Component({
     selector: 'app-radio-group',
@@ -8,6 +8,7 @@ import { IRadioInput } from 'src/app/core';
 })
 export class RadioGroupComponent implements OnInit {
     @Input({ required: true }) data: IRadioInput[] = [];
+    @Input() flexDirection: Directions = 'vertical';
     @Input() title: string = '';
     @Output() changeActiveValue: EventEmitter<string | number> = new EventEmitter();
     activeValue!: string | number;

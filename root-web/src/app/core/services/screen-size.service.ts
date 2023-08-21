@@ -5,8 +5,8 @@ import { Observable, combineLatest, map, BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class ScreenSizeService {
-    public width$: BehaviorSubject<number> = new BehaviorSubject(window.innerWidth);
-    public height$: BehaviorSubject<number> = new BehaviorSubject(window.innerHeight);
+    private width$: BehaviorSubject<number> = new BehaviorSubject(window.innerWidth);
+    private height$: BehaviorSubject<number> = new BehaviorSubject(window.innerHeight);
     constructor() {
         window.addEventListener('resize', () => this._changeScreenSize());
     }

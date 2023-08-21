@@ -1,31 +1,26 @@
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    Input,
-    OnInit,
-    ViewChild,
-} from '@angular/core';
-import { StrokeColors } from './model';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ScreenSizeService } from 'src/app/core/services/screen-size.service';
+import { Subject, takeUntil } from 'rxjs';
+import { MAX_LAPTOP_WIDTH, MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH } from 'src/app/core';
 
 @Component({
     selector: 'app-canvas',
     templateUrl: './canvas.component.html',
     styleUrls: ['./canvas.component.scss'],
 })
-export class CanvasComponent implements OnInit, AfterViewInit {
-    @Input() canvasWidth: number = 500;
-    @Input() canvasHeight: number = 500;
+export class CanvasComponent implements OnInit, AfterViewInit, OnDestroy {
+    @Input() startCanvasWidth: number = 500;
+    @Input() startCanvasHeight: number = 500;
     @Input() borderWidth: number = 10;
     @Input() strokeLineWidth: number = 2;
+    @Input() strokeColor: string = '#0000';
     @ViewChild('canvasRef', { static: true }) canvasRef!: ElementRef;
     canvas!: HTMLCanvasElement;
     context!: CanvasRenderingContext2D;
     deltaX: number = 0;
     deltaY: number = 0;
     isMouseDown: boolean = false;
+    isDestroyed$: Subject<boolean> = new Subject();
     @HostListener('mousedown', ['$event'])
     onMouseDown(e: MouseEvent) {
         this.isMouseDown = true;
@@ -47,20 +42,33 @@ export class CanvasComponent implements OnInit, AfterViewInit {
         this._setDeltas();
     }
 
-    constructor() {}
+    constructor(private _screenSizeService: ScreenSizeService) {
+        this._screenSizeService
+            .getSizes()
+            .pipe(takeUntil(this.isDestroyed$))
+            .subscribe((sizes) => {
+                this._setDeltas();
+                this._calcCanvasSizeWithDifferentScreenSizes(sizes.width);
+            });
+    }
 
     ngOnInit(): void {
         this.canvas = this.canvasRef.nativeElement as HTMLCanvasElement;
         this.canvas.style.border = `${this.borderWidth}px groove red`;
         this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
-
-        this._setCanvasSizes(this.canvasWidth, this.canvasHeight);
-        this.setStrokeColor('red');
+        this.setStrokeColor(this.strokeColor);
         this.setLineWidth(this.strokeLineWidth);
     }
 
     ngAfterViewInit(): void {
-        this._setDeltas();
+        setTimeout(() => {
+            this._setDeltas();
+            this._calcCanvasSizeWithDifferentScreenSizes(window.innerWidth);
+        }, 500);
+    }
+    ngOnDestroy(): void {
+        this.isDestroyed$.next(true);
+        this.isDestroyed$.complete();
     }
 
     private _getRect(): DOMRect {
@@ -77,11 +85,18 @@ export class CanvasComponent implements OnInit, AfterViewInit {
         this.canvas.height = height;
     }
 
+    private _calcCanvasSizeWithDifferentScreenSizes(width: number) {
+        if (width > MAX_LAPTOP_WIDTH) this._setCanvasSizes(this.startCanvasWidth, this.startCanvasHeight);
+        else if (width > MAX_TABLET_WIDTH) this._setCanvasSizes(700, 600);
+        else if (width > MAX_MOBILE_WIDTH) this._setCanvasSizes(500, 500);
+        else this._setCanvasSizes(300, 400);
+    }
+
     public setLineWidth(width: number) {
         this.context.lineWidth = width;
     }
 
-    public setStrokeColor(color: StrokeColors) {
+    public setStrokeColor(color: string) {
         this.context.strokeStyle = color;
     }
 

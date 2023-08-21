@@ -56,4 +56,13 @@
         margin-bottom: 50px;
         color: $c-white;
     }
+    .paint-wrapper {
+        @include flex-column-center;
+        .settings {
+            width: 100%;
+            @include flex-row-space-around {
+                align-items: flex-start;
+            }
+        }
+    }
 }

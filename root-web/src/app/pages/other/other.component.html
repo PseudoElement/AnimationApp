@@ -13,11 +13,21 @@
                     <div class="settings">
                         <app-radio-group
                             [data]="strokeLineWidthRadioInputs"
+                            [flexDirection]="'vertical'"
                             [title]="'Set stroke width'"
                             (changeActiveValue)="canvas.setLineWidth(+$event)"
                         ></app-radio-group>
+                        <div class="rgb-pallete-wrapper">
+                            <h3>Set stroke color</h3>
+                            <app-rgb-pallete
+                                [id]="'picker'"
+                                [width]="150"
+                                [markerRadius]="5"
+                                (onColorChange)="canvas.setStrokeColor($event)"
+                            ></app-rgb-pallete>
+                        </div>
                     </div>
-                    <app-canvas #canvas [canvasWidth]="1000" [canvasHeight]="800"></app-canvas>
+                    <app-canvas #canvas [startCanvasWidth]="1000" [startCanvasHeight]="800"></app-canvas>
                 </div>
             </div>
         </app-full-screen-slide>
